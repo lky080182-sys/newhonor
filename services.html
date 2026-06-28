@@ -1,0 +1,454 @@
+﻿<!DOCTYPE html>
+<html lang="zh-HK">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>專業服務範疇 | 新榮耀工程有限公司 - 公屋居屋優化、舊樓全爆、防水打針</title>
+    
+    <!-- 引入字體及圖示庫 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700;900&family=Poppins:wght@500;600;800;900&display=swap" rel="stylesheet">
+    
+    <style>
+        /* 根目錄變量設定 (承襲主頁品牌風格) */
+        :root {
+            --primary-dark: #070a10;  
+            --card-dark: #121824;     
+            --card-lighter: #1a2233;
+            --accent-gold: #e5c158;   
+            --text-light: #f8fafc;    
+            --text-muted: #94a3b8;    
+            --border-gold: #38321e;   
+            --border-light: rgba(255,255,255,0.08);
+            --transition-fast: 0.3s ease;
+            --transition-smooth: 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        /* 全局重置 */
+        body { font-family: 'Noto Sans TC', sans-serif; margin: 0; padding: 0; background: var(--primary-dark); color: var(--text-light); line-height: 1.7; overflow-x: hidden; }
+        * { box-sizing: border-box; }
+        img { max-width: 100%; height: auto; display: block; border-radius: 12px; }
+
+        /* --- 頂部導航欄 (簡化版) --- */
+        header { background: rgba(7, 10, 16, 0.98); padding: 15px 5%; display: flex; justify-content: space-between; align-items: center; position: sticky; top: 0; z-index: 1000; border-bottom: 1px solid var(--border-light); }
+        .company-logo { display: flex; align-items: center; gap: 12px; text-decoration: none; }
+        .logo-icon { background: linear-gradient(135deg, var(--accent-gold), #b89025); -webkit-background-clip: text; -webkit-text-fill-color: transparent; font-size: 24px; }
+        .company-name { font-size: 20px; font-weight: 900; color: var(--text-light); margin: 0; }
+        .company-name span { color: var(--accent-gold); }
+        .back-btn { color: var(--text-light); text-decoration: none; font-size: 15px; font-weight: 600; display: flex; align-items: center; gap: 8px; transition: var(--transition-fast); }
+        .back-btn:hover { color: var(--accent-gold); }
+
+        /* --- 內頁 Hero --- */
+        .page-hero { padding: 60px 5% 40px; background: linear-gradient(to bottom, #0a0e17, var(--primary-dark)); text-align: center; border-bottom: 1px solid var(--border-light); }
+        .page-hero h1 { font-size: 38px; font-weight: 900; margin: 0 0 15px 0; color: #fff; }
+        .page-hero p { color: var(--text-muted); font-size: 16px; max-width: 700px; margin: 0 auto; }
+
+        /* --- 服務詳情主體佈局 (SPA 結構) --- */
+        .services-layout { display: flex; max-width: 1400px; margin: 0 auto; min-height: 80vh; }
+        
+        /* 左側導航 (Sidebar) */
+        .service-sidebar { width: 320px; flex-shrink: 0; border-right: 1px solid var(--border-light); background: #05070b; padding: 40px 0; position: sticky; top: 73px; height: calc(100vh - 73px); overflow-y: auto; }
+        .sidebar-menu { list-style: none; padding: 0; margin: 0; }
+        .sidebar-item { margin-bottom: 10px; padding: 0 20px; }
+        .sidebar-link { width: 100%; text-align: left; background: transparent; border: none; padding: 18px 20px; color: var(--text-muted); font-size: 15px; font-weight: 700; cursor: pointer; border-radius: 12px; transition: var(--transition-fast); display: flex; align-items: center; gap: 15px; font-family: 'Noto Sans TC', sans-serif; }
+        .sidebar-link i { font-size: 20px; width: 24px; text-align: center; }
+        .sidebar-link:hover { background: rgba(255,255,255,0.03); color: #fff; }
+        .sidebar-link.active { background: var(--card-lighter); color: var(--accent-gold); border-left: 4px solid var(--accent-gold); border-radius: 0 12px 12px 0; }
+
+        /* 右側內容區 */
+        .service-content-area { flex-grow: 1; padding: 50px; position: relative; background: var(--primary-dark); }
+        .service-pane { display: none; animation: fadeIn 0.4s ease; }
+        .service-pane.active { display: block; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+
+        /* 內容區塊排版 */
+        .pane-header { margin-bottom: 40px; }
+        .pane-tag { display: inline-block; background: rgba(229, 193, 88, 0.1); color: var(--accent-gold); padding: 6px 12px; border-radius: 4px; font-size: 13px; font-weight: 800; margin-bottom: 15px; border: 1px solid rgba(229, 193, 88, 0.3); }
+        .pane-title { font-size: 32px; font-weight: 900; color: #fff; margin: 0 0 20px 0; }
+        .pane-desc { font-size: 16px; color: var(--text-muted); line-height: 1.9; margin: 0; max-width: 800px; }
+
+        .feature-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 25px; margin-bottom: 50px; }
+        .f-card { background: var(--card-dark); padding: 30px; border-radius: 16px; border: 1px solid var(--border-light); }
+        .f-card i { font-size: 28px; color: var(--accent-gold); margin-bottom: 15px; }
+        .f-card h4 { font-size: 18px; color: #fff; margin: 0 0 10px 0; }
+        .f-card p { font-size: 14px; color: var(--text-muted); margin: 0; line-height: 1.6; }
+
+        .content-split { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center; margin-bottom: 50px; }
+        .split-text h3 { font-size: 24px; color: #fff; margin: 0 0 20px 0; }
+        .split-list { list-style: none; padding: 0; margin: 0; }
+        .split-list li { margin-bottom: 15px; display: flex; align-items: flex-start; gap: 12px; color: #cbd5e1; font-size: 15px; }
+        .split-list li i { color: var(--accent-gold); margin-top: 5px; font-size: 14px; }
+        .split-img { border-radius: 16px; box-shadow: 0 20px 40px rgba(0,0,0,0.5); overflow: hidden; height: 350px; }
+        .split-img img { width: 100%; height: 100%; object-fit: cover; }
+
+        .cta-box { background: linear-gradient(135deg, var(--card-lighter), #121824); border: 1px solid var(--accent-gold); padding: 40px; border-radius: 16px; text-align: center; }
+        .cta-box h4 { font-size: 22px; color: #fff; margin: 0 0 10px 0; }
+        .cta-box p { color: var(--text-muted); margin: 0 0 25px 0; }
+        .cta-btn { display: inline-flex; align-items: center; gap: 10px; background: var(--accent-gold); color: var(--primary-dark); padding: 15px 35px; border-radius: 8px; font-weight: 800; text-decoration: none; transition: var(--transition-fast); }
+        .cta-btn:hover { background: #fff; transform: translateY(-2px); box-shadow: 0 10px 20px rgba(255,255,255,0.2); }
+
+        /* --- 響應式 Mobile RWD --- */
+        @media (max-width: 992px) {
+            .services-layout { flex-direction: column; }
+            .service-sidebar { width: 100%; height: auto; position: sticky; top: 62px; padding: 15px 0; z-index: 99; border-right: none; border-bottom: 1px solid var(--border-light); white-space: nowrap; overflow-x: auto; -webkit-overflow-scrolling: touch; }
+            .sidebar-menu { display: flex; padding: 0 15px; gap: 10px; }
+            .sidebar-item { margin-bottom: 0; padding: 0; }
+            .sidebar-link { padding: 12px 20px; white-space: nowrap; border-radius: 30px; font-size: 14px; }
+            .sidebar-link.active { border-left: none; border-bottom: none; background: var(--accent-gold); color: var(--primary-dark); }
+            
+            .service-content-area { padding: 30px 20px; }
+            .feature-grid, .content-split { grid-template-columns: 1fr; }
+            .split-img { height: 250px; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- 頂部導航 -->
+    <header>
+        <a href="index.html" class="company-logo">
+            <i class="fa-solid fa-helmet-safety logo-icon"></i>
+            <h1 class="company-name">新榮耀工程<span>.</span></h1>
+        </a>
+        <a href="index.html" class="back-btn"><i class="fa-solid fa-arrow-left"></i> 返回主頁</a>
+    </header>
+
+    <!-- 內頁 Hero -->
+    <section class="page-hero">
+        <h1>專屬領域，極致工藝</h1>
+        <p>從公居屋極速入伙到大型商業防水工程，針對不同樓宇特性提供最對口的施工方案。</p>
+    </section>
+
+    <!-- 服務詳情佈局 -->
+    <div class="services-layout">
+        
+        <!-- 左側導航 -->
+        <aside class="service-sidebar">
+            <ul class="sidebar-menu">
+                <li class="sidebar-item"><button class="sidebar-link active" onclick="openService('tab1', this)"><i class="fa-solid fa-house-chimney-window"></i> 清水樓全屋優化</button></li>
+                <li class="sidebar-item"><button class="sidebar-link" onclick="openService('tab2', this)"><i class="fa-solid fa-hammer"></i> 舊樓重型全爆翻新</button></li>
+                <li class="sidebar-item"><button class="sidebar-link" onclick="openService('tab3', this)"><i class="fa-solid fa-couch"></i> 自訂傢俬及 3D 設計</button></li>
+                <li class="sidebar-item"><button class="sidebar-link" onclick="openService('tab4', this)"><i class="fa-solid fa-building-user"></i> 商廈及學校工程</button></li>
+                <li class="sidebar-item"><button class="sidebar-link" onclick="openService('tab5', this)"><i class="fa-solid fa-droplet-slash"></i> 防水防漏及打針工程</button></li>
+            </ul>
+        </aside>
+
+        <!-- 右側內容 -->
+        <main class="service-content-area">
+            
+            <!-- 服務 1: 清水樓 -->
+            <div id="tab1" class="service-pane active">
+                <div class="pane-header">
+                    <span class="pane-tag">公屋 / 居屋 / 新盤</span>
+                    <h2 class="pane-title">清水樓全屋優化工程</h2>
+                    <p class="pane-desc">針對新落成屋邨（如和田邨、富蝶邨、啟欣苑等）的交樓標準，提供「免大拆、極速入伙」的性價比方案。在保留原有地台及廚廁大格調的前提下，透過精準的水電延展及傢俬規劃，將空間實用率推至極限。</p>
+                </div>
+                
+                <div class="feature-grid">
+                    <div class="f-card">
+                        <i class="fa-solid fa-bolt"></i>
+                        <h4>水電無縫擴充</h4>
+                        <p>保留原裝電箱，安全拉線新增高達 20 個插座及智能燈掣位，隱藏暗線不破壞牆身美觀。</p>
+                    </div>
+                    <div class="f-card">
+                        <i class="fa-solid fa-paint-roller"></i>
+                        <h4>牆身底層優化</h4>
+                        <p>針對公屋交樓常見的「空鼓」或「沙底」牆面進行局部修補及批灰，再髹上 3 層立邦防霉漆。</p>
+                    </div>
+                    <div class="f-card">
+                        <i class="fa-solid fa-maximize"></i>
+                        <h4>海量收納地台</h4>
+                        <p>無需建磚牆，利用榻榻米地台與高身衣櫃作為空間分隔，既隔音又憑空創造出過百呎儲物空間。</p>
+                    </div>
+                    <div class="f-card">
+                        <i class="fa-solid fa-stopwatch"></i>
+                        <h4>30 天極速交場</h4>
+                        <p>工序無縫銜接，由度尺、工廠生產到現場安裝，最快可於 30-45 個工作天內完工入伙。</p>
+                    </div>
+                </div>
+
+                <div class="content-split">
+                    <div class="split-img">
+                        <img src="https://images.unsplash.com/photo-1593696140826-c58b021acf8b?auto=format&fit=crop&w=800&q=80" alt="清水樓優化">
+                    </div>
+                    <div class="split-text">
+                        <h3>為什麼不建議新樓全爆？</h3>
+                        <p>新落成的公居屋，其水管及防水層均有房署的保養期。若非必要，我們建議保留原裝廚廁，將預算集中投資在<strong>優質地板</strong>與<strong>訂造傢俬</strong>上：</p>
+                        <ul class="split-list">
+                            <li><i class="fa-solid fa-check"></i> 免去昂貴的清拆費及泥水重鋪費用</li>
+                            <li><i class="fa-solid fa-check"></i> 直鋪 SPC 石塑鎖扣地板，防水防刮且免打拆</li>
+                            <li><i class="fa-solid fa-check"></i> 訂造廚櫃完美修飾原裝外露煤氣喉及水喉</li>
+                            <li><i class="fa-solid fa-check"></i> 資金運用更具彈性，可升級 Blum 門鉸或智能家居</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="cta-box">
+                    <h4>準備入伙新居？</h4>
+                    <p>帶備你的單位平面圖，我們為你免費提供初步空間佈局建議及報價。</p>
+                    <a href="https://wa.me/85212345678" class="cta-btn"><i class="fa-brands fa-whatsapp"></i> 索取屋邨專屬套餐</a>
+                </div>
+            </div>
+
+            <!-- 服務 2: 舊樓全爆 -->
+            <div id="tab2" class="service-pane">
+                <div class="pane-header">
+                    <span class="pane-tag">舊公屋 / 二手居屋 / 唐樓</span>
+                    <h2 class="pane-title">舊樓重型全爆翻新</h2>
+                    <p class="pane-desc">樓齡超過 20 年的舊單位，往往隱藏著石屎剝落、喉管生鏽漏水、電線老化等結構性危機。「大全爆」不僅是為了美觀，更是為了徹底根除安全隱患，為單位重塑健康體質，延長 30 年壽命。</p>
+                </div>
+                
+                <div class="feature-grid">
+                    <div class="f-card">
+                        <i class="fa-solid fa-hammer"></i>
+                        <h4 style="color:#ff4a4a;">見磚見底 徹底清拆</h4>
+                        <p>將全屋牆身漆皮、地板及廚廁磁磚打鑿至石屎層。拆除舊有發霉木間隔，徹底消滅潛藏的白蟻與霉菌。</p>
+                    </div>
+                    <div class="f-card">
+                        <i class="fa-solid fa-shield-halved"></i>
+                        <h4>結構修補與鋼筋防鏽</h4>
+                        <p>遇上天花石屎剝落（俗稱跌灰），採用「環氧樹酯」修補砂漿及防鏽漆處理鋼筋，恢復樓宇結構強度。</p>
+                    </div>
+                    <div class="f-card">
+                        <i class="fa-brands fa-aws"></i>
+                        <h4>水電命脈 100% 換新</h4>
+                        <p>摒棄舊鐵喉，全面更換為英國標準 (BS) 銅喉及食水喉。電箱升級至符合機電署規格，重新鋪設獨立冷氣迴路。</p>
+                    </div>
+                    <div class="f-card">
+                        <i class="fa-solid fa-layer-group"></i>
+                        <h4>紅外線泥水平水</h4>
+                        <p>泥水師傅採用紅外線儀器打平水，確保新鋪地磚絕對平坦；廚廁重造 3 層防水塗層，保障下層絕不漏水。</p>
+                    </div>
+                </div>
+
+                <div class="content-split">
+                    <div class="split-text">
+                        <h3>舊樓翻新三大難題・我們為你解決</h3>
+                        <p>舊樓/唐樓裝修最怕遇到「隱藏收費」，我們憑豐富經驗在度尺時為你預先排雷：</p>
+                        <ul class="split-list">
+                            <li><i class="fa-solid fa-check"></i> <strong>咸水管老化：</strong> 代辦向管理處申請關水掣，並更換室內入屋總掣。</li>
+                            <li><i class="fa-solid fa-check"></i> <strong>鋁窗滲水：</strong> 提供搭棚及更換合規防漏鋁窗服務，附驗窗證書。</li>
+                            <li><i class="fa-solid fa-check"></i> <strong>奇形怪狀佈局：</strong> 透過拆牆及訂造傢俬，將鑽石廳或長直廳缺點化為優點。</li>
+                        </ul>
+                    </div>
+                    <div class="split-img">
+                        <img src="https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?auto=format&fit=crop&w=800&q=80" alt="舊樓全爆翻新">
+                    </div>
+                </div>
+                
+                <div class="cta-box">
+                    <h4>擔心舊樓隱藏問題多？</h4>
+                    <p>預約資深管工上門，使用專業儀器為你的舊單位進行全面「身體檢查」。</p>
+                    <a href="https://wa.me/85212345678" class="cta-btn"><i class="fa-brands fa-whatsapp"></i> 預約免費勘察</a>
+                </div>
+            </div>
+
+            <!-- 服務 3: 自訂傢俬 -->
+            <div id="tab3" class="service-pane">
+                <div class="pane-header">
+                    <span class="pane-tag">廠房直營 / 無縫收邊</span>
+                    <h2 class="pane-title">一站式自訂傢俬及 3D 設計</h2>
+                    <p class="pane-desc">新榮耀是少數在東莞擁有直營木工廠房的工程公司。從板材選擇、CNC 機器精準切割到激光封邊，我們一手包辦。免去中間商賺差價，以合理的價格為香港蝸居打造極致美學與功能兼備的收納魔法。</p>
+                </div>
+                
+                <div class="feature-grid">
+                    <div class="f-card">
+                        <i class="fa-solid fa-leaf"></i>
+                        <h4>E0 級醫療標準板材</h4>
+                        <p>堅拒使用平價蔗渣板。全線採用承重極佳、防水防潮的 18mm 厚多層實木夾板，甲醛趨近於零，孕嬰安全。</p>
+                    </div>
+                    <div class="f-card">
+                        <i class="fa-solid fa-cubes"></i>
+                        <h4>1:1 3D 全景渲染圖</h4>
+                        <p>簽約後提供高精度 3D 效果圖。所見即所得，開工前你已能確認配色、紋理及整體燈光氛圍，杜絕完工落差。</p>
+                    </div>
+                    <div class="f-card">
+                        <i class="fa-solid fa-gears"></i>
+                        <h4>進口五金配件</h4>
+                        <p>櫃門及路軌標配歐洲進口 Blum 或 DTC 緩衝液壓五金。開關靜音，推拉十萬次依然順滑，絕不生鏽鬆脫。</p>
+                    </div>
+                    <div class="f-card">
+                        <i class="fa-solid fa-wand-magic-sparkles"></i>
+                        <h4>高難度隱形設計</h4>
+                        <p>擅長製作與牆身融為一體的隱形門（暗門）、懸浮電視櫃、無把手按壓櫃，以及變形摺疊餐檯等高難度工藝。</p>
+                    </div>
+                </div>
+
+                <div class="content-split">
+                    <div class="split-img">
+                        <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&q=80" alt="訂造傢俬">
+                    </div>
+                    <div class="split-text">
+                        <h3>2026 最受歡迎飾面工藝</h3>
+                        <p>除了功能，我們緊貼室內設計潮流，提供過百款高質飾面供客戶選擇：</p>
+                        <ul class="split-list">
+                            <li><i class="fa-solid fa-check"></i> <strong>PET 膚感納米門板：</strong> 啞光質感，抗指紋、防刮花，打造高級奶油風必備。</li>
+                            <li><i class="fa-solid fa-check"></i> <strong>歐洲進口西德板 (Formica)：</strong> 防火防潮抗衝擊，逼真的木紋及石紋質感。</li>
+                            <li><i class="fa-solid fa-check"></i> <strong>鋁框茶色玻璃門：</strong> 適用於高級衣帽間及展示櫃，內藏 LED 燈帶盡顯奢華。</li>
+                            <li><i class="fa-solid fa-check"></i> <strong>連貫岩板電視牆：</strong> 將大尺寸岩板無縫接駁至櫃體，展現大宅氣派。</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="cta-box">
+                    <h4>想看更多實景案例？</h4>
+                    <p>聯絡我們獲取最新的 3D 設計圖庫及實物完工對比圖。</p>
+                    <a href="https://wa.me/85212345678" class="cta-btn"><i class="fa-brands fa-whatsapp"></i> 索取設計圖庫</a>
+                </div>
+            </div>
+
+            <!-- 服務 4: 商廈及學校 -->
+            <div id="tab4" class="service-pane">
+                <div class="pane-header">
+                    <span class="pane-tag">合規審批 / 假期趕工</span>
+                    <h2 class="pane-title">商業寫字樓及學校工程</h2>
+                    <p class="pane-desc">商業項目講求的是「效率、合規與耐用」。我們熟知各政府部門（如屋宇署、消防處、食環署）的出牌指引，並擁有在商場嚴格管理下施工的豐富經驗。無論是辦公室擴充，還是學校暑假趕工翻新，我們都能精準達標。</p>
+                </div>
+                
+                <div class="feature-grid">
+                    <div class="f-card">
+                        <i class="fa-solid fa-briefcase"></i>
+                        <h4>辦公室 / 寫字樓</h4>
+                        <p>提供玻璃隔音間隔、Server Room 防靜電地台與網絡佈線、中央冷氣及鮮風系統改動。代辦商場物管審批手續。</p>
+                    </div>
+                    <div class="f-card">
+                        <i class="fa-solid fa-school"></i>
+                        <h4>學校及教育機構</h4>
+                        <p>專營 STEM 實驗室改建、圖書館翻新。嚴格採用零甲醛防撞物料，並具備於長假期內調配大量人手趕工交場的能力。</p>
+                    </div>
+                    <div class="f-card">
+                        <i class="fa-solid fa-shop"></i>
+                        <h4>餐飲及零售商舖</h4>
+                        <p>處理大電 (三相電) 升級、食水及污水井駁喉、防滑地磚鋪設，並協助代辦食環署各類餐飲牌照工程要求。</p>
+                    </div>
+                    <div class="f-card">
+                        <i class="fa-solid fa-file-signature"></i>
+                        <h4>各類專業證書 (WR1/WR2)</h4>
+                        <p>由註冊電業工程人員及註冊小型工程承建商簽發 WR1 (完工證明) 及小型工程開工/完工申報文件，絕對合法合規。</p>
+                    </div>
+                </div>
+
+                <div class="content-split">
+                    <div class="split-text">
+                        <h3>商業工程核心競爭力</h3>
+                        <p>我們深知商業裝修「時間就是金錢」。延遲交場會直接影響客戶的租金與營業額：</p>
+                        <ul class="split-list">
+                            <li><i class="fa-solid fa-check"></i> <strong>夜間及假日施工：</strong> 配合商場或商廈的嚴格限制，安排通宵時段進行噪音工序。</li>
+                            <li><i class="fa-solid fa-check"></i> <strong>嚴格防火標準：</strong> 所有木工及間隔物料均具備阻燃證書，消防花灑位準確改動。</li>
+                            <li><i class="fa-solid fa-check"></i> <strong>專屬項目經理：</strong> 單一聯絡窗口，每日提交中英文工程進度報告及相片。</li>
+                        </ul>
+                    </div>
+                    <div class="split-img">
+                        <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=800&q=80" alt="寫字樓裝修">
+                    </div>
+                </div>
+
+                <div class="cta-box">
+                    <h4>需要商業報價單投標？</h4>
+                    <p>我們可以提供符合大公司及政府機構要求的詳細格式報價單及公司資歷證明。</p>
+                    <a href="mailto:info@sunwingyiu.com.hk" class="cta-btn"><i class="fa-solid fa-envelope"></i> 聯絡項目經理</a>
+                </div>
+            </div>
+
+            <!-- 服務 5: 防水防漏打針 -->
+            <div id="tab5" class="service-pane">
+                <div class="pane-header">
+                    <span class="pane-tag">科技驗樓 / 根除漏水</span>
+                    <h2 class="pane-title">防水防漏及高壓打針工程</h2>
+                    <p class="pane-desc">「漏水」是樓宇的致命傷。傳統師傅憑肉眼瞎猜，治標不治本。我們引入先進科技儀器進行「無損檢測」，精準定位水源。並採用重型高壓灌漿（打針）技術或深層防水膜重鋪，徹底解決天花滴水、外牆滲漏及窗邊入水等頑疾。</p>
+                </div>
+                
+                <div class="feature-grid">
+                    <div class="f-card">
+                        <i class="fa-solid fa-temperature-half"></i>
+                        <h4>紅外線及微波檢測</h4>
+                        <p>出動高清紅外線熱成像儀及微波濕度計，掃描牆身內部水分分佈，精準找出滲漏源頭，免卻盲目打拆。</p>
+                    </div>
+                    <div class="f-card">
+                        <i class="fa-solid fa-syringe"></i>
+                        <h4>高壓聚氨酯灌漿 (打針)</h4>
+                        <p>針對天花及石屎裂縫，注入遇水即刻膨脹的特種聚氨酯 (PU) 膠液。深入結構縫隙，瞬間止水，效果立竿見影。</p>
+                    </div>
+                    <div class="f-card">
+                        <i class="fa-solid fa-bath"></i>
+                        <h4>廚廁企缸重造防水</h4>
+                        <p>如屬地台防水層失效，我們提供局部打拆重鋪服務。塗刷 3 層瑞士 Sika 高分子防水膜，覆蓋至 1.8 米高。</p>
+                    </div>
+                    <div class="f-card">
+                        <i class="fa-solid fa-certificate"></i>
+                        <h4>長達 3 年防漏保固</h4>
+                        <p>我們對防水工藝絕對自信。凡經我們處理的防漏重災區，均可獲得長達 3 年的保養期，漏水必跟進。</p>
+                    </div>
+                </div>
+
+                <div class="content-split">
+                    <div class="split-img">
+                        <img src="https://images.unsplash.com/photo-1585421514738-01798e348b17?auto=format&fit=crop&w=800&q=80" alt="防水打針工程">
+                    </div>
+                    <div class="split-text">
+                        <h3>常見的漏水成因與對策</h3>
+                        <p>不要拖延漏水問題，否則會引發鋼筋生鏽膨脹及嚴重石屎剝落：</p>
+                        <ul class="split-list">
+                            <li><i class="fa-solid fa-check"></i> <strong>樓上廁所滲水：</strong> 代為與樓上業主/管業處交涉，提供具公信力的驗水報告以便索償。</li>
+                            <li><i class="fa-solid fa-check"></i> <strong>外牆或窗台滲水：</strong> 安排合資格飛天棚（吊船）或棚架工，於外牆塗抹透明抗 UV 納米防水膜。</li>
+                            <li><i class="fa-solid fa-check"></i> <strong>天面/天台漏水：</strong> 為頂層業主起底重鋪隔熱磚，鋪設雙層防紫外光 SBS 防水卷材。</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="cta-box">
+                    <h4>飽受漏水問題困擾？</h4>
+                    <p>立即安排師傅帶同紅外線儀器上門，為你精準找出源頭並提供維修方案。</p>
+                    <a href="https://wa.me/85212345678" class="cta-btn"><i class="fa-brands fa-whatsapp"></i> 緊急預約勘察</a>
+                </div>
+            </div>
+
+        </main>
+    </div>
+
+    <!-- 頁底 Footer (與主頁一致，保持簡化版) -->
+    <footer style="background: #030508; padding: 40px 5%; border-top: 1px solid var(--border-light); text-align: center;">
+        <p style="color: var(--text-muted); font-size: 14px; margin: 0;">&copy; 2026 新榮耀工程有限公司 Sun Wing Yiu Engineering Limited. All rights reserved.</p>
+    </footer>
+
+    <!-- JavaScript - 負責 Tab 切換邏輯 -->
+    <script>// 在 script 結尾處加入以下邏輯
+window.onload = function() {
+    const urlParams = new URLSearchParams(window.location.search);
+    const serviceTab = urlParams.get('tab'); // 獲取網址中的 tab 參數
+    
+    if (serviceTab) {
+        // 觸發對應的 Tab 切換函數 (假設你的函數叫 openService)
+        const btn = document.querySelector(`[onclick="openService('${serviceTab}', this)"]`);
+        if (btn) btn.click();
+    }
+};
+        function openService(tabId, btnElement) {
+            // 隱藏所有內容面板
+            const panes = document.querySelectorAll('.service-pane');
+            panes.forEach(pane => {
+                pane.classList.remove('active');
+            });
+
+            // 移除所有按鈕的 active 狀態
+            const links = document.querySelectorAll('.sidebar-link');
+            links.forEach(link => {
+                link.classList.remove('active');
+            });
+
+            // 顯示選擇的內容並高亮按鈕
+            document.getElementById(tabId).classList.add('active');
+            btnElement.classList.add('active');
+
+            // 在手機版時，點擊後自動滾動到內容區
+            if (window.innerWidth <= 992) {
+                const contentArea = document.querySelector('.service-content-area');
+                window.scrollTo({
+                    top: contentArea.offsetTop - 70, // 扣除 header 高度
+                    behavior: 'smooth'
+                });
+            }
+        }
+    </script>
+</body>
+</html>
