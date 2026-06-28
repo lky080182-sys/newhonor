@@ -1,488 +1,1060 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="zh-HK">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>新榮耀工程有限公司|你的首選裝修傢俬家具木器訂造及翻新工程專家|專注於公屋居屋學校寫字樓商舖裝修及翻新工程</title>
+    
+    <!-- SEO 優化標籤 -->
+    <title>新榮耀工程有限公司 | 香港旗艦級裝修品牌 | 公屋居屋全爆、清水樓優化、自設傢俬廠</title>
+    <meta name="description" content="新榮耀工程為你提供明碼實價裝修套餐，列明細項數量及用料。專長公居屋全爆、新樓清水樓優化、自設廠房訂造E0級防潮傢俬。持屋宇署牌照，資深管工駐場，絕不外判。">
+    <meta name="keywords" content="公屋裝修, 居屋裝修, 清水樓裝修, 全屋翻新, 裝修套餐, 寫字樓裝修, 學校工程, 商舖裝修, 香港裝修公司, 訂造傢俬, E0防潮板, 小紅書裝修, 裝修報價, 黑豹防水, 施耐德">
+    <meta name="author" content="新榮耀工程有限公司">
+    
+    <!-- Schema.org 結構化數據 (提升 Google 搜尋排名) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "HomeAndConstructionBusiness",
+      "name": "新榮耀工程有限公司 Sun Wing Yiu Engineering",
+      "image": "https://images.unsplash.com/photo-1600585154340-be6161a56a0c",
+      "description": "香港專業裝修工程公司，提供公屋居屋裝修、清水樓優化、全爆翻新、自訂傢俬、寫字樓及學校工程服務。",
+      "address": { "@type": "PostalAddress", "addressLocality": "Hong Kong", "addressCountry": "HK", "streetAddress": "觀塘開源道" },
+      "priceRange": "$$$",
+      "telephone": "+852-12345678",
+      "openingHours": "Mo-Sa 09:00-18:00"
+    }
+    </script>
+
+    <!-- 引入字體及圖示庫 -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&family=Poppins:wght@600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700;900&family=Poppins:wght@500;600;800;900&display=swap" rel="stylesheet">
+    
     <style>
+        /* 根目錄變量設定 */
         :root {
-            --primary-dark: #090d16;  /* 極致深黑 */
-            --card-dark: #121824;     /* 炭黑卡片背景 */
-            --accent-gold: #e5c158;   /* 奢華金黃色 */
-            --gold-hover: #f3d783;    /* 淺金黃色 */
-            --text-light: #f8fafc;    /* 白色字體 */
-            --text-muted: #94a3b8;    /* 灰藍色字體 */
-            --border-gold: #38321e;   /* 暗金邊框 */
+            --primary-dark: #070a10;  
+            --card-dark: #121824;     
+            --card-lighter: #1a2233;
+            --accent-gold: #e5c158;   
+            --gold-hover: #f3d783;    
+            --text-light: #f8fafc;    
+            --text-muted: #94a3b8;    
+            --border-gold: #38321e;   
+            --border-light: rgba(255,255,255,0.08);
+            --whatsapp-green: #25D366;
+            --fb-blue: #1877F2;
+            --xhs-red: #ff2442;
+            --transition-fast: 0.3s ease;
+            --transition-smooth: 0.5s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
-        body { 
-            font-family: 'Noto Sans TC', -apple-system, BlinkMacSystemFont, sans-serif; 
-            margin: 0; padding: 0; background: var(--primary-dark); color: var(--text-light); line-height: 1.6;
-        }
+        /* 全局重置與基礎設定 */
+        html { scroll-behavior: smooth; }
+        body { font-family: 'Noto Sans TC', sans-serif; margin: 0; padding: 0; background: var(--primary-dark); color: var(--text-light); line-height: 1.7; overflow-x: hidden; -webkit-font-smoothing: antialiased; }
+        * { box-sizing: border-box; }
+        img { max-width: 100%; height: auto; display: block; }
 
-        header { 
-            background: rgba(9, 13, 22, 0.95); padding: 15px 40px; display: flex; justify-content: space-between; 
-            align-items: center; position: sticky; top: 0; z-index: 100; border-bottom: 1px solid var(--border-gold);
-            backdrop-filter: blur(10px);
-        }
-        .logo-area { display: flex; align-items: center; gap: 15px; }
-        .logo-img { max-height: 45px; display: block; border-radius: 4px; }
-        .logo-img:not([src]), .logo-img[src=""] { width: 40px; height: 40px; background: var(--accent-gold); position: relative; }
-        .company-name { font-size: 24px; font-weight: 900; color: var(--accent-gold); letter-spacing: 1px; cursor: pointer; }
+        /* --- 頂部導航欄 --- */
+        header { background: rgba(7, 10, 16, 0.95); padding: 15px 5%; display: flex; justify-content: space-between; align-items: center; position: sticky; top: 0; z-index: 1000; border-bottom: 1px solid var(--border-gold); backdrop-filter: blur(12px); box-shadow: 0 4px 30px rgba(0,0,0,0.5); }
+        .company-logo { display: flex; align-items: center; gap: 12px; text-decoration: none; }
+        .logo-icon { background: linear-gradient(135deg, var(--accent-gold), #b89025); -webkit-background-clip: text; -webkit-text-fill-color: transparent; font-size: 28px; }
+        .company-name { font-size: 22px; font-weight: 900; color: var(--text-light); letter-spacing: 1.5px; margin: 0; }
+        .company-name span { color: var(--accent-gold); }
         
-        .nav-right-group { display: flex; align-items: center; gap: 20px; }
-        .social-nav-links { display: flex; gap: 15px; align-items: center; }
-        .social-nav-link { color: var(--text-muted); font-size: 15px; transition: color 0.2s; text-decoration: none; font-weight: 500; }
-        .social-nav-link:hover { color: var(--accent-gold); }
-        .social-nav-link i { margin-right: 5px; }
+        .nav-links { display: flex; gap: 30px; align-items: center; }
+        .nav-links a { color: var(--text-light); text-decoration: none; font-weight: 500; font-size: 15px; transition: var(--transition-fast); }
+        .nav-links a:hover { color: var(--accent-gold); }
         
-        .nav-btn { background: var(--accent-gold); color: var(--primary-dark); padding: 10px 22px; border-radius: 6px; text-decoration: none; font-weight: 700; font-size: 14px; transition: all 0.3s; }
-        .nav-btn:hover { background: var(--text-light); color: var(--primary-dark); }
+        .nav-right-group { display: flex; align-items: center; gap: 25px; }
+        .contact-info { display: flex; flex-direction: column; text-align: right; }
+        .contact-info span { font-size: 12px; color: var(--text-muted); }
+        .contact-info strong { font-family: 'Poppins', sans-serif; font-size: 16px; color: var(--accent-gold); letter-spacing: 1px; }
+        .nav-btn { background: var(--accent-gold); color: var(--primary-dark); padding: 12px 24px; border-radius: 8px; text-decoration: none; font-weight: 800; font-size: 15px; transition: var(--transition-fast); box-shadow: 0 4px 15px rgba(229, 193, 88, 0.2); }
+        .nav-btn:hover { background: #fff; transform: translateY(-2px); box-shadow: 0 6px 20px rgba(255, 255, 255, 0.3); }
 
-        .hero { 
-            background: linear-gradient(rgba(9, 13, 22, 0.85), rgba(9, 13, 22, 0.95)), url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1200&q=80') no-repeat center/cover; 
-            color: white; padding: 120px 20px; text-align: center; border-bottom: 1px solid var(--border-gold);
-        }
-        .hero h1 { font-size: 50px; font-weight: 900; margin: 0 0 25px 0; letter-spacing: 1px; color: var(--text-light); }
-        .hero h1 span { color: var(--accent-gold); text-shadow: 0 0 15px rgba(229, 193, 88, 0.2); }
-        .hero p { font-size: 19px; color: var(--text-muted); max-width: 800px; margin: 0 auto 40px auto; line-height: 1.8; }
-        .cta-group { display: flex; justify-content: center; gap: 15px; flex-wrap: wrap; }
-        .btn-cta { padding: 15px 32px; border-radius: 6px; font-weight: 700; font-size: 16px; text-decoration: none; transition: all 0.2s; cursor: pointer; border: none; }
-        .btn-cta-primary { background: var(--accent-gold); color: var(--primary-dark); box-shadow: 0 4px 20px rgba(229, 193, 88, 0.3); }
-        .btn-cta-primary:hover { background: var(--text-light); transform: translateY(-2px); }
-        .btn-cta-secondary { background: transparent; color: var(--accent-gold); border: 2px solid var(--accent-gold); }
-        .btn-cta-secondary:hover { background: rgba(229, 193, 88, 0.1); color: var(--gold-hover); }
+        /* --- Hero 主視覺橫幅 --- */
+        .hero { position: relative; padding: 140px 20px 100px; text-align: center; overflow: hidden; border-bottom: 1px solid var(--border-gold); }
+        .hero-bg { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(to bottom, rgba(7, 10, 16, 0.8), rgba(7, 10, 16, 0.98)), url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1920&q=80') no-repeat center/cover; z-index: -1; transform: scale(1.05); animation: zoomBg 20s infinite alternate; }
+        @keyframes zoomBg { from { transform: scale(1.0); } to { transform: scale(1.08); } }
+        
+        .promo-banner { background: rgba(229, 193, 88, 0.1); border: 1px solid rgba(229, 193, 88, 0.4); padding: 8px 25px; border-radius: 30px; display: inline-flex; align-items: center; gap: 10px; margin-bottom: 35px; font-size: 15px; color: var(--accent-gold); font-weight: 700; letter-spacing: 0.5px; backdrop-filter: blur(5px); animation: fadeInDown 1s ease; }
+        .hero h1 { font-size: 56px; font-weight: 900; margin: 0 0 25px 0; color: var(--text-light); line-height: 1.25; letter-spacing: 1px; animation: fadeInUp 1s ease 0.2s both; }
+        .hero h1 span { background: linear-gradient(to right, var(--accent-gold), #fff); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .hero p { font-size: 18px; color: var(--text-muted); max-width: 850px; margin: 0 auto 45px auto; line-height: 1.8; animation: fadeInUp 1s ease 0.4s both; }
+        
+        .trust-badges { display: flex; justify-content: center; gap: 20px; margin-bottom: 50px; flex-wrap: wrap; animation: fadeInUp 1s ease 0.6s both; }
+        .trust-badge { display: flex; align-items: center; gap: 10px; font-weight: 600; font-size: 15px; background: rgba(255,255,255,0.03); padding: 12px 24px; border-radius: 50px; border: 1px solid var(--border-light); backdrop-filter: blur(4px); transition: var(--transition-fast); }
+        .trust-badge:hover { border-color: var(--accent-gold); background: rgba(229, 193, 88, 0.05); transform: translateY(-3px); }
+        .trust-badge i { color: var(--accent-gold); font-size: 20px; }
 
-        .section-container { padding: 90px 20px; max-width: 1100px; margin: 0 auto; }
-        .section-title { text-align: center; margin-bottom: 60px; }
-        .section-title h2 { font-size: 34px; font-weight: 800; color: var(--text-light); margin: 0 0 15px 0; position: relative; display: inline-block; padding-bottom: 15px; }
-        .section-title h2::after { content: ''; position: absolute; bottom: 0; left: 50%; transform: translateX(-50%); width: 70px; height: 3px; background: var(--accent-gold); }
-        .section-title p { color: var(--text-muted); margin: 0; font-size: 16px; }
+        .cta-group { display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; animation: fadeInUp 1s ease 0.8s both; }
+        .btn-cta-primary { background: var(--accent-gold); color: var(--primary-dark); padding: 18px 45px; border-radius: 10px; font-weight: 900; font-size: 18px; text-decoration: none; transition: var(--transition-smooth); box-shadow: 0 10px 30px rgba(229, 193, 88, 0.3); display: flex; align-items: center; gap: 10px; }
+        .btn-cta-primary:hover { transform: translateY(-5px); background: #fff; box-shadow: 0 15px 40px rgba(255, 255, 255, 0.4); }
+        .btn-cta-secondary { background: transparent; color: var(--accent-gold); padding: 18px 45px; border-radius: 10px; font-weight: 800; font-size: 18px; text-decoration: none; border: 2px solid var(--accent-gold); transition: var(--transition-smooth); display: flex; align-items: center; gap: 10px; }
+        .btn-cta-secondary:hover { background: rgba(229, 193, 88, 0.1); color: #fff; border-color: #fff; }
 
-        .intro-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 40px; align-items: center; }
-        .intro-text h3 { font-size: 26px; color: var(--accent-gold); margin-top: 0; }
-        .intro-text p { color: var(--text-muted); font-size: 16px; line-height: 1.8; }
-        .features-list { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-top: 30px; }
-        .feature-item { background: var(--card-dark); padding: 18px; border-radius: 8px; border-left: 4px solid var(--accent-gold); border-top: 1px solid rgba(255,255,255,0.05); }
-        .feature-item h4 { margin: 0 0 5px 0; font-size: 17px; color: var(--text-light); }
-        .feature-item p { margin: 0; font-size: 13px; color: var(--text-muted); }
+        @keyframes fadeInUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes fadeInDown { from { opacity: 0; transform: translateY(-20px); } to { opacity: 1; transform: translateY(0); } }
 
-        .gallery-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px; }
-        .gallery-card { background: var(--card-dark); border-radius: 10px; overflow: hidden; border: 1px solid rgba(255,255,255,0.05); transition: all 0.3s; }
-        .gallery-card:hover { transform: translateY(-5px); border-color: var(--accent-gold); box-shadow: 0 10px 25px rgba(229, 193, 88, 0.1); }
-        .gallery-img-box { width: 100%; height: 240px; background: #1a2333; overflow: hidden; position: relative; }
-        .gallery-img-box img { width: 100%; height: 100%; object-fit: cover; transition: all 0.5s; }
-        .gallery-card:hover .gallery-img-box img { transform: scale(1.05); }
-        .gallery-info { padding: 25px; }
-        .gallery-tag { background: rgba(229, 193, 88, 0.1); color: var(--accent-gold); padding: 4px 10px; border-radius: 4px; font-size: 12px; font-weight: 700; display: inline-block; margin-bottom: 12px; border: 1px solid rgba(229, 193, 88, 0.2); }
-        .gallery-info h4 { margin: 0 0 8px 0; font-size: 20px; color: var(--text-light); }
-        .gallery-info p { margin: 0; font-size: 14px; color: var(--text-muted); line-height: 1.6; }
+        /* --- 通用區塊設定 --- */
+        .section-container { padding: 110px 5%; max-width: 1400px; margin: 0 auto; }
+        .section-container-alt { background: #0a0e17; padding: 110px 5%; border-top: 1px solid var(--border-light); border-bottom: 1px solid var(--border-light); }
+        .section-title { text-align: center; margin-bottom: 70px; }
+        .section-title h2 { font-size: 42px; font-weight: 900; color: var(--text-light); margin: 0 0 20px 0; display: inline-flex; align-items: center; gap: 15px; position: relative; }
+        .section-title h2::after { content: ''; position: absolute; bottom: -15px; left: 50%; transform: translateX(-50%); width: 80px; height: 4px; background: var(--accent-gold); border-radius: 2px; }
+        .section-title p { color: var(--text-muted); font-size: 18px; max-width: 800px; margin: 30px auto 0; }
 
-        /* 報價區大掣 */
-        .mode-selector { display: flex; background: #111622; padding: 8px; border-radius: 10px; margin-bottom: 30px; border: 1px solid var(--border-gold); gap: 10px; }
-        .mode-btn { flex: 1; text-align: center; padding: 14px; border-radius: 8px; cursor: pointer; font-weight: 700; font-size: 16px; transition: all 0.2s; border: none; }
-        .mode-btn.active { background: var(--accent-gold); color: var(--primary-dark); box-shadow: 0 4px 15px rgba(229, 193, 88, 0.2); }
+        /* --- 品牌理念與數據 (全新) --- */
+        .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
+        .about-text h3 { font-size: 32px; color: #fff; margin-bottom: 25px; font-weight: 800; }
+        .about-text p { font-size: 16px; color: var(--text-muted); margin-bottom: 20px; line-height: 1.9; }
+        .stats-container { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-top: 40px; padding-top: 40px; border-top: 1px solid var(--border-light); }
+        .stat-item { text-align: center; }
+        .stat-num { font-family: 'Poppins', sans-serif; font-size: 42px; font-weight: 900; color: var(--accent-gold); margin-bottom: 5px; }
+        .stat-label { font-size: 14px; color: #fff; font-weight: 600; }
+        .about-image { position: relative; }
+        .about-image img { border-radius: 20px; box-shadow: 0 20px 50px rgba(0,0,0,0.5); }
+        .about-badge { position: absolute; bottom: -30px; left: -30px; background: var(--card-dark); border: 2px solid var(--accent-gold); padding: 25px; border-radius: 16px; box-shadow: 0 10px 30px rgba(0,0,0,0.5); display: flex; align-items: center; gap: 15px; }
+        .about-badge i { font-size: 40px; color: var(--accent-gold); }
+        .about-badge div h4 { margin: 0; color: #fff; font-size: 18px; }
+        .about-badge div p { margin: 0; color: var(--text-muted); font-size: 13px; }
+
+        /* --- 嚴選建材與圖示 (全新) --- */
+        .brands-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 30px; margin-top: 40px; }
+        .brand-card { background: var(--card-dark); border: 1px solid var(--border-light); padding: 30px 20px; border-radius: 16px; text-align: center; transition: var(--transition-fast); }
+        .brand-card:hover { border-color: var(--accent-gold); transform: translateY(-5px); background: var(--card-lighter); }
+        .brand-icon { width: 70px; height: 70px; background: rgba(255,255,255,0.05); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 20px auto; font-size: 30px; color: var(--text-light); }
+        .brand-card h4 { font-size: 18px; color: #fff; margin: 0 0 10px 0; }
+        .brand-card p { font-size: 13px; color: var(--text-muted); margin: 0; line-height: 1.6; }
+
+        /* --- 業務範疇區 --- */
+        .service-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 35px; }
+        .service-card { background: var(--card-dark); border: 1px solid var(--border-light); padding: 45px 35px; border-radius: 20px; text-align: left; transition: var(--transition-smooth); position: relative; overflow: hidden; }
+        .service-card::before { content: ''; position: absolute; top: 0; left: 0; width: 4px; height: 0; background: var(--accent-gold); transition: var(--transition-smooth); }
+        .service-card:hover { transform: translateY(-10px); box-shadow: 0 20px 50px rgba(0,0,0,0.4); border-color: rgba(229, 193, 88, 0.3); }
+        .service-card:hover::before { height: 100%; }
+        .service-card-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 25px; }
+        .service-icon { width: 65px; height: 65px; background: linear-gradient(135deg, rgba(229,193,88,0.2), rgba(229,193,88,0.05)); border-radius: 16px; display: flex; align-items: center; justify-content: center; font-size: 30px; color: var(--accent-gold); border: 1px solid rgba(229,193,88,0.2); }
+        .service-num { font-family: 'Poppins', sans-serif; font-size: 40px; font-weight: 900; color: rgba(255,255,255,0.05); line-height: 1; }
+        .service-card h3 { font-size: 22px; margin: 0 0 15px 0; color: var(--text-light); font-weight: 800; }
+        .service-card p { margin: 0; font-size: 15px; color: var(--text-muted); line-height: 1.8; }
+        .service-tags { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 20px; }
+        .service-tags span { font-size: 12px; background: rgba(255,255,255,0.05); padding: 4px 10px; border-radius: 4px; color: #cbd5e1; }
+
+        /* --- 傢俬專區 --- */
+        .furniture-showcase { display: grid; grid-template-columns: 1.2fr 1fr; gap: 60px; align-items: center; }
+        .furniture-content h3 { font-size: 30px; color: var(--accent-gold); margin-bottom: 20px; }
+        .furniture-content p { color: var(--text-muted); font-size: 16px; margin-bottom: 30px; line-height: 1.8; }
+        .materials-list-modern { display: flex; flex-direction: column; gap: 20px; }
+        .material-row { display: flex; align-items: flex-start; gap: 20px; background: var(--card-dark); padding: 25px; border-radius: 16px; border: 1px solid var(--border-light); transition: var(--transition-fast); }
+        .material-row:hover { border-color: var(--accent-gold); background: var(--card-lighter); }
+        .material-icon-box { width: 50px; height: 50px; background: rgba(229, 193, 88, 0.1); border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 24px; color: var(--accent-gold); flex-shrink: 0; }
+        .material-text h4 { margin: 0 0 8px 0; color: #fff; font-size: 18px; }
+        .material-text p { margin: 0; color: var(--text-muted); font-size: 14px; line-height: 1.6; }
+        
+        .furniture-image-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
+        .f-img-large { grid-column: span 2; height: 300px; border-radius: 16px; overflow: hidden; }
+        .f-img-small { height: 200px; border-radius: 16px; overflow: hidden; }
+        .f-img-box { background-size: cover; background-position: center; transition: var(--transition-smooth); width: 100%; height: 100%; }
+        .f-img-box:hover { transform: scale(1.05); }
+
+        /* --- 精選案例 Portfolio (全新) --- */
+        .portfolio-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(350px, 1fr)); gap: 25px; }
+        .portfolio-item { position: relative; border-radius: 16px; overflow: hidden; height: 280px; group; cursor: pointer; }
+        .portfolio-item img { width: 100%; height: 100%; object-fit: cover; transition: var(--transition-smooth); }
+        .portfolio-overlay { position: absolute; inset: 0; background: linear-gradient(to top, rgba(0,0,0,0.9), transparent); opacity: 0; transition: var(--transition-smooth); display: flex; flex-direction: column; justify-content: flex-end; padding: 25px; }
+        .portfolio-item:hover img { transform: scale(1.1); }
+        .portfolio-item:hover .portfolio-overlay { opacity: 1; }
+        .p-tag { font-size: 12px; font-weight: 700; color: var(--primary-dark); background: var(--accent-gold); padding: 4px 10px; border-radius: 4px; display: inline-block; margin-bottom: 10px; align-self: flex-start; }
+        .p-title { font-size: 20px; color: #fff; font-weight: 800; margin: 0 0 5px 0; }
+        .p-desc { font-size: 14px; color: #cbd5e1; margin: 0; }
+
+        /* --- 套餐報價區 (旗艦版) --- */
+        .mode-selector { display: flex; background: rgba(255,255,255,0.02); padding: 8px; border-radius: 16px; margin-bottom: 60px; border: 1px solid var(--border-light); max-width: 900px; margin-left: auto; margin-right: auto; backdrop-filter: blur(10px); }
+        .mode-btn { flex: 1; padding: 18px 20px; border-radius: 12px; cursor: pointer; font-weight: 800; font-size: 18px; border: none; transition: var(--transition-fast); display: flex; justify-content: center; align-items: center; gap: 10px; }
+        .mode-btn.active { background: var(--accent-gold); color: var(--primary-dark); box-shadow: 0 4px 20px rgba(229, 193, 88, 0.4); }
         .mode-btn:not(.active) { background: transparent; color: var(--text-muted); }
-        .mode-btn:not(.active):hover { color: white; background: rgba(255,255,255,0.03); }
+        .mode-btn:not(.active):hover { color: #fff; background: rgba(255,255,255,0.05); }
 
-        .calc-panel { display: none; }
-        .calc-panel.active { display: block; }
+        .pricing-container { display: none; gap: 30px; flex-wrap: wrap; justify-content: center; animation: fadeIn 0.5s ease; }
+        .pricing-container.active { display: flex; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(15px); } to { opacity: 1; transform: translateY(0); } }
+
+        .tier-card { flex: 1; min-width: 360px; max-width: 420px; border-radius: 24px; padding: 50px 40px; background: var(--card-dark); border: 1px solid var(--border-light); position: relative; transition: var(--transition-smooth); display: flex; flex-direction: column; }
+        .tier-card:hover { border-color: var(--accent-gold); box-shadow: 0 20px 50px rgba(0,0,0,0.6); transform: translateY(-5px); }
+        .tier-card.popular { border: 2px solid var(--accent-gold); transform: scale(1.03); z-index: 10; background: linear-gradient(to bottom, #151d2c, #070a10); box-shadow: 0 10px 40px rgba(229, 193, 88, 0.15); }
+        .tier-card.popular:hover { transform: scale(1.03) translateY(-5px); }
         
-        .single-input-box { display: flex; align-items: center; justify-content: center; gap: 15px; background: #111622; padding: 25px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.05); margin-bottom: 25px; }
-        .single-input-box label { font-size: 18px; font-weight: 700; color: var(--accent-gold); }
-        .large-num-input { width: 150px; padding: 12px; border: 2px solid var(--accent-gold); background: #1e293b; color: white; border-radius: 6px; font-size: 20px; font-weight: 700; text-align: center; }
-
-        .calc-section { background: #05070b; padding: 90px 20px; border-top: 1px solid var(--border-gold); }
-        .calc-card { background: var(--card-dark); border-radius: 16px; padding: 35px; box-shadow: 0 15px 40px rgba(0,0,0,0.5); color: var(--text-light); border: 1px solid rgba(255,255,255,0.05); }
-        .item-table { width: 100%; border-collapse: collapse; font-size: 15px; margin-bottom: 25px; text-align: left; }
-        .item-table th { background: #1a2233; padding: 14px; font-weight: 700; color: var(--accent-gold); }
-        .item-table td { padding: 14px; border-bottom: 1px solid rgba(255,255,255,0.05); }
-        .num-input { width: 85px; padding: 8px; border: 1px solid #334155; background: #1e293b; color: white; border-radius: 6px; font-size: 14px; font-weight: 600; text-align: center; }
-        input[type="checkbox"] { width: 18px; height: 18px; accent-color: var(--accent-gold); cursor: pointer; }
-
-        .pricing-container { display: flex; gap: 20px; margin-top: 25px; flex-wrap: wrap; }
-        .tier-card { flex: 1; min-width: 250px; border-radius: 12px; padding: 25px; background: #1a2233; position: relative; border: 1px solid rgba(255,255,255,0.05); transition: all 0.3s; }
-        .tier-card:hover { transform: translateY(-5px); border-color: var(--accent-gold); }
-        .tier-card.single-result { border: 2px solid var(--accent-gold); border-top: 6px solid var(--accent-gold); }
-        .tier-card.low { border-top: 5px solid #64748b; }
-        .tier-card.mid { border: 2px solid var(--accent-gold); border-top: 6px solid var(--accent-gold); }
-        .tier-card.high { border-top: 5px solid #f59e0b; }
+        .tier-badge { position: absolute; top: -18px; left: 50%; transform: translateX(-50%); background: linear-gradient(135deg, var(--accent-gold), #ffd700); color: var(--primary-dark); padding: 8px 25px; border-radius: 30px; font-weight: 900; font-size: 15px; white-space: nowrap; letter-spacing: 1px; box-shadow: 0 5px 15px rgba(229, 193, 88, 0.4); display: flex; align-items: center; gap: 8px; }
         
-        .tier-badge { position: absolute; top: -13px; right: 15px; color: var(--primary-dark); background: var(--accent-gold); padding: 3px 12px; border-radius: 20px; font-size: 12px; font-weight: 700; }
-        .tier-title { font-size: 16px; font-weight: 700; color: var(--accent-gold); margin-bottom: 5px; }
-        .tier-price { font-family: 'Poppins', sans-serif; font-size: 32px; font-weight: 700; color: var(--text-light); margin: 10px 0; }
-        .tier-features { font-size: 13.5px; color: var(--text-muted); padding-left: 18px; margin: 0; line-height: 1.8; }
+        .tier-title { font-size: 26px; font-weight: 900; color: #fff; text-align: center; margin: 0; }
+        .tier-sqft { text-align: center; color: var(--text-muted); font-size: 14px; font-weight: 500; margin: 10px 0 25px 0; }
+        .tier-price { text-align: center; font-family: 'Poppins', sans-serif; font-size: 56px; font-weight: 900; color: #fff; margin-bottom: 30px; border-bottom: 1px solid var(--border-light); padding-bottom: 30px; line-height: 1; }
+        .tier-price span { font-size: 18px; color: var(--text-muted); font-weight: 500; font-family: 'Noto Sans TC', sans-serif; }
+        .tier-price .hkd { font-size: 28px; color: var(--accent-gold); vertical-align: top; margin-right: 5px; }
 
-        /* 💡 重新優化的單一行動按鈕群組 */
-        .btn-action-group { display: flex; gap: 15px; margin-top: 35px; }
-        .btn-act { flex: 1; padding: 18px; border: none; border-radius: 8px; font-weight: 700; font-size: 18px; cursor: pointer; transition: all 0.2s; display: flex; align-items: center; justify-content: center; gap: 10px; color: white; text-decoration: none; }
-        .btn-act-green { background: #10b981; box-shadow: 0 4px 15px rgba(16, 185, 129, 0.3); }
-        .btn-act-green:hover { background: #059669; transform: translateY(-2px); }
+        /* 報價 List */
+        .tier-features { list-style: none; padding: 0; margin: 0 0 40px 0; flex-grow: 1; }
+        .tier-features li { display: flex; gap: 15px; margin-bottom: 25px; }
+        .tier-features li:last-child { margin-bottom: 0; }
+        
+        .feature-check { color: var(--accent-gold); font-size: 18px; margin-top: 3px; flex-shrink: 0; }
+        .feature-text { font-size: 15px; color: #cbd5e1; line-height: 1.7; }
+        .hl-title { display: block; color: #fff; font-weight: 800; font-size: 16px; margin-bottom: 4px; }
+        .highlight-num { color: var(--accent-gold); font-weight: 900; font-size: 17px; padding: 0 2px; }
+        
+        .furniture-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 10px; background: rgba(0,0,0,0.2); padding: 12px; border-radius: 8px; border: 1px dashed var(--border-light); }
+        .f-tag-title { width: 100%; font-size: 13px; color: var(--accent-gold); font-weight: 700; margin-bottom: 2px; }
+        .f-tag { font-size: 13px; background: rgba(255,255,255,0.06); padding: 4px 10px; border-radius: 4px; color: #e2e8f0; }
 
-        .admin-panel { background: #111827; border: 1px solid var(--border-gold); border-radius: 12px; display: none; margin-top: 30px; padding: 25px; }
-        .admin-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 12px; margin-top: 15px; }
-        .admin-box { background: #1f2937; padding: 10px; border-radius: 8px; border: 1px solid #374151; }
-        .admin-box label { font-size: 12px; font-weight: 600; display: block; margin-bottom: 4px; color: var(--accent-gold); }
-        .admin-box input { width: 100%; padding: 6px; box-sizing: border-box; border: 1px solid #4b5563; background: #111827; color: white; border-radius: 4px; font-weight: 600; }
+        .btn-select { width: 100%; padding: 18px; border-radius: 12px; font-weight: 800; font-size: 16px; cursor: pointer; transition: var(--transition-fast); text-align: center; text-decoration: none; display: flex; justify-content: center; align-items: center; gap: 10px; letter-spacing: 1px; }
+        .btn-select-outline { background: transparent; border: 2px solid var(--border-light); color: var(--text-light); }
+        .btn-select-outline:hover { border-color: var(--accent-gold); color: var(--accent-gold); background: rgba(229, 193, 88, 0.05); }
+        .tier-card.popular .btn-select { background: var(--accent-gold); border: none; color: var(--primary-dark); box-shadow: 0 8px 20px rgba(229, 193, 88, 0.3); }
+        .tier-card.popular .btn-select:hover { background: #fff; box-shadow: 0 10px 25px rgba(255, 255, 255, 0.4); }
 
-        footer { background: #05070b; color: #475569; text-align: center; padding: 50px 20px; font-size: 14px; border-top: 1px solid var(--border-gold); }
-        footer a { color: var(--accent-gold); text-decoration: none; margin: 0 5px; font-weight: 600; transition: color 0.2s; }
-        footer a:hover { color: var(--text-light); }
-        .footer-social-box { margin: 20px 0; display: flex; justify-content: center; gap: 20px; }
-        .footer-social-btn { display: inline-flex; align-items: center; justify-content: center; width: 40px; height: 40px; background: #111622; border: 1px solid var(--border-gold); border-radius: 50%; color: var(--accent-gold); text-decoration: none; font-size: 18px; transition: all 0.3s; }
-        .footer-social-btn:hover { background: var(--accent-gold); color: var(--primary-dark); transform: translateY(-3px); }
+        /* --- 社群證明 (Facebook & 小紅書) --- */
+        .social-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; }
+        .social-column { background: var(--card-dark); border-radius: 20px; padding: 35px; border: 1px solid var(--border-light); box-shadow: 0 10px 30px rgba(0,0,0,0.3); }
+        .social-column.fb { border-top: 4px solid var(--fb-blue); }
+        .social-column.xhs { border-top: 4px solid var(--xhs-red); }
+        .social-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 30px; }
+        .s-head-left { display: flex; align-items: center; gap: 15px; }
+        .s-head-left i { font-size: 32px; }
+        .s-head-left i.fa-facebook { color: var(--fb-blue); }
+        .s-head-left i.fa-hashtag { color: var(--xhs-red); background: rgba(255,36,66,0.15); padding: 8px 10px; border-radius: 50%; font-size: 20px; }
+        .s-head-left h3 { font-size: 22px; margin: 0; color: #fff; font-weight: 800; }
+        .follow-btn { padding: 6px 15px; border-radius: 20px; font-size: 13px; font-weight: 700; text-decoration: none; transition: 0.3s; }
+        .fb .follow-btn { background: rgba(24,119,242,0.1); color: var(--fb-blue); }
+        .fb .follow-btn:hover { background: var(--fb-blue); color: #fff; }
+        .xhs .follow-btn { background: rgba(255,36,66,0.1); color: var(--xhs-red); }
+        .xhs .follow-btn:hover { background: var(--xhs-red); color: #fff; }
+        
+        .post-card { background: rgba(255,255,255,0.03); padding: 25px; border-radius: 16px; margin-bottom: 20px; border: 1px solid rgba(255,255,255,0.02); transition: var(--transition-fast); }
+        .post-card:hover { background: rgba(255,255,255,0.06); transform: translateY(-3px); }
+        .post-user { display: flex; align-items: center; gap: 15px; margin-bottom: 18px; }
+        .post-avatar { width: 45px; height: 45px; border-radius: 50%; background: #334155; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 18px; }
+        .post-user-info p { margin: 0 0 2px 0; font-size: 15px; font-weight: 800; color: #fff; }
+        .post-user-info span { font-size: 12px; color: var(--text-muted); }
+        .post-content { font-size: 15px; color: #cbd5e1; line-height: 1.7; margin-bottom: 15px; }
+        .post-tags { font-size: 13px; font-weight: 600; margin-top: 10px; }
+        .fb .post-tags { color: var(--fb-blue); }
+        .xhs .post-tags { color: var(--xhs-red); }
+
+        /* --- 4步流程區 --- */
+        .process-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 30px; text-align: center; margin-top: 60px; counter-reset: step-counter; }
+        .process-step { background: var(--card-dark); padding: 50px 30px 40px; border-radius: 20px; border: 1px solid var(--border-light); transition: var(--transition-smooth); position: relative; }
+        .process-step:hover { border-color: var(--accent-gold); transform: translateY(-10px); background: var(--card-lighter); }
+        .step-num { width: 70px; height: 70px; background: linear-gradient(135deg, var(--accent-gold), #d4af37); color: var(--primary-dark); font-size: 30px; font-weight: 900; border-radius: 50%; display: flex; align-items: center; justify-content: center; position: absolute; top: -35px; left: 50%; transform: translateX(-50%); border: 8px solid var(--primary-dark); box-shadow: 0 5px 15px rgba(229, 193, 88, 0.4); }
+        .process-step h3 { color: #fff; margin: 0 0 15px 0; font-size: 22px; font-weight: 800; }
+        .process-step p { color: var(--text-muted); font-size: 15px; margin: 0; line-height: 1.7; }
+
+        /* --- FAQ 手風琴 --- */
+        .faq-container { max-width: 900px; margin: 0 auto; display: flex; flex-direction: column; gap: 15px; }
+        .faq-item { background: var(--card-dark); border: 1px solid var(--border-light); border-radius: 12px; overflow: hidden; }
+        .faq-question { padding: 25px 30px; font-size: 18px; font-weight: 800; color: #fff; cursor: pointer; display: flex; justify-content: space-between; align-items: center; transition: var(--transition-fast); }
+        .faq-question:hover { color: var(--accent-gold); background: rgba(255,255,255,0.02); }
+        .faq-question i { color: var(--accent-gold); transition: transform 0.3s; }
+        .faq-answer { padding: 0 30px; max-height: 0; overflow: hidden; transition: max-height 0.4s ease, padding 0.4s ease; background: rgba(0,0,0,0.2); }
+        .faq-answer p { margin: 0; padding-bottom: 25px; color: var(--text-muted); font-size: 15px; line-height: 1.8; }
+        .faq-item.active .faq-answer { max-height: 500px; padding-top: 15px; }
+        .faq-item.active .faq-question i { transform: rotate(180deg); }
+
+        /* --- 底部與懸浮按鈕 --- */
+        .floating-wa { position: fixed; bottom: 40px; right: 40px; background: var(--whatsapp-green); color: white; width: 75px; height: 75px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 42px; box-shadow: 0 10px 30px rgba(37, 211, 102, 0.5); text-decoration: none; z-index: 9999; transition: var(--transition-smooth); }
+        .floating-wa:hover { transform: scale(1.1) translateY(-5px); }
+        .floating-wa::before { content: ''; position: absolute; width: 100%; height: 100%; background: var(--whatsapp-green); border-radius: 50%; z-index: -1; animation: pulseWA 2s infinite; }
+        @keyframes pulseWA { 0% { transform: scale(1); opacity: 0.8; } 100% { transform: scale(1.4); opacity: 0; } }
+
+        footer { background: #030508; padding: 80px 5% 30px; border-top: 1px solid var(--border-light); }
+        .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 50px; max-width: 1400px; margin: 0 auto 50px auto; }
+        .footer-brand { margin-bottom: 20px; display: inline-block; }
+        .footer-col p { color: var(--text-muted); font-size: 15px; line-height: 1.8; margin-bottom: 25px; max-width: 350px; }
+        .footer-col h4 { color: #fff; font-size: 18px; font-weight: 800; margin-bottom: 25px; position: relative; padding-bottom: 10px; }
+        .footer-col h4::after { content: ''; position: absolute; left: 0; bottom: 0; width: 40px; height: 3px; background: var(--accent-gold); }
+        .footer-col ul { list-style: none; padding: 0; margin: 0; }
+        .footer-col ul li { margin-bottom: 15px; }
+        .footer-col ul li a { color: var(--text-muted); text-decoration: none; font-size: 15px; transition: var(--transition-fast); display: flex; align-items: center; gap: 10px; }
+        .footer-col ul li a:hover { color: var(--accent-gold); transform: translateX(5px); }
+        .footer-col ul li i { color: var(--accent-gold); width: 16px; }
+        .footer-bottom { border-top: 1px solid rgba(255,255,255,0.05); padding-top: 30px; text-align: center; color: #64748b; font-size: 14px; display: flex; justify-content: space-between; flex-wrap: wrap; max-width: 1400px; margin: 0 auto; gap: 15px; }
+        .footer-bottom a { color: #64748b; text-decoration: none; margin-left: 15px; transition: 0.3s; }
+        .footer-bottom a:hover { color: #fff; }
+
+        /* --- 響應式 Mobile RWD --- */
+        @media (max-width: 1024px) {
+            .footer-grid { grid-template-columns: 1fr 1fr; }
+            .furniture-showcase { grid-template-columns: 1fr; }
+        }
+        @media (max-width: 768px) {
+            header { flex-direction: column; gap: 15px; padding: 15px 20px; }
+            .nav-links { display: none; /* Mobile Menu 可另外實作 */ }
+            .hero { padding: 80px 20px 60px; }
+            .hero h1 { font-size: 38px; }
+            .about-grid, .social-grid { grid-template-columns: 1fr; gap: 40px; }
+            .stats-container { grid-template-columns: 1fr 1fr; gap: 30px; }
+            .mode-selector { flex-direction: column; gap: 10px; background: transparent; border: none; }
+            .mode-btn { border: 1px solid var(--border-light); background: var(--card-dark); }
+            .tier-card { min-width: 100%; padding: 40px 25px; }
+            .f-img-large, .f-img-small { height: 250px; grid-column: span 2; }
+            .footer-grid { grid-template-columns: 1fr; gap: 40px; }
+            .footer-bottom { justify-content: center; flex-direction: column; }
+            .floating-wa { width: 60px; height: 60px; font-size: 35px; bottom: 20px; right: 20px; }
+        }
     </style>
 </head>
 <body>
 
+    <!-- 頂部導航 -->
     <header>
-        <div class="logo-area">
-            <img src="mylogo.png" class="logo-img" alt="Logo">
-            <div id="nav-brand-name" class="company-name" onclick="clickTitleCounter()">新榮耀工程|你的首選裝修專家永不爛尾|自設廠房訂造傢俬家具木器|專注於公屋居屋學校寫字樓商舖裝修及翻新工程</div>
-        </div>
-        
+        <a href="#" class="company-logo">
+            <i class="fa-solid fa-helmet-safety logo-icon"></i>
+            <h1 class="company-name">新榮耀工程<span>.</span></h1>
+        </a>
+        <nav class="nav-links">
+            <a href="#about">關於我們</a>
+            <a href="#services">專業服務</a>
+            <a href="#furniture">自設廠房</a>
+            <a href="#pricing">明碼實價套餐</a>
+            <a href="#portfolio">精選案例</a>
+            <a href="#faq">常見問題</a>
+        </nav>
         <div class="nav-right-group">
-            <div class="social-nav-links">
-                <a href="http://xhslink.com/m/3Quwi30LJG2" target="_blank" class="social-nav-link"><i class="fa-solid fa-book-open"></i> 小紅書</a>
-                <a href="https://www.facebook.com/share/195a6wEqvR/" target="_blank" class="social-nav-link"><i class="fa-brands fa-facebook"></i> Facebook</a>
+            <div class="contact-info">
+                <span>免費上門度尺報價</span>
+                <strong><i class="fa-solid fa-phone"></i> 1234 5678</strong>
             </div>
-            <a href="#quote-calculator" class="nav-btn">📊 即時估價</a>
+            <a href="https://wa.me/85212345678" class="nav-btn" target="_blank"><i class="fa-brands fa-whatsapp"></i> WhatsApp 查詢</a>
         </div>
     </header>
 
+    <!-- 主視覺橫幅 -->
     <section class="hero">
-        <h1>打造頂級空間，創造<span>理想環境</span></h1>
-        <p>專業工地主管駐場把關，專注訂造高級傢俬、學校、住宅大樓、會所、寫字樓、商舖及住宅全屋翻新。明碼實價，絕無隱藏收費。</p>
+        <div class="hero-bg"></div>
+        <div class="promo-banner">
+            <i class="fa-solid fa-gift"></i> <span>2026 最新優惠：本月確認工程，即免費升級全屋 Blum 緩衝門鉸及送一次除甲醛服務！</span>
+        </div>
+        <h1>深耕香港十五載・拒絕海鮮價<br><span>頂級建材打造完美家居</span></h1>
+        <p>不論是居屋極速入伙、舊公屋徹底全爆，還是寫字樓及學校工程。我們憑藉持有屋宇署認可資歷，結合東莞直營木工廠，為你提供「設計、清拆、水電、泥水、訂造傢俬」一條龍的高質素工程。承諾明碼實價，絕不外判。</p>
+        
+        <div class="trust-badges">
+            <div class="trust-badge"><i class="fa-solid fa-file-signature"></i> 屋宇署小型工程牌照</div>
+            <div class="trust-badge"><i class="fa-solid fa-shield-halved"></i> 24個月防漏結構保固</div>
+            <div class="trust-badge"><i class="fa-solid fa-user-tie"></i> 專屬管工每日匯報</div>
+            <div class="trust-badge"><i class="fa-solid fa-leaf"></i> E0 級低甲醛環保認證</div>
+        </div>
+
         <div class="cta-group">
-            <a href="#quote-calculator" class="btn-cta btn-cta-primary">📊 線上測試估價</a>
-            <a href="https://wa.me/85212345678" target="_blank" class="btn-cta btn-cta-secondary"><i class="fa-brands fa-whatsapp"></i> WhatsApp 專人諮詢</a>
+            <a href="#pricing" class="btn-cta-primary"><i class="fa-solid fa-file-invoice-dollar"></i> 查看 2026 裝修套餐價目</a>
+            <a href="#portfolio" class="btn-cta-secondary"><i class="fa-solid fa-images"></i> 瀏覽過往精選案例</a>
         </div>
     </section>
 
-    <section class="section-container">
+    <!-- 關於我們 & 數據 -->
+    <section id="about" class="section-container">
+        <div class="about-grid">
+            <div class="about-image">
+                <img src="https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&w=800&q=80" alt="專業裝修團隊">
+                <div class="about-badge">
+                    <i class="fa-solid fa-medal"></i>
+                    <div>
+                        <h4>十五年地盤管理經驗</h4>
+                        <p>嚴格把關每一道工序</p>
+                    </div>
+                </div>
+            </div>
+            <div class="about-text">
+                <h3 style="display: flex; align-items: center; gap: 15px;"><i class="fa-solid fa-building-shield" style="color:var(--accent-gold);"></i> 為什麼選擇新榮耀工程？</h3>
+                <p>香港裝修業界良莠不齊，爛尾、後加數(海鮮價)、貨不對辦等問題屢見不鮮。<strong>新榮耀工程</strong> 成立的初心，就是為香港業主建立一個「透明、專業、安心」的裝修體驗。</p>
+                <p>我們不是外判判頭，旗下擁有固定的水電、泥水及木工班底。我們更是少數在廣東東莞擁有<strong>直營傢俬廠房</strong>的工程公司，從板材裁切到封邊，均由我們親自監控，免除中間人差價，真正做到高性價比。</p>
+                
+                <div class="stats-container">
+                    <div class="stat-item">
+                        <div class="stat-num">1,200+</div>
+                        <div class="stat-label">完成單位數量</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-num">15 年</div>
+                        <div class="stat-label">深耕香港工程界</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-num">100%</div>
+                        <div class="stat-label">準時交場率</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 嚴選國際級建材 -->
+    <section class="section-container-alt">
         <div class="section-title">
-            <h2>關於新榮耀工程</h2>
-            <p>香港頂級工藝的室內裝修與木工專家</p>
+            <h2>👑 嚴選國際級名牌建材</h2>
+            <p>好手工必須配合好用料。底料我們絕不妥協，全部採用業界公認最高標準，保障你的家居安全與耐用度。</p>
         </div>
-        <div class="intro-grid">
-            <div class="intro-text">
-                <h3>因為專注，所以專業</h3>
-                <p>新榮耀精修工程扎根香港多年，主要服務涵蓋住宅全屋翻新、學校、住宅大樓、會所、寫字樓、商舖裝修及訂造傢俬服務。我們秉持「實價透明、拒絕隨意加價」的原則，由經驗豐富的專業工地管工全期駐場監督，確保交付最高品質的居所。</p>
+        <div class="brands-grid">
+            <div class="brand-card">
+                <div class="brand-icon"><i class="fa-solid fa-plug"></i></div>
+                <h4>施耐德 Schneider</h4>
+                <p>全屋標配更換法國施耐德 (Schneider Electric) 總電箱及斷路器，確保用電安全零意外。</p>
             </div>
-            <div class="features-list">
-                <div class="feature-item"><h4>管工全程駐場</h4><p>嚴控施工作業標準，每日向業主匯報進度</p></div>
-                <div class="feature-item"><h4>細木工藝極致收口</h4><p>自家木工師傅現場精準修邊，拒絕偷工減料</p></div>
-                <div class="feature-item"><h4>材料全面環保</h4><p>全線選用低甲醛防潮板材，安心即時入住</p></div>
-                <div class="feature-item"><h4>完善售後承諾</h4><p>提供長達 12 至 24 個月的結構與防漏保養期</p></div>
+            <div class="brand-card">
+                <div class="brand-icon"><i class="fa-solid fa-paint-roller"></i></div>
+                <h4>立邦 Nippon Paint</h4>
+                <p>採用立邦防霉/金裝五合一環保乳膠漆，具備抗污、防潮及淨味功能，即髹即住。</p>
             </div>
-        </div>
-    </section>
-
-    <section class="section-container" style="background: #0b111e; max-width: 100%;">
-        <div style="max-width: 1100px; margin: 0 auto; padding: 0 20px;">
-            <div class="section-title">
-                <h2>精選裝修案例作品</h2>
-                <p>匠心雕琢的空間藝術，實景案例呈現</p>
+            <div class="brand-card">
+                <div class="brand-icon"><i class="fa-solid fa-droplet"></i></div>
+                <h4>黑豹 / 西卡 Sika</h4>
+                <p>廚廁實施重型防水，採用進口黑豹或瑞士 Sika 高分子防水塗料，保證 48小時試水不漏。</p>
             </div>
-            <div class="gallery-grid">
-                <div class="gallery-card">
-                    <div class="gallery-img-box"><img src="https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?auto=format&fit=crop&w=500&q=80" alt="現代奢華大宅"></div>
-                    <div class="gallery-info">
-                        <span class="gallery-tag">私樓全屋翻新</span>
-                        <h4>將軍澳 天晉 ｜ 現代奢華風</h4>
-                        <p>實用面積 680 呎。全屋重做高規格水電，採用隱形暗門設計配搭大理石特色牆，並打造了大範圍的多功能地台與懸空燈帶櫃。</p>
-                    </div>
-                </div>
-                <div class="gallery-card">
-                    <div class="gallery-img-box"><img src="mid.jpg" alt="居屋簡約設計"></div>
-                    <div class="gallery-info">
-                        <span class="gallery-tag">居屋新樓清水房</span>
-                        <h4>高禧苑 ｜ 日式原木簡約風</h4>
-                        <p>實用面積 450 呎清水房。免清拆直接進場，全面鋪設防潮超耐磨SPC木地板。利用輕質磚及防火石膏板重新調整房間間隔。</p>
-                    </div>
-                </div>
-                <div class="gallery-card">
-                    <div class="gallery-img-box"><img src="good.jpg" alt="高級細木工"></div>
-                    <div class="gallery-info">
-                        <span class="gallery-tag">細木工與廚廁</span>
-                        <h4>北角海璇二期 ｜ 北歐精緻翻新</h4>
-                        <p>實用面積 1500 呎。廚房及浴室徹底拆除重新做 3 層防水，浴室加裝不銹鋼及無縫石檯面。全屋房門和木工傢俬均達到無縫收口標準。</p>
-                    </div>
-                </div>
+            <div class="brand-card">
+                <div class="brand-icon"><i class="fa-solid fa-gears"></i></div>
+                <h4>奧地利 Blum 五金</h4>
+                <p>訂造傢俬標配歐洲原裝進口 Blum 緩衝門鉸，開合靜音順滑，經測試可推拉超過十萬次。</p>
+            </div>
+            <div class="brand-card">
+                <div class="brand-icon"><i class="fa-solid fa-tree"></i></div>
+                <h4>E0 級多層實木板</h4>
+                <p>摒棄易發霉蔗渣板，全線採用超低甲醛 E0 級防潮大芯板/多層實木夾板，適合香港潮濕天氣。</p>
+            </div>
+            <div class="brand-card">
+                <div class="brand-icon"><i class="fa-brands fa-aws"></i></div>
+                <h4>英國標準銅線水管</h4>
+                <p>暗喉水電全面採用符合 BS 英國標準之優質純銅電線及澳洲/英國包膠銅喉，拒絕生鏽漏水。</p>
             </div>
         </div>
     </section>
 
-    <section id="quote-calculator" class="calc-section">
-        <div class="section-container" style="padding: 0;">
-            <div class="section-title">
-                <h2>📊 5秒智能裝修預算估價機</h2>
-                <p>請選擇您想要的計價模式：</p>
+    <!-- 專業服務範疇 -->
+    <section id="services" class="section-container">
+        <div class="section-title">
+            <h2>多元化專業工程範疇</h2>
+            <p>由住宅入伙到大型商業項目，專業工隊為你嚴格把關，提供一站式解決方案</p>
+        </div>
+        <div class="service-grid">
+            <div class="service-card">
+                <div class="service-card-header">
+                    <div class="service-icon"><i class="fa-solid fa-house-chimney"></i></div>
+                    <div class="service-num">01</div>
+                </div>
+                <h3>新公屋/居屋 清水樓優化</h3>
+                <p>針對新落成屋邨（如和田邨、啟欣苑等）的交樓標準，提供免大清拆、極速入伙方案。重整電位、批灰油漆及無縫全屋傢俬規劃，最快 30 天完工。</p>
+                <div class="service-tags">
+                    <span>極速入伙</span><span>免拆省錢</span><span>空間極大化</span>
+                </div>
+            </div>
+            <div class="service-card">
+                <div class="service-card-header">
+                    <div class="service-icon"><i class="fa-solid fa-hammer"></i></div>
+                    <div class="service-num">02</div>
+                </div>
+                <h3>舊樓/二手居屋 深度全爆</h3>
+                <p>徹底解決舊樓石屎剝落、喉管老化及漏水問題。重型打鑿至石屎層，重鋪水電暗喉及獨立迴路，嚴格執行 3 層防水及紅外線平水平磚工藝。</p>
+                <div class="service-tags">
+                    <span>根除漏水</span><span>水電重鋪</span><span>格局重劃</span>
+                </div>
+            </div>
+            <div class="service-card">
+                <div class="service-card-header">
+                    <div class="service-icon"><i class="fa-solid fa-couch"></i></div>
+                    <div class="service-num">03</div>
+                </div>
+                <h3>廠房直營 訂造傢俬</h3>
+                <p>由專人 1 對 1 溝通，提供 3D 渲染圖。東莞自家廠房生產，支援變形傢俬、隱形門、神台櫃、特色岩板背景牆等高難度定製，尺寸精準不浪費每吋空間。</p>
+                <div class="service-tags">
+                    <span>E0防潮板</span><span>3D出圖</span><span>無縫收邊</span>
+                </div>
+            </div>
+            <div class="service-card">
+                <div class="service-card-header">
+                    <div class="service-icon"><i class="fa-regular fa-building"></i></div>
+                    <div class="service-num">04</div>
+                </div>
+                <h3>寫字樓及商舖裝修</h3>
+                <p>提供辦公室玻璃間隔、防火天花工程、強弱電及網絡佈線。熟悉各大商場及物業管理處 (如領展) 的出牌指引與消防條例，確保順利依期過消防及完工。</p>
+                <div class="service-tags">
+                    <span>代辦手續</span><span>網絡佈線</span><span>防火間隔</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 傢俬專區 -->
+    <section id="furniture" class="section-container-alt">
+        <div class="furniture-showcase">
+            <div class="furniture-content">
+                <h3>👑 自設東莞廠房・極致傢俬工藝</h3>
+                <p>明白香港蝸居對收納的強烈需求，我們為客戶量身打造符合人體工學及美學的頂級收納系統。從防霉板材到靜音五金，每個細節都經得起歲月考驗。</p>
+                
+                <div class="materials-list-modern">
+                    <div class="material-row">
+                        <div class="material-icon-box"><i class="fa-solid fa-layer-group"></i></div>
+                        <div class="material-text">
+                            <h4>抗變形 E0 多層實木夾板</h4>
+                            <p>櫃體採用 18mm 加厚 E0 級多層實木防潮夾板，承重力極高。甲醛釋放量幾乎為零，孕婦及嬰兒家庭亦可安心入住。背板亦堅持使用加厚板，拒絕受潮發霉。</p>
+                        </div>
+                    </div>
+                    <div class="material-row">
+                        <div class="material-icon-box"><i class="fa-solid fa-swatchbook"></i></div>
+                        <div class="material-text">
+                            <h4>頂級飾面技術 (PET / 西德板)</h4>
+                            <p>提供最新潮流的 PET 膚感啞面納米門板（抗指紋、易清潔），或耐磨防刮的西德板 (Formica) 防火膠板。配合激光封邊技術，做到無黑線、不翹邊的完美視覺效果。</p>
+                        </div>
+                    </div>
+                    <div class="material-row">
+                        <div class="material-icon-box"><i class="fa-solid fa-wand-magic-sparkles"></i></div>
+                        <div class="material-text">
+                            <h4>空間魔法：全屋地台與懸浮設計</h4>
+                            <p>專精高難度工藝，例如：結合隱藏式 LED 燈帶的懸浮電視櫃、無把手按壓式隱形門、以及配備重型液壓桿的超大容量油壓床及榻榻米儲物地台。</p>
+                        </div>
+                    </div>
+                </div>
             </div>
             
-            <div class="calc-card">
-                <div class="mode-selector">
-                    <button id="btn-mode-a" class="mode-btn active" onclick="switchCalculatorMode('A')">🏠 方案 A：全包價（按面積直接計算）</button>
-                    <button id="btn-mode-b" class="mode-btn" onclick="switchCalculatorMode('B')">🛠️ 方案 B：分行報價（按項目獨立勾選）</button>
+            <div class="furniture-image-grid">
+                <div class="f-img-large">
+                    <div class="f-img-box" style="background-image: url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&q=80');"></div>
                 </div>
-
-                <div id="panel-mode-a" class="calc-panel active">
-                    <div class="single-input-box">
-                        <label for="input-area-size">請輸入您的全屋實用面積：</label>
-                        <input type="number" id="input-area-size" value="0" class="large-num-input" oninput="calculateSchemeA()">
-                        <span style="font-size: 18px; font-weight: 700; color: var(--text-light);">實用呎</span>
-                    </div>
+                <div class="f-img-small">
+                    <div class="f-img-box" style="background-image: url('https://images.unsplash.com/photo-1556228453-efd6c1ff04f6?auto=format&fit=crop&w=400&q=80');"></div>
                 </div>
-
-                <div id="panel-mode-b" class="calc-panel">
-                    <div style="overflow-x: auto;">
-                        <table class="item-table">
-                            <thead>
-                                <tr><th width="10%">選取</th><th width="50%">工程項目</th><th width="20%">工程數量</th><th width="20%">單位</th></tr>
-                            </thead>
-                            <tbody>
-                                <tr><td><input type="checkbox" id="chk-clear" checked onchange="calculateSchemeB()"></td><td><b>1. 全屋清拆打鑿</b> (舊裝/雜物/非主力牆)</td><td><input type="number" id="qty-clear" value="0" class="num-input" oninput="calculateSchemeB()"></td><td>實用呎</td></tr>
-                                <tr><td><input type="checkbox" id="chk-water" checked onchange="calculateSchemeB()"></td><td><b>2. 全屋暗喉水電</b> (重鋪/新電箱/修口)</td><td><input type="number" id="qty-water" value="0" class="num-input" oninput="calculateSchemeB()"></td><td>實用呎</td></tr>
-                                <tr><td><input type="checkbox" id="chk-tile" checked onchange="calculateSchemeB()"></td><td><b>3. 泥水防水鋪磚</b> (大廳及廚廁防滲)</td><td><input type="number" id="qty-tile" value="0" class="num-input" oninput="calculateSchemeB()"></td><td>實用呎</td></tr>
-                                <tr><td><input type="checkbox" id="chk-paint" checked onchange="calculateSchemeB()"></td><td><b>4. 牆身天花油漆</b> (防潮底批灰防裂)</td><td><input type="number" id="qty-paint" value="0" class="num-input" oninput="calculateSchemeB()"></td><td>實用呎</td></tr>
-                                <tr><td><input type="checkbox" id="chk-drywall" onchange="calculateSchemeB()"></td><td><b>5. 木作/石膏板間牆</b> (防火或輕質間牆)</td><td><input type="number" id="qty-drywall" value="0" class="num-input" oninput="calculateSchemeB()"></td><td>直呎</td></tr>
-                                <tr><td><input type="checkbox" id="chk-furniture" checked onchange="calculateSchemeB()"></td><td><b>6. 訂造木工傢俬</b> (廚櫃/地台/多功能櫃)</td><td><input type="number" id="qty-furniture" value="0" class="num-input" oninput="calculateSchemeB()"></td><td>直呎</td></tr>
-                                <tr><td><input type="checkbox" id="chk-door" onchange="calculateSchemeB()"></td><td><b>7. 房門大門安裝</b> (連門檻與鎖體)</td><td><input type="number" id="qty-door" value="0" class="num-input" oninput="calculateSchemeB()"></td><td>頂</td></tr>
-                                <tr><td><input type="checkbox" id="chk-clean" checked onchange="calculateSchemeB()"></td><td><b>8. 完工深度清潔</b> (清走廢料/抹窗吸塵)</td><td><input type="number" id="qty-clean" value="0" class="num-input" oninput="calculateSchemeB()"></td><td>全屋單次</td></tr>
-                            </tbody>
-                        </table>
-                    </div>
+                <div class="f-img-small">
+                    <div class="f-img-box" style="background-image: url('https://images.unsplash.com/photo-1618220179428-22790b46a0eb?auto=format&fit=crop&w=400&q=80');"></div>
                 </div>
-
-                <div style="padding: 20px; background: #111622; border: 1px dashed var(--accent-gold); border-radius: 12px; margin-top: 15px;">
-                    <div style="text-align: center; margin-bottom: 20px;">
-                        <h3 style="margin: 0; color: var(--accent-gold); font-size: 22px; font-weight:900;">📋 新榮耀工程 · 室內裝修初步預算單</h3>
-                        <small style="color: var(--text-muted); font-size: 13px;">（本預算結果已內含基本工料損耗與專業工地主管監工費）</small>
-                    </div>
-
-                    <div style="text-align: center; margin-bottom: 20px;">
-                        <span id="current-mode-badge" style="background: #2563eb; color: white; padding: 6px 16px; border-radius: 4px; font-weight: 700; font-size: 14px;">計算模式：方案 A 全包一口價</span>
-                    </div>
-
-                    <div id="results-box-a" class="pricing-container" style="display: flex;">
-                        <div class="tier-card low">
-                            <div class="tier-title">經濟實用方案</div><div class="tier-price">$<span id="a-price-low">0</span></div>
-                            <ul class="tier-features"><li>精簡預算、上車出租首選</li><li>全包基本裝修硬裝工程</li></ul>
-                        </div>
-                        <div class="tier-card mid">
-                            <div class="tier-badge">最受歡迎</div>
-                            <div class="tier-title">標準精裝方案</div><div class="tier-price">$<span id="a-price-mid">0</span></div>
-                            <ul class="tier-features"><li><b>自住主流，精選香港大牌建材</b></li><li>加強全屋防漏防潮、送1年結構保養</li></ul>
-                        </div>
-                        <div class="tier-card high">
-                            <div class="tier-title">豪華尊貴方案</div><div class="tier-price">$<span id="a-price-high">0</span></div>
-                            <ul class="tier-features"><li><b>歐洲進口頂級低甲醛防潮高級物料</b></li><li>資深細木工匠大工親自現場高精準收口</li></ul>
-                        </div>
-                    </div>
-
-                    <div id="results-box-b" class="pricing-container" style="display: none; justify-content: center;">
-                        <div class="tier-card single-result" style="max-width: 500px; width: 100%; text-align: center;">
-                            <div class="tier-title" style="font-size: 18px;">🛠️ 已選項目精準合計（標準工程規格）</div>
-                            <div class="tier-price" style="font-size: 42px; color: var(--accent-gold);">$<span id="b-price-total">0</span></div>
-                            <p style="font-size: 13.5px; color: var(--text-muted); margin: 5px 0 0 0;">已整合各獨立勾選分行項目的工料、損耗與管工費</p>
-                        </div>
-                    </div>
-
-                    <div style="margin-top:20px; font-size:14px; color:var(--text-muted); border-top:1px solid #242f44; padding-top:12px;">
-                        <b>🛠️ 預算項目摘要：</b><span id="selected-summary-text" style="color:var(--text-light); font-weight:600;">---</span>
-                    </div>
-                </div>
-
-                <div class="btn-action-group">
-                    <a id="whatsapp-send-btn" href="#" target="_blank" class="btn-act btn-act-green" onclick="updateWhatsAppLink(event)">
-                        <i class="fa-brands fa-whatsapp"></i> 📋 一鍵複製預算並直接聯絡師傅
-                    </a>
-                </div>
-            </div>
-
-            <div class="admin-panel" id="admin-section">
-                <h3>⚙️ 工程基線單價後台管理 (密碼: 888)</h3>
-                <p style="color:var(--accent-gold); font-size:13px;">[方案 A 專用按呎一口價基線設定]：</p>
-                <div class="admin-grid" style="margin-bottom:15px;">
-                    <div class="admin-box"><label>方案A 經濟型 ($/呎)</label><input type="number" id="base-a-low" value="600"></div>
-                    <div class="admin-box"><label>方案A 標準型 ($/呎)</label><input type="number" id="base-a-mid" value="950"></div>
-                    <div class="admin-box"><label>方案A 豪華型 ($/呎)</label><input type="number" id="base-a-high" value="1400"></div>
-                </div>
-                <p style="color:var(--accent-gold); font-size:13px;">[方案 B 專用分行工程單價設定]：</p>
-                <div class="admin-grid">
-                    <div class="admin-box"><label>1. 清拆 ($/呎)</label><input type="number" id="base-clear" value="50"></div>
-                    <div class="admin-box"><label>2. 水電 ($/呎)</label><input type="number" id="base-water" value="80"></div>
-                    <div class="admin-box"><label>3. 泥水 ($/呎)</label><input type="number" id="base-tile" value="110"></div>
-                    <div class="admin-box"><label>4. 油漆 ($/呎)</label><input type="number" id="base-paint" value="55"></div>
-                    <div class="admin-box"><label>5. 間牆 ($/呎)</label><input type="number" id="base-drywall" value="120"></div>
-                    <div class="admin-box"><label>6. 傢俬 ($/直呎)</label><input type="number" id="base-furniture" value="2200"></div>
-                    <div class="admin-box"><label>7. 門類 ($/頂)</label><input type="number" id="base-door" value="3500"></div>
-                    <div class="admin-box"><label>8. 清潔 ($/全屋)</label><input type="number" id="base-clean" value="3500"></div>
-                </div>
-                <button class="btn-cta btn-cta-primary" style="margin-top:15px; padding:10px 20px; font-size:13px;" onclick="savePricesToStorage()">💾 儲存最新基線單價</button>
             </div>
         </div>
     </section>
 
-    <footer>
-        <p>© 2026 新榮耀精裝工程. All Rights Reserved.</p>
-        <p>📞 聯絡電話：<a href="tel:+85265495042">+852 6549 5042</a> | 💬 WhatsApp：<a href="https://wa.me/85265495042" target="_blank">立即對話</a></p>
+    <!-- 報價套餐區 (極致強化版) -->
+    <section id="pricing" class="section-container">
+        <div class="section-title">
+            <h2>📑 2026 連工包料裝修套餐明細</h2>
+            <p>項目數量完全透明化。以下報價已包含<strong style="color:var(--accent-gold);">精準的傢俬呎數及指定工序</strong>，絕不以「面議」或「按實算」等字眼作隱藏收費的藉口。</p>
+        </div>
         
-        <div class="footer-social-box">
-            <a href="http://xhslink.com/m/3Quwi30LJG2" target="_blank" class="footer-social-btn" title="瀏覽小紅書案例"><i class="fa-solid fa-book-open"></i></a>
-            <a href="https://www.facebook.com/share/195a6wEqvR/" target="_blank" class="footer-social-btn" title="關注Facebook專頁"><i class="fa-brands fa-facebook-f"></i></a>
-            <a href="https://wa.me/85265495042" target="_blank" class="footer-social-btn" title="WhatsApp 諮詢"><i class="fa-brands fa-whatsapp"></i></a>
+        <div class="mode-selector">
+            <button id="btn-tab-a" class="mode-btn active" onclick="switchTab('A')"><i class="fa-solid fa-sparkles"></i> 新樓 / 清水樓優化 (免拆)</button>
+            <button id="btn-tab-b" class="mode-btn" onclick="switchTab('B')"><i class="fa-solid fa-hammer"></i> 舊樓 / 二手全爆 (深度翻新)</button>
+        </div>
+
+        <!-- 🎯 Tab A: 清水樓套餐 -->
+        <div id="content-a" class="pricing-container active">
+            
+            <!-- 清水 細 -->
+            <div class="tier-card">
+                <h3 class="tier-title">細單位 ｜ 基礎優化</h3>
+                <div class="tier-sqft">實用面積：250 - 350 呎 (約 1-2 人)</div>
+                <div class="tier-price"><span class="hkd">$</span>88,000<span> 起</span></div>
+                <ul class="tier-features">
+                    <li>
+                        <i class="fa-solid fa-circle-check feature-check"></i>
+                        <div class="feature-text">
+                            <span class="hl-title">基本水電延伸</span>
+                            保留原裝電箱，新增/改位共 <span class="highlight-num">12</span> 個暗線電位。代安裝全屋燈飾 (上限 8 盞)。
+                        </div>
+                    </li>
+                    <li>
+                        <i class="fa-solid fa-circle-check feature-check"></i>
+                        <div class="feature-text">
+                            <span class="hl-title">防霉油漆及地板</span>
+                            局部修補平整，塗刷 <span class="highlight-num">3</span> 層立邦防霉漆。全屋直鋪 4mm 防水耐磨 SPC 鎖扣地板連地腳線。
+                        </div>
+                    </li>
+                    <li>
+                        <i class="fa-solid fa-circle-check feature-check"></i>
+                        <div class="feature-text">
+                            <span class="hl-title">精選 12呎 E0訂造傢俬</span>
+                            <div class="furniture-tags">
+                                <div class="f-tag-title">配置建議：</div>
+                                <span class="f-tag">4呎 頂天玄關鞋櫃</span>
+                                <span class="f-tag">4呎 電視懸浮地櫃</span>
+                                <span class="f-tag">4呎 睡房大衣櫃</span>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+                <a href="https://wa.me/85212345678?text=查詢細單位清水樓套餐" class="btn-select btn-select-outline" target="_blank">索取詳細工料清單 <i class="fa-solid fa-arrow-right"></i></a>
+            </div>
+            
+            <!-- 清水 中 -->
+            <div class="tier-card popular">
+                <div class="tier-badge"><i class="fa-solid fa-fire"></i> 收納最強推薦・性價比之選</div>
+                <h3 class="tier-title">中單位 ｜ 全面升級</h3>
+                <div class="tier-sqft">實用面積：360 - 450 呎 (約 3-4 人)</div>
+                <div class="tier-price"><span class="hkd">$</span>148,000<span> 起</span></div>
+                <ul class="tier-features">
+                    <li>
+                        <i class="fa-solid fa-circle-check feature-check"></i>
+                        <div class="feature-text">
+                            <span class="hl-title">水電擴充與隔音間房</span>
+                            新增共 <span class="highlight-num">20</span> 個入牆暗線位。新建 <span class="highlight-num">1</span> 幅防潮石膏板間牆連隔音棉。包裝 2 隻木門。
+                        </div>
+                    </li>
+                    <li>
+                        <i class="fa-solid fa-circle-check feature-check"></i>
+                        <div class="feature-text">
+                            <span class="hl-title">全屋高階油漆處理</span>
+                            面層細微批灰打磨，塗刷 <span class="highlight-num">3</span> 層立邦金裝五合一漆。升級鋪設 5.5mm 頂級加厚 SPC 地板。
+                        </div>
+                    </li>
+                    <li>
+                        <i class="fa-solid fa-circle-check feature-check"></i>
+                        <div class="feature-text">
+                            <span class="hl-title">海量 22呎傢俬 ＋ 60呎地台</span>
+                            <div class="furniture-tags">
+                                <div class="f-tag-title">配置建議 (全配 Blum 鉸)：</div>
+                                <span class="f-tag">5呎 C字鞋櫃</span>
+                                <span class="f-tag">6呎 特色電視牆櫃</span>
+                                <span class="f-tag">7呎 主房通頂大衣櫃</span>
+                                <span class="f-tag">4呎 雙人油壓床斗</span>
+                                <span class="f-tag">60呎 主房儲物榻榻米地台</span>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+                <a href="https://wa.me/85212345678?text=查詢中單位清水樓套餐" class="btn-select" target="_blank">預約免費上門度尺 <i class="fa-solid fa-arrow-right"></i></a>
+            </div>
+
+            <!-- 清水 大 -->
+            <div class="tier-card">
+                <h3 class="tier-title">大單位 ｜ 尊尚豪裝</h3>
+                <div class="tier-sqft">實用面積：460 - 600+ 呎 (多房佈局)</div>
+                <div class="tier-price"><span class="hkd">$</span>198,000<span> 起</span></div>
+                <ul class="tier-features">
+                    <li>
+                        <i class="fa-solid fa-circle-check feature-check"></i>
+                        <div class="feature-text">
+                            <span class="hl-title">智能家居準備 (水電網)</span>
+                            新增高達 <span class="highlight-num">30</span> 個暗線電位，預留智能開關零線 (N線)。全屋剷底重批 3 層灰。
+                        </div>
+                    </li>
+                    <li>
+                        <i class="fa-solid fa-circle-check feature-check"></i>
+                        <div class="feature-text">
+                            <span class="hl-title">極致 35呎傢俬 ＋ 100呎地台</span>
+                            <div class="furniture-tags">
+                                <div class="f-tag-title">豪華配置 (包隱藏 LED 燈帶)：</div>
+                                <span class="f-tag">8呎 岩板電視背景牆</span>
+                                <span class="f-tag">100呎 雙房儲物地台</span>
+                                <span class="f-tag">12呎 主客房通頂衣櫃</span>
+                                <span class="f-tag">6呎 玄關連換鞋凳櫃</span>
+                                <span class="f-tag">5呎 書枱組合</span>
+                                <span class="f-tag">4呎 玻璃飾物櫃</span>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+                <a href="https://wa.me/85212345678?text=查詢大單位清水樓套餐" class="btn-select btn-select-outline" target="_blank">索取詳細工料清單 <i class="fa-solid fa-arrow-right"></i></a>
+            </div>
+        </div>
+
+        <!-- 🎯 Tab B: 大全爆套餐 -->
+        <div id="content-b" class="pricing-container">
+            
+            <!-- 全爆 細 -->
+            <div class="tier-card">
+                <h3 class="tier-title">細單位 ｜ 核心全爆</h3>
+                <div class="tier-sqft">實用面積：250 - 350 呎</div>
+                <div class="tier-price"><span class="hkd">$</span>178,000<span> 起</span></div>
+                <ul class="tier-features">
+                    <li>
+                        <i class="fa-solid fa-circle-check feature-check"></i>
+                        <div class="feature-text">
+                            <span class="hl-title">清拆與重型防水</span>
+                            全爆 1廚 1廁 (包清泥頭)。廚廁塗刷 <span class="highlight-num">3</span> 層黑豹防水 (高達2米)，保證 48小時試水。
+                        </div>
+                    </li>
+                    <li>
+                        <i class="fa-solid fa-circle-check feature-check"></i>
+                        <div class="feature-text">
+                            <span class="hl-title">水電換新 (安全標準)</span>
+                            新造 <span class="highlight-num">25</span> 個暗線電位。更換全新施耐德總電箱。新造冷熱包膠銅喉。包鋪全屋地磚。
+                        </div>
+                    </li>
+                    <li>
+                        <i class="fa-solid fa-circle-check feature-check"></i>
+                        <div class="feature-text">
+                            <span class="hl-title">廚廁專屬 19呎傢俬</span>
+                            <div class="furniture-tags">
+                                <div class="f-tag-title">包含防潮廚廁櫃：</div>
+                                <span class="f-tag">8呎 廚房上下廚櫃</span>
+                                <span class="f-tag">8呎 無縫石廚房枱面連鋅盆開窿</span>
+                                <span class="f-tag">3呎 浴室地櫃連鏡櫃</span>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+                <a href="https://wa.me/85212345678?text=查詢細單位全爆套餐" class="btn-select btn-select-outline" target="_blank">索取詳細工料清單 <i class="fa-solid fa-arrow-right"></i></a>
+            </div>
+            
+            <!-- 全爆 中 -->
+            <div class="tier-card popular">
+                <div class="tier-badge"><i class="fa-solid fa-crown"></i> 皇牌大翻新・舊樓救星</div>
+                <h3 class="tier-title">中單位 ｜ 深度大全爆</h3>
+                <div class="tier-sqft">實用面積：360 - 450 呎</div>
+                <div class="tier-price"><span class="hkd">$</span>248,000<span> 起</span></div>
+                <ul class="tier-features">
+                    <li>
+                        <i class="fa-solid fa-circle-check feature-check"></i>
+                        <div class="feature-text">
+                            <span class="hl-title">極致清拆與重整格局</span>
+                            包大規模打鑿及拆除舊間隔(如黑廚改開放式)。新造 <span class="highlight-num">45</span> 個電位，設獨立電器專線迴路。
+                        </div>
+                    </li>
+                    <li>
+                        <i class="fa-solid fa-circle-check feature-check"></i>
+                        <div class="feature-text">
+                            <span class="hl-title">平水泥水工藝</span>
+                            紅外線平水鋪磚，絕不刮腳。包 2 條天然雲石門檻。新造鋁質假天花連 LED 筒燈。
+                        </div>
+                    </li>
+                    <li>
+                        <i class="fa-solid fa-circle-check feature-check"></i>
+                        <div class="feature-text">
+                            <span class="hl-title">客廳及廚廁 42呎豪華傢俬</span>
+                            <div class="furniture-tags">
+                                <div class="f-tag-title">一條龍訂造 (包枱面石)：</div>
+                                <span class="f-tag">12呎 廚房上下 L型廚櫃</span>
+                                <span class="f-tag">12呎 石英石耐刮枱面</span>
+                                <span class="f-tag">4呎 浴室洗手盆鏡櫃組合</span>
+                                <span class="f-tag">6呎 客廳 C字多功能櫃</span>
+                                <span class="f-tag">8呎 睡房大衣櫃</span>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+                <a href="https://wa.me/85212345678?text=查詢中單位全爆套餐" class="btn-select" target="_blank">預約免費上門度尺 <i class="fa-solid fa-arrow-right"></i></a>
+            </div>
+
+            <!-- 全爆 大 -->
+            <div class="tier-card">
+                <h3 class="tier-title">大單位 ｜ 尊尚大全爆</h3>
+                <div class="tier-sqft">實用面積：460 - 600+ 呎 (雙廁所)</div>
+                <div class="tier-price"><span class="hkd">$</span>328,000<span> 起</span></div>
+                <ul class="tier-features">
+                    <li>
+                        <i class="fa-solid fa-circle-check feature-check"></i>
+                        <div class="feature-text">
+                            <span class="hl-title">雙廁所及大型清拆</span>
+                            包拆 1廚 2廁 牆地磚。雙廁所皆施作重型防水。新造高達 <span class="highlight-num">65</span> 個暗線電位。包裝 4 房門。
+                        </div>
+                    </li>
+                    <li>
+                        <i class="fa-solid fa-circle-check feature-check"></i>
+                        <div class="feature-text">
+                            <span class="hl-title">海量全屋 65呎 訂造傢俬</span>
+                            <div class="furniture-tags">
+                                <div class="f-tag-title">尊貴連工包料定製：</div>
+                                <span class="f-tag">15呎 廚房 U型大廚櫃</span>
+                                <span class="f-tag">15呎 高階廚房枱面石</span>
+                                <span class="f-tag">雙廁所 鏡櫃及地櫃組合 (共7呎)</span>
+                                <span class="f-tag">20呎 睡房大衣櫃/書枱組合</span>
+                                <span class="f-tag">8呎 客廳大型特色儲物牆</span>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+                <a href="https://wa.me/85212345678?text=查詢大單位全爆套餐" class="btn-select btn-select-outline" target="_blank">索取詳細工料清單 <i class="fa-solid fa-arrow-right"></i></a>
+            </div>
+
+        </div>
+        
+        <p style="text-align: center; margin-top: 40px; color: var(--text-muted); font-size: 13px; max-width: 1000px; margin-left: auto; margin-right: auto; line-height: 1.8;">
+            * 備註：以上報價為「連工包底料」及圖表中指定之傢俬呎數。底料包括：英泥沙、防水料、底灰、電線、水喉、門鉸五金等。面料（如瓷磚、油漆顏色、燈飾、潔具、鋁窗）需由客人自行選購，或委託我們代購。實際總價將根據上門精準度尺、單位實際佈局及客人主動要求新增的工程項目而定。報價單上會詳細列明每一項目的單價，<strong>簽約後如無客方更改，絕不加收任何費用</strong>。
+        </p>
+    </section>
+
+    <!-- 精選案例 Portfolio (全新) -->
+    <section id="portfolio" class="section-container-alt">
+        <div class="section-title">
+            <h2>📸 精選工程案例</h2>
+            <p>看看我們如何將破舊的單位，改造成溫馨實用的現代家居</p>
+        </div>
+        <div class="portfolio-grid">
+            <div class="portfolio-item">
+                <img src="https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?auto=format&fit=crop&w=600&q=80" alt="法式奶油風">
+                <div class="portfolio-overlay">
+                    <span class="p-tag">全爆翻新</span>
+                    <h4 class="p-title">屯門 大興邨 380呎</h4>
+                    <p class="p-desc">法式奶油風｜全屋 PET 啞面傢俬｜開放式廚房</p>
+                </div>
+            </div>
+            <div class="portfolio-item">
+                <img src="https://images.unsplash.com/photo-1593696140826-c58b021acf8b?auto=format&fit=crop&w=600&q=80" alt="現代輕奢風">
+                <div class="portfolio-overlay">
+                    <span class="p-tag">清水樓優化</span>
+                    <h4 class="p-title">啟德 啟欣苑 420呎</h4>
+                    <p class="p-desc">現代輕奢風｜岩板電視牆｜隱藏式燈帶設計</p>
+                </div>
+            </div>
+            <div class="portfolio-item">
+                <img src="https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&w=600&q=80" alt="日式木系">
+                <div class="portfolio-overlay">
+                    <span class="p-tag">舊居屋翻新</span>
+                    <h4 class="p-title">沙田 穗禾苑 550呎</h4>
+                    <p class="p-desc">日式無印風｜全房海量儲物地台｜條子木暗門</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 社群證明 (Facebook & 小紅書) -->
+    <section class="section-container">
+        <div class="section-title">
+            <h2>📱 緊貼最新動態與客戶評價</h2>
+            <p>每日更新地盤進度與設計靈感，100% 真實屋主留言</p>
+        </div>
+        
+        <div class="social-grid">
+            <!-- Facebook -->
+            <div class="social-column fb">
+                <div class="social-header">
+                    <div class="s-head-left">
+                        <i class="fa-brands fa-facebook"></i>
+                        <h3>FB 真實好評分享</h3>
+                    </div>
+                    <a href="#" class="follow-btn">追蹤專頁</a>
+                </div>
+                
+                <div class="post-card">
+                    <div class="post-user">
+                        <div class="post-avatar">陳</div>
+                        <div class="post-user-info">
+                            <p>陳生 (和田邨屋主)</p>
+                            <span>昨天 14:30 • 推薦了新榮耀工程</span>
+                        </div>
+                    </div>
+                    <div class="post-content">
+                        「極度推薦！本身好擔心裝修會中伏，但新榮耀嘅明哥（管工）真係好有責任心。每日WhatsApp send 相俾我睇進度。最估唔到係啲訂造傢俬完全冇難聞甲醛味，C字櫃收口做得好靚！準時35日交場，全屋清潔到立立令！」
+                    </div>
+                    <div class="post-tags">#公屋裝修 #和田邨 #E0板材 #準時完工</div>
+                </div>
+
+                <div class="post-card">
+                    <div class="post-user">
+                        <div class="post-avatar">L</div>
+                        <div class="post-user-info">
+                            <p>Lily Wong</p>
+                            <span>3天前 • 評論了服務</span>
+                        </div>
+                    </div>
+                    <div class="post-content">
+                        「多謝新榮耀幫我阿媽間30年舊公屋大翻新！水電師傅好專業，搞掂哂老化漏水問題。廁所做足防水，試水試咗兩日。雖然全爆價錢唔係全行最平，但『明碼實價』冇後加數呢樣嘢真係令我好安心。」
+                    </div>
+                    <div class="post-tags">#舊樓翻新 #防水工程 #絕無爛尾 #公屋裝修</div>
+                </div>
+            </div>
+
+            <!-- 小紅書 -->
+            <div class="social-column xhs">
+                <div class="social-header">
+                    <div class="s-head-left">
+                        <i class="fa-solid fa-hashtag"></i>
+                        <h3>小紅書爆款靈感</h3>
+                    </div>
+                    <a href="#" class="follow-btn">追蹤筆記</a>
+                </div>
+                
+                <div class="post-card">
+                    <div class="post-user">
+                        <div class="post-avatar" style="background: var(--xhs-red);">新</div>
+                        <div class="post-user-info">
+                            <p>新榮耀裝修設計 📖</p>
+                            <span>發佈了一篇新筆記</span>
+                        </div>
+                    </div>
+                    <div class="post-content">
+                        <strong>🔥 抄作業！300呎香港蝸居變身「法式奶油風」</strong><br><br>
+                        誰說公屋不能裝出高級感？今天分享的案例，我們運用了弧形元素、微水泥漆，搭配自家廠房訂製的「膚感PET啞面」奶油色收納櫃。客廳無主燈設計，視覺瞬間放大一倍！附上全套傢俬尺寸圖，趕緊收藏！✨
+                    </div>
+                    <div class="post-tags">#香港裝修 #奶油風 #無主燈設計 #公屋裝修</div>
+                </div>
+
+                <div class="post-card">
+                    <div class="post-user">
+                        <div class="post-avatar" style="background: var(--xhs-red);">新</div>
+                        <div class="post-user-info">
+                            <p>新榮耀裝修設計 📖</p>
+                            <span>發佈了一篇避坑指南</span>
+                        </div>
+                    </div>
+                    <div class="post-content">
+                        <strong>⚠️ 裝修小白必看：訂造傢俬 5 大伏位！</strong><br>
+                        1️⃣ 沒問清楚板材：一定要選 E0 級防潮大芯板。<br>
+                        2️⃣ 五金被偷龍轉鳳：合約必須寫明「Blum」等大牌。<br>
+                        3️⃣ 收邊打膠馬虎：我們堅持用防霉膠，完美收口...
+                    </div>
+                    <div class="post-tags">#裝修避坑 #全屋定制 #傢俬訂做 #香港居屋</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 4步極速流程 -->
+    <section class="section-container-alt">
+        <div class="section-title">
+            <h2>透明無憂・4步標準化裝修流程</h2>
+            <p>由初步諮詢到開心入伙，資深管工全程為你一對一跟進，告別傳統工程黑箱作業</p>
+        </div>
+        <div class="process-grid">
+            <div class="process-step">
+                <div class="step-num">1</div>
+                <h3>免費度尺與報價</h3>
+                <p>專業管工帶備紅外線儀器上門實地勘察，聆聽生活習慣需求，最快 48 小時內提供精準列明細項的報價單及初步概念。</p>
+            </div>
+            <div class="process-step">
+                <div class="step-num">2</div>
+                <h3>落實圖紙與簽約</h3>
+                <p>確認水電佈線圖、泥水細節及 3D 傢俬渲染圖。簽訂具法律效力之合約，清晰列明各階段分期付款方式及承諾完工日期。</p>
+            </div>
+            <div class="process-step">
+                <div class="step-num">3</div>
+                <h3>開工與每日匯報</h3>
+                <p>地盤總管親自督師。透過專屬 WhatsApp 群組，每日發送當天施工相片及影片匯報進度，業主無需請假親身日日上樓監工。</p>
+            </div>
+            <div class="process-step">
+                <div class="step-num">4</div>
+                <h3>深層清潔與交匙</h3>
+                <p>完工後進行全屋專業深層清潔及基礎除甲醛程序。管工陪同業主逐項驗收，確認滿意交匙後，正式啟動 24 個月保養期。</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ 常見問題 -->
+    <section id="faq" class="section-container">
+        <div class="section-title">
+            <h2>💡 客戶常見問題解答 (FAQ)</h2>
+            <p>解答你在裝修前最大的疑慮，確保合作建基於互信之上</p>
+        </div>
+        <div class="faq-container">
+            <div class="faq-item">
+                <div class="faq-question">
+                    報價單上的價錢會否是「海鮮價」，開工後不斷加錢？ 
+                    <i class="fa-solid fa-chevron-down"></i>
+                </div>
+                <div class="faq-answer">
+                    <p>絕對不會。我們的核心理念是「明碼實價，拒絕後加數」。只要客戶在開工後沒有主動要求增加額外工程（例如突然決定多拆一幅牆、或新增十個電位），最終結算金額將與合約上的金額完全一致。如遇特殊隱藏情況（如拆牆後發現原裝石屎嚴重剝落需額外修補），我們必定先報價、經你同意後才施工，絕不先斬後奏。</p>
+                </div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">
+                    你們的「訂造傢俬」在哪裡生產？品質和甲醛有保證嗎？ 
+                    <i class="fa-solid fa-chevron-down"></i>
+                </div>
+                <div class="faq-answer">
+                    <p>我們在廣東東莞擁有長期合作的直營木工廠房，配備先進數控機床（CNC）進行精準裁板及封邊。所有板材均選用符合國際標準的 E0 級多層防潮大芯板或夾板，甲醛釋放量極低。五金更統一採用歐洲進口品牌（如 Blum）。出廠前會進行嚴格質檢及試裝，確保運抵香港安裝時絲毫不差。</p>
+                </div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">
+                    裝修期間我需要經常請假上地盤監工嗎？ 
+                    <i class="fa-solid fa-chevron-down"></i>
+                </div>
+                <div class="faq-answer">
+                    <p>不需要。我們明白香港人工作繁忙，因此我們特設「專屬管工每日匯報制度」。每個工程項目均由一位擁有 10 年以上經驗的地盤主管全程跟進，他會每天在專屬的 WhatsApp 群組發送施工照片及影片，報告當日進度及解答你的問題。你只需安坐辦公室即可掌握全盤狀況，極大減輕你的壓力。</p>
+                </div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">
+                    完工後有保養嗎？如果漏水怎麼辦？ 
+                    <i class="fa-solid fa-chevron-down"></i>
+                </div>
+                <div class="faq-answer">
+                    <p>我們對自家工藝充滿信心，因此提供長達 24 個月的防漏及結構保固期（一般市面公司僅提供 6-12 個月）。若在保養期內出現因我們施工問題導致的漏水、電線短路或泥水空鼓等問題，我們承諾在 48 小時內派師傅上門免費跟進及維修，絕不推卸責任。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 懸浮 WhatsApp 按鈕 -->
+    <a href="https://wa.me/85212345678" class="floating-wa" target="_blank" title="即時 WhatsApp 聯絡我們">
+        <i class="fa-brands fa-whatsapp"></i>
+    </a>
+
+    <!-- 頁底 Footer -->
+    <footer>
+        <div class="footer-grid">
+            <div class="footer-col">
+                <a href="#" class="company-logo footer-brand">
+                    <i class="fa-solid fa-helmet-safety logo-icon"></i>
+                    <h2 class="company-name" style="font-size: 20px;">新榮耀工程<span>.</span></h2>
+                </a>
+                <p>植根香港超過 15 年，持有屋宇署認可小型工程牌照。專營公屋、居屋、私人屋苑全屋翻新，以及寫字樓裝修工程。自設東莞傢俬廠房，嚴控品質，承諾明碼實價。</p>
+            </div>
+            <div class="footer-col">
+                <h4>聯絡資訊</h4>
+                <ul>
+                    <li><a href="#"><i class="fa-solid fa-phone"></i> 電話: 1234 5678</a></li>
+                    <li><a href="#"><i class="fa-brands fa-whatsapp"></i> WhatsApp: 1234 5678</a></li>
+                    <li><a href="#"><i class="fa-solid fa-envelope"></i> info@sunwingyiu.com.hk</a></li>
+                    <li><a href="#"><i class="fa-solid fa-location-dot"></i> 香港九龍觀塘開源道 xx 號</a></li>
+                    <li><a href="#"><i class="fa-solid fa-industry"></i> 廣東省東莞市大嶺山鎮 (廠房)</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>服務範疇</h4>
+                <ul>
+                    <li><a href="#"><i class="fa-solid fa-angle-right"></i> 公屋/居屋清水樓全屋優化</a></li>
+                    <li><a href="#"><i class="fa-solid fa-angle-right"></i> 舊樓/唐樓重型全爆翻新</a></li>
+                    <li><a href="#"><i class="fa-solid fa-angle-right"></i> 一站式自訂傢俬及 3D 設計</a></li>
+                    <li><a href="#"><i class="fa-solid fa-angle-right"></i> 商業寫字樓及學校維修工程</a></li>
+                    <li><a href="#"><i class="fa-solid fa-angle-right"></i> 防水防漏及打針工程</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>關注我們</h4>
+                <ul>
+                    <li><a href="#"><i class="fa-brands fa-facebook" style="color:var(--fb-blue);"></i> Facebook 官方專頁</a></li>
+                    <li><a href="#"><i class="fa-solid fa-hashtag" style="color:var(--xhs-red);"></i> 小紅書設計筆記</a></li>
+                    <li><a href="#"><i class="fa-brands fa-youtube" style="color:#ff0000;"></i> YouTube 裝修實錄</a></li>
+                    <li><a href="#"><i class="fa-brands fa-instagram" style="color:#E1306C;"></i> Instagram 作品集</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <div>
+                &copy; 2026 新榮耀工程有限公司 Sun Wing Yiu Engineering Limited. All rights reserved. | 牌照號碼: MWC(W) 123/2026
+            </div>
+            <div>
+                <a href="#">私隱政策</a>
+                <a href="#">使用條款</a>
+                <a href="#">網站地圖</a>
+            </div>
         </div>
     </footer>
 
+    <!-- 互動腳本 Script -->
     <script>
-        const items = ['clear', 'water', 'tile', 'paint', 'drywall', 'furniture', 'door', 'clean'];
-        const itemNames = { clear: '清拆', water: '水電', tile: '泥水鋪磚', paint: '油漆', drywall: '間牆', furniture: '訂造傢俬', door: '安裝門類', clean: '裝修清潔' };
-        const ADMIN_PASSWORD = "888"; 
-        const MY_PHONE_NUMBER = "85265495042"; 
+        // 控制「全清水樓」與「大全爆」報價套餐切換
+        function switchTab(mode) {
+            // 重置按鈕狀態
+            document.getElementById('btn-tab-a').classList.remove('active');
+            document.getElementById('btn-tab-b').classList.remove('active');
+            // 啟用所選按鈕
+            document.getElementById('btn-tab-' + mode.toLowerCase()).classList.add('active');
 
-        let currentActiveMode = 'A'; 
-
-        function switchCalculatorMode(mode) {
-            currentActiveMode = mode;
-            const btnA = document.getElementById('btn-mode-a');
-            const btnB = document.getElementById('btn-mode-b');
-            const panelA = document.getElementById('panel-mode-a');
-            const panelB = document.getElementById('panel-mode-b');
-            const resultsA = document.getElementById('results-box-a');
-            const resultsB = document.getElementById('results-box-b');
-            const badge = document.getElementById('current-mode-badge');
-
-            if (mode === 'A') {
-                btnA.classList.add('active');
-                btnB.classList.remove('active');
-                panelA.classList.add('active');
-                panelB.classList.remove('active');
-                resultsA.style.display = 'flex';
-                resultsB.style.display = 'none';
-                badge.innerText = "計算模式：方案 A 全包一口價（輸入面積直出）";
-                badge.style.background = "#2563eb";
-                calculateSchemeA();
-            } else {
-                btnA.classList.remove('active');
-                btnB.classList.add('active');
-                panelA.classList.remove('active');
-                panelB.classList.add('active');
-                resultsA.style.display = 'none';
-                resultsB.style.display = 'flex';
-                badge.innerText = "計算模式：方案 B 分行報價（按項目獨立勾選）";
-                badge.style.background = "#10b981";
-                calculateSchemeB();
-            }
+            // 重置內容區塊狀態
+            document.getElementById('content-a').classList.remove('active');
+            document.getElementById('content-b').classList.remove('active');
+            // 顯示所選內容
+            document.getElementById('content-' + mode.toLowerCase()).classList.add('active');
         }
 
-        function calculateSchemeA() {
-            if (currentActiveMode !== 'A') return;
-            const size = parseFloat(document.getElementById('input-area-size').value) || 0;
-            
-            const lowBase = parseFloat(document.getElementById('base-a-low').value) || 600;
-            const midBase = parseFloat(document.getElementById('base-a-mid').value) || 950;
-            const highBase = parseFloat(document.getElementById('base-a-high').value) || 1400;
-
-            document.getElementById('a-price-low').innerText = Math.round(size * lowBase).toLocaleString();
-            document.getElementById('a-price-mid').innerText = Math.round(size * midBase).toLocaleString();
-            document.getElementById('a-price-high').innerText = Math.round(size * highBase).toLocaleString();
-            document.getElementById('selected-summary-text').innerText = `全屋實用面積 ${size} 呎（全包一口價硬裝連基本工料）`;
-        }
-
-        function calculateSchemeB() {
-            if (currentActiveMode !== 'B') return;
-            let totalB = 0;
-            let selectedList = [];
-
-            items.forEach(item => {
-                const isChecked = document.getElementById(`chk-${item}`).checked;
-                if (isChecked) {
-                    const qty = parseFloat(document.getElementById(`qty-${item}`).value) || 0;
-                    const basePrice = parseFloat(document.getElementById(`base-${item}`).value) || 0;
-                    totalB += (qty * basePrice);
-                    selectedList.push(`${itemNames[item]}(${qty})`);
-                }
+        // FAQ 手風琴效果控制
+        document.querySelectorAll('.faq-question').forEach(item => {
+            item.addEventListener('click', () => {
+                const parent = item.parentElement;
+                // 關閉其他已打開的 FAQ
+                document.querySelectorAll('.faq-item').forEach(child => {
+                    if (child !== parent) {
+                        child.classList.remove('active');
+                    }
+                });
+                // 切換當前 FAQ 的狀態
+                parent.classList.toggle('active');
             });
-
-            totalB = totalB * 1.1; 
-
-            document.getElementById('b-price-total').innerText = Math.round(totalB).toLocaleString();
-            document.getElementById('selected-summary-text').innerText = selectedList.length > 0 ? selectedList.join(', ') : '未選取任何獨立工程項目';
-        }
-
-        function loadSavedPrices() {
-            ['low', 'mid', 'high'].forEach(t => {
-                const val = localStorage.getItem(`p-price-a-${t}`);
-                if (val) document.getElementById(`base-a-${t}`).value = val;
-            });
-            items.forEach(item => {
-                const savedValue = localStorage.getItem(`p-price-${item}`);
-                if (savedValue) document.getElementById(`base-${item}`).value = savedValue;
-            });
-            calculateSchemeA();
-        }
-
-        function savePricesToStorage() {
-            ['low', 'mid', 'high'].forEach(t => {
-                const val = document.getElementById(`base-a-${t}`).value;
-                localStorage.setItem(`p-price-a-${t}`, val);
-            });
-            items.forEach(item => {
-                const val = document.getElementById(`base-${item}`).value;
-                localStorage.setItem(`p-price-${item}`, val);
-            });
-            if (currentActiveMode === 'A') calculateSchemeA(); else calculateSchemeB();
-            alert("💾 最新工程單價已同步儲存更新！");
-        }
-
-        /* 💡 核心改良：一鍵自動複製文字到剪貼簿，並立即開啟 WhatsApp */
-        function updateWhatsAppLink(e) {
-            const summary = document.getElementById('selected-summary-text').innerText;
-            let text = "";
-
-            if (currentActiveMode === 'A') {
-                const size = document.getElementById('input-area-size').value;
-                const low = document.getElementById('a-price-low').innerText;
-                const mid = document.getElementById('a-price-mid').innerText;
-                const high = document.getElementById('a-price-high').innerText;
-                text = `你好！我在網站測試了【方案 A 全包一口價】工程預算：\n📐 單位面積：${size} 呎\n\n1️⃣ 經濟方案：$${low} 元\n2️⃣ 標準精裝：$${mid} 元 ⭐\n3️⃣ 豪華方案：$${high} 元\n\n希望能約師傅度尺諮詢！`;
-            } else {
-                const totalB = document.getElementById('b-price-total').innerText;
-                text = `你好！我在網站測試了【方案 B 分行獨立報價】工程預算：\n🛠️ 已選工程：${summary}\n\n💰 項目標準規格總計：$${totalB} 元\n\n希望能約師傅進一步討論局部工程細節！`;
-            }
-            
-            // 幫客人在背景直接複製
-            navigator.clipboard.writeText(text);
-            
-            // 跳轉 WhatsApp
-            document.getElementById('whatsapp-send-btn').href = `https://wa.me/${MY_PHONE_NUMBER}?text=${encodeURIComponent(text)}`;
-        }
-
-        window.addEventListener('keydown', function (e) {
-            if (e.ctrlKey && e.key.toLowerCase() === 'm') { triggerAdminUnlock(); }
         });
-
-        let clickCount = 0;
-        function clickTitleCounter() {
-            clickCount++;
-            if (clickCount >= 5) { clickCount = 0; triggerAdminUnlock(); }
-        }
-
-        function triggerAdminUnlock() {
-            const pw = prompt("請輸入裝修後台管理密碼：");
-            if (pw === ADMIN_PASSWORD) {
-                document.getElementById('admin-section').style.display = 'block';
-                document.getElementById('admin-section').scrollIntoView({ behavior: 'smooth' });
-                alert("🔓 驗證成功！兩大方案的後台管理面板已在網頁最下方解鎖。");
-            } else if (pw !== null) {
-                alert("❌ 密碼錯誤！");
-            }
-        }
-
-        window.onload = loadSavedPrices;
     </script>
 </body>
 </html>
