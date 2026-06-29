@@ -16,7 +16,7 @@
       "@context": "https://schema.org",
       "@type": "HomeAndConstructionBusiness",
       "name": "新榮耀工程有限公司 Sun Wing Yiu Engineering",
-      "img src="mylogo.png"
+      "image": "logo.png",
       "description": "香港專業裝修工程公司，提供公屋居屋裝修、清水樓優化、全爆翻新、自訂傢俬、寫字樓、學校及會所工程服務。",
       "address": { "@type": "PostalAddress", "addressLocality": "Hong Kong", "addressCountry": "HK", "streetAddress": "觀塘開源道" },
       "priceRange": "$$$",
@@ -57,7 +57,7 @@
         /* --- 頂部導航欄 --- */
         header { background: rgba(7, 10, 16, 0.95); padding: 15px 5%; display: flex; justify-content: space-between; align-items: center; position: sticky; top: 0; z-index: 1000; border-bottom: 1px solid var(--border-gold); backdrop-filter: blur(12px); box-shadow: 0 4px 30px rgba(0,0,0,0.5); }
         .company-logo { display: flex; align-items: center; gap: 12px; text-decoration: none; }
-        .logo-img { height: 40px; width: auto; object-fit: contain; } /* 新增的 Logo 樣式 */
+        .logo-img { height: 40px; width: auto; object-fit: contain; }
         .company-name { font-size: 22px; font-weight: 900; color: var(--text-light); letter-spacing: 1.5px; margin: 0; }
         .company-name span { color: var(--accent-gold); }
         
@@ -187,7 +187,6 @@
 
         /* --- 精選案例 Portfolio --- */
         .portfolio-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(350px, 1fr)); gap: 25px; }
-        /* 修正 Bug: 移除了原本無效的 group; 屬性 */
         .portfolio-item { position: relative; border-radius: 16px; overflow: hidden; height: 280px; cursor: pointer; }
         .portfolio-item img { width: 100%; height: 100%; object-fit: cover; transition: var(--transition-smooth); }
         .portfolio-overlay { position: absolute; inset: 0; background: linear-gradient(to top, rgba(0,0,0,0.9), transparent); opacity: 0; transition: var(--transition-smooth); display: flex; flex-direction: column; justify-content: flex-end; padding: 25px; }
@@ -338,11 +337,9 @@
 
     <!-- 頂部導航 -->
     <header>
-        <!-- 修正 Bug: 原為 mylogo，已改為 company-logo 以配合 CSS flexbox -->
         <a href="#" class="company-logo">
-            <!-- 加入自家 Logo：請將 your-logo.png 替換為你的圖片路徑 -->
-            <img src="your-logo.png" alt="新榮耀工程" class="logo-img">
-            <!-- 移除了原本結尾多出的點(.) -->
+            <!-- 已統一更改為 logo.png -->
+            <img src="logo.png" alt="新榮耀工程" class="logo-img">
             <h1 class="company-name">新榮耀工程</h1>
         </a>
         <nav class="nav-links">
@@ -627,7 +624,7 @@
         </div>
     </section>
 
-    <!-- 報價套餐區 (不變) -->
+    <!-- 報價套餐區 -->
     <section id="pricing" class="section-container">
         <div class="section-title">
             <h2>📑 2026 連工包料裝修套餐明細</h2>
@@ -1008,13 +1005,36 @@
         </div>
     </section>
 
-    <!-- FAQ 常見問題 -->
+    <!-- FAQ 常見問題 (已加入你的新要求) -->
     <section id="faq" class="section-container">
         <div class="section-title">
             <h2>💡 客戶常見問題解答 (FAQ)</h2>
             <p>解答你在裝修前最大的疑慮，確保合作建基於互信之上</p>
         </div>
         <div class="faq-container">
+            
+            <!-- 新增：解答黑工/外勞問題 -->
+            <div class="faq-item">
+                <div class="faq-question">
+                    坊間很多裝修公司會聘用「黑工」或輸入外勞，你們的師傅團隊是本地人嗎？ 
+                    <i class="fa-solid fa-chevron-down"></i>
+                </div>
+                <div class="faq-answer">
+                    <p>絕對是本地專業團隊。我們新榮耀工程堅持 <strong>100% 聘用本地擁有多年經驗的香港師傅</strong>。我們深知工程質素取決於師傅的手藝與責任心，因此絕不會為了減低成本而聘用非法勞工（黑工）或技術參差的外勞。<br><br>聘用本地師傅不僅確保了施工手藝完全符合香港政府及屋宇署標準，溝通上亦「同聲同氣」零障礙。更重要的是，這保障了業主免受任何潛在的法律及勞工保險風險，讓你可以安心將單位交託給我們。</p>
+                </div>
+            </div>
+
+            <!-- 新增：解答非實體店問題，轉化為優勢 -->
+            <div class="faq-item">
+                <div class="faq-question">
+                    你們好像沒有實體地舖，這樣會有保障嗎？為什麼不設地舖？ 
+                    <i class="fa-solid fa-chevron-down"></i>
+                </div>
+                <div class="faq-answer">
+                    <p>這正是我們能夠為你提供「極高性價比」的核心原因。香港的地舖租金極度昂貴，傳統裝修公司往往會將高達數十萬的租金成本，默默轉嫁到客人的報價單上。<br><br>我們選擇破舊立新，<strong>將省下來的昂貴租金，全數投放於「升級優質建材」以及營運「自家東莞直營傢俬廠」上</strong>。<br><br>雖然我們不設傳統地舖，但我們是持有<strong>香港屋宇署註冊小型工程牌照的正規商業登記公司，所有合約均具備完全法律效力</strong>。此外，我們甚至可以安排客戶實地參觀我們正在施工的真實地盤，加上專屬管工每日的 WhatsApp 影片匯報，工程透明度與保障絕對比依賴傳統地舖更高！</p>
+                </div>
+            </div>
+
             <div class="faq-item">
                 <div class="faq-question">
                     報價單上的價錢會否是「海鮮價」，開工後不斷加錢？ 
@@ -1024,6 +1044,7 @@
                     <p>絕對不會。我們的核心理念是「明碼實價，拒絕後加數」。只要客戶在開工後沒有主動要求增加額外工程（例如突然決定多拆一幅牆、或新增十個電位），最終結算金額將與合約上的金額完全一致。如遇特殊隱藏情況（如拆牆後發現原裝石屎嚴重剝落需額外修補），我們必定先報價、經你同意後才施工，絕不先斬後奏。</p>
                 </div>
             </div>
+            
             <div class="faq-item">
                 <div class="faq-question">
                     你們的「訂造傢俬」在哪裡生產？品質和甲醛有保證嗎？ 
@@ -1033,15 +1054,7 @@
                     <p>我們在廣東東莞擁有長期合作的直營木工廠房，配備先進數控機床（CNC）進行精準裁板及封邊。所有板材均選用符合國際標準的 E0 級多層防潮大芯板或夾板，甲醛釋放量極低。五金更統一採用歐洲進口品牌（如 Blum）。出廠前會進行嚴格質檢及試裝，確保運抵香港安裝時絲毫不差。</p>
                 </div>
             </div>
-            <div class="faq-item">
-                <div class="faq-question">
-                    裝修期間我需要經常請假上地盤監工嗎？ 
-                    <i class="fa-solid fa-chevron-down"></i>
-                </div>
-                <div class="faq-answer">
-                    <p>不需要。我們明白香港人工作繁忙，因此我們特設「專屬管工每日匯報制度」。每個工程項目均由一位擁有 10 年以上經驗的地盤主管全程跟進，他會每天在專屬的 WhatsApp 群組發送施工照片及影片，報告當日進度及解答你的問題。你只需安坐辦公室即可掌握全盤狀況，極大減輕你的壓力。</p>
-                </div>
-            </div>
+
             <div class="faq-item">
                 <div class="faq-question">
                     完工後有保養嗎？如果漏水怎麼辦？ 
@@ -1064,8 +1077,8 @@
         <div class="footer-grid">
             <div class="footer-col">
                 <a href="#" class="company-logo footer-brand">
-                    <!-- 加入自家 Logo -->
-                    <img src="your-logo.png" alt="新榮耀工程" class="logo-img">
+                    <!-- 已統一更改為 logo.png -->
+                    <img src="logo.png" alt="新榮耀工程" class="logo-img">
                     <h2 class="company-name" style="font-size: 20px;">新榮耀工程</h2>
                 </a>
                 <p>植根香港超過 15 年，持有屋宇署認可小型工程牌照。專營公屋、居屋、私人屋苑全屋翻新。自設東莞傢俬廠房，並承辦各類商業寫字樓、學校及會所工程，承諾明碼實價。</p>
@@ -1083,7 +1096,6 @@
             <div class="footer-col">
                 <h4>服務範疇</h4>
                 <ul>
-                    <!-- 修正 Bug: 補齊所有缺失的 </li> 閉合標籤 及 錯別字 -->
                     <li><a href="services.html?tab=tab1"> 公屋/居屋清水樓全屋優化</a></li>
                     <li><a href="services.html?tab=tab2"> 舊樓/唐樓重型全爆翻新</a></li>
                     <li><a href="services.html?tab=tab3"> 一站式自訂傢俬及 3D 設計</a></li>
