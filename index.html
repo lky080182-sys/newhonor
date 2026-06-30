@@ -10,7 +10,7 @@
     <meta name="keywords" content="公屋裝修, 居屋裝修, 清水樓裝修, 全屋翻新, 裝修套餐, 寫字樓裝修, 學校工程, 會所裝修, 商舖裝修, 香港裝修公司, 訂造傢俬, E0防潮板, 小紅書裝修, 裝修報價">
     <meta name="author" content="新榮耀工程有限公司">
     
-    <!-- Schema.org 結構化數據 (提升 Google 搜尋排名) -->
+    <!-- Schema.org 結構化數據 -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -44,6 +44,7 @@
             --whatsapp-green: #25D366;
             --fb-blue: #1877F2;
             --xhs-red: #ff2442;
+            --google-blue: #4285F4;
             --transition-fast: 0.3s ease;
             --transition-smooth: 0.5s cubic-bezier(0.4, 0, 0.2, 1);
         }
@@ -86,6 +87,7 @@
         .trust-badge { display: flex; align-items: center; gap: 10px; font-weight: 600; font-size: 15px; background: rgba(255,255,255,0.03); padding: 12px 24px; border-radius: 50px; border: 1px solid var(--border-light); backdrop-filter: blur(4px); transition: var(--transition-fast); }
         .trust-badge:hover { border-color: var(--accent-gold); background: rgba(229, 193, 88, 0.05); transform: translateY(-3px); }
         .trust-badge i { color: var(--accent-gold); font-size: 20px; }
+        .trust-badge i.fa-google { color: var(--google-blue); } /* Google Badge Color */
 
         .cta-group { display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; animation: fadeInUp 1s ease 0.8s both; }
         .btn-cta-primary { background: var(--accent-gold); color: var(--primary-dark); padding: 18px 45px; border-radius: 10px; font-weight: 900; font-size: 18px; text-decoration: none; transition: var(--transition-smooth); box-shadow: 0 10px 30px rgba(229, 193, 88, 0.3); display: flex; align-items: center; gap: 10px; }
@@ -100,9 +102,41 @@
         .section-container { padding: 110px 5%; max-width: 1400px; margin: 0 auto; }
         .section-container-alt { background: #0a0e17; padding: 110px 5%; border-top: 1px solid var(--border-light); border-bottom: 1px solid var(--border-light); }
         .section-title { text-align: center; margin-bottom: 70px; }
-        .section-title h2 { font-size: 42px; font-weight: 900; color: var(--text-light); margin: 0 0 20px 0; display: inline-flex; align-items: center; gap: 15px; position: relative; }
+        .section-title h2 { font-size: 42px; font-weight: 900; color: var(--text-light); margin: 0 0 20px 0; display: inline-flex; align-items: center; justify-content: center; gap: 15px; position: relative; }
         .section-title h2::after { content: ''; position: absolute; bottom: -15px; left: 50%; transform: translateX(-50%); width: 80px; height: 4px; background: var(--accent-gold); border-radius: 2px; }
         .section-title p { color: var(--text-muted); font-size: 18px; max-width: 800px; margin: 30px auto 0; }
+
+        /* --- Before & After 滑動對比區 --- */
+        .ba-wrapper { display: flex; flex-direction: column; align-items: center; gap: 30px; }
+        .ba-container { position: relative; width: 100%; max-width: 1000px; aspect-ratio: 16/9; overflow: hidden; border-radius: 20px; box-shadow: 0 20px 50px rgba(0,0,0,0.6); border: 1px solid var(--border-light); }
+        .ba-image { position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; }
+        .ba-overlay { position: absolute; top: 0; left: 0; width: 50%; height: 100%; overflow: hidden; border-right: 4px solid var(--accent-gold); box-shadow: 5px 0 15px rgba(0,0,0,0.5); }
+        .ba-slider { position: absolute; top: 0; left: 0; width: 100%; height: 100%; opacity: 0; cursor: ew-resize; z-index: 10; }
+        .ba-slider-btn { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 50px; height: 50px; background: var(--accent-gold); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: var(--primary-dark); font-size: 20px; pointer-events: none; z-index: 5; box-shadow: 0 0 20px rgba(0,0,0,0.5); }
+        .ba-labels { position: absolute; bottom: 20px; width: 100%; display: flex; justify-content: space-between; padding: 0 30px; pointer-events: none; z-index: 5; }
+        .ba-label { background: rgba(0,0,0,0.7); color: #fff; padding: 6px 15px; border-radius: 30px; font-size: 14px; font-weight: 700; backdrop-filter: blur(5px); border: 1px solid rgba(255,255,255,0.2); }
+        
+        /* --- 表單區塊 --- */
+        .form-section { background: linear-gradient(135deg, var(--card-dark) 0%, #0a0e17 100%); border-radius: 24px; padding: 60px; max-width: 1000px; margin: 0 auto; border: 1px solid var(--border-gold); box-shadow: 0 30px 60px rgba(0,0,0,0.5); position: relative; overflow: hidden; }
+        .form-section::before { content: ''; position: absolute; top: -50%; right: -50%; width: 100%; height: 100%; background: radial-gradient(circle, rgba(229,193,88,0.05) 0%, transparent 70%); pointer-events: none; }
+        .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 25px; margin-bottom: 30px; position: relative; z-index: 2; }
+        .form-group { display: flex; flex-direction: column; gap: 10px; }
+        .form-group.full-width { grid-column: 1 / -1; }
+        .form-label { font-size: 15px; color: #cbd5e1; font-weight: 600; }
+        .form-input { background: rgba(0,0,0,0.3); border: 1px solid var(--border-light); padding: 16px 20px; border-radius: 12px; color: #fff; font-size: 16px; transition: var(--transition-fast); font-family: inherit; }
+        .form-input:focus { outline: none; border-color: var(--accent-gold); background: rgba(229, 193, 88, 0.05); }
+        .form-select { 
+            appearance: none; 
+            background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23e5c158' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e"); 
+            background-repeat: no-repeat;
+            background-position: right 16px center;
+            background-size: 18px;
+            cursor: pointer;
+        }
+        .form-select option { background: var(--card-dark); color: #fff; }
+        textarea.form-input { resize: vertical; min-height: 120px; }
+        .form-submit-btn { width: 100%; background: var(--accent-gold); color: var(--primary-dark); padding: 18px; border-radius: 12px; font-weight: 800; font-size: 18px; cursor: pointer; border: none; transition: var(--transition-fast); box-shadow: 0 10px 30px rgba(229, 193, 88, 0.2); position: relative; z-index: 2; display: flex; justify-content: center; align-items: center; gap: 10px; }
+        .form-submit-btn:hover { background: #fff; transform: translateY(-3px); box-shadow: 0 15px 40px rgba(255, 255, 255, 0.3); }
 
         /* --- 品牌理念與數據 --- */
         .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
@@ -330,6 +364,10 @@
             .c-tab-btn.active { border-left-color: var(--accent-gold); border-bottom-color: transparent; }
             .c-tab-image { height: 220px; }
             .full-width-card .service-card-header, .full-width-card > h3, .full-width-card > p { padding-left: 25px; padding-right: 25px; }
+            
+            /* 新增模塊 RWD */
+            .form-grid { grid-template-columns: 1fr; }
+            .form-section { padding: 40px 25px; }
         }
     </style>
 </head>
@@ -338,8 +376,8 @@
     <!-- 頂部導航 -->
     <header>
         <a href="#" class="company-logo">
-            <!-- 已統一更改為 logo.png -->
-            <img src="logo.png" alt="新榮耀工程" class="logo-img">
+            <!-- 加入自家 Logo：請將 your-logo.png 替換為你的圖片路徑 -->
+            <img src="your-logo.png" alt="新榮耀工程" class="logo-img">
             <h1 class="company-name">新榮耀工程</h1>
         </a>
         <nav class="nav-links">
@@ -371,6 +409,7 @@
         <div class="trust-badges">
             <div class="trust-badge"><i class="fa-solid fa-file-signature"></i> 屋宇署小型工程牌照</div>
             <div class="trust-badge"><i class="fa-solid fa-shield-halved"></i> 24個月防漏結構保固</div>
+            <div class="trust-badge"><i class="fa-brands fa-google"></i> Google 5星滿分好評</div> <!-- 新增 Google 徽章 -->
             <div class="trust-badge"><i class="fa-solid fa-user-tie"></i> 專屬管工每日匯報</div>
             <div class="trust-badge"><i class="fa-solid fa-leaf"></i> E0 級低甲醛環保認證</div>
         </div>
@@ -501,7 +540,7 @@
                 </div>
             </div>
             
-            <!-- 04: 商業及機構工程 (全新專業分頁模塊) -->
+            <!-- 04: 商業及機構工程 -->
             <div class="service-card full-width-card">
                 <div class="service-card-header">
                     <div class="service-icon"><i class="fa-solid fa-building-user"></i></div>
@@ -638,39 +677,17 @@
 
         <!-- 🎯 Tab A: 清水樓套餐 -->
         <div id="content-a" class="pricing-container active">
-            
+            <!-- (保持原有的 Tab A 內容) -->
             <div class="tier-card">
                 <h3 class="tier-title">細單位 ｜ 基礎優化</h3>
                 <div class="tier-sqft">實用面積：250 - 350 呎 (約 1-2 人)</div>
                 <div class="tier-price"><span class="hkd">$</span>88,000<span> 起</span></div>
                 <ul class="tier-features">
-                    <li>
-                        <i class="fa-solid fa-circle-check feature-check"></i>
-                        <div class="feature-text">
-                            <span class="hl-title">基本水電延伸</span>
-                            保留原裝電箱，新增/改位共 <span class="highlight-num">12</span> 個暗線電位。代安裝全屋燈飾。
-                        </div>
-                    </li>
-                    <li>
-                        <i class="fa-solid fa-circle-check feature-check"></i>
-                        <div class="feature-text">
-                            <span class="hl-title">防霉油漆及地板</span>
-                            局部修補平整，塗刷 <span class="highlight-num">3</span> 層立邦防霉漆。全屋直鋪 SPC 鎖扣地板。
-                        </div>
-                    </li>
-                    <li>
-                        <i class="fa-solid fa-circle-check feature-check"></i>
-                        <div class="feature-text">
-                            <span class="hl-title">精選 12呎 E0訂造傢俬</span>
-                            <div class="furniture-tags">
-                                <span class="f-tag">4呎 鞋櫃</span>
-                                <span class="f-tag">4呎 電視櫃</span>
-                                <span class="f-tag">4呎 衣櫃</span>
-                            </div>
-                        </div>
-                    </li>
+                    <li><i class="fa-solid fa-circle-check feature-check"></i><div class="feature-text"><span class="hl-title">基本水電延伸</span>保留原裝電箱，新增/改位共 <span class="highlight-num">12</span> 個暗線電位。代安裝全屋燈飾。</div></li>
+                    <li><i class="fa-solid fa-circle-check feature-check"></i><div class="feature-text"><span class="hl-title">防霉油漆及地板</span>局部修補平整，塗刷 <span class="highlight-num">3</span> 層立邦防霉漆。全屋直鋪 SPC 鎖扣地板。</div></li>
+                    <li><i class="fa-solid fa-circle-check feature-check"></i><div class="feature-text"><span class="hl-title">精選 12呎 E0訂造傢俬</span><div class="furniture-tags"><span class="f-tag">4呎 鞋櫃</span><span class="f-tag">4呎 電視櫃</span><span class="f-tag">4呎 衣櫃</span></div></div></li>
                 </ul>
-                <a href="https://wa.me/85212345678?text=查詢細單位清水樓套餐" class="btn-select btn-select-outline" target="_blank">索取詳細清單 <i class="fa-solid fa-arrow-right"></i></a>
+                <a href="#contact" class="btn-select btn-select-outline">索取詳細清單 <i class="fa-solid fa-arrow-right"></i></a>
             </div>
             
             <div class="tier-card popular">
@@ -679,35 +696,11 @@
                 <div class="tier-sqft">實用面積：360 - 450 呎 (約 3-4 人)</div>
                 <div class="tier-price"><span class="hkd">$</span>148,000<span> 起</span></div>
                 <ul class="tier-features">
-                    <li>
-                        <i class="fa-solid fa-circle-check feature-check"></i>
-                        <div class="feature-text">
-                            <span class="hl-title">水電擴充與隔音間房</span>
-                            新增共 <span class="highlight-num">20</span> 個入牆暗線位。新建防潮石膏板間牆連隔音棉。
-                        </div>
-                    </li>
-                    <li>
-                        <i class="fa-solid fa-circle-check feature-check"></i>
-                        <div class="feature-text">
-                            <span class="hl-title">全屋高階油漆處理</span>
-                            塗刷 <span class="highlight-num">3</span> 層立邦金裝五合一漆。升級加厚 SPC 地板。
-                        </div>
-                    </li>
-                    <li>
-                        <i class="fa-solid fa-circle-check feature-check"></i>
-                        <div class="feature-text">
-                            <span class="hl-title">海量 22呎傢俬 ＋ 60呎地台</span>
-                            <div class="furniture-tags">
-                                <span class="f-tag">5呎 C字鞋櫃</span>
-                                <span class="f-tag">6呎 特色電視牆櫃</span>
-                                <span class="f-tag">7呎 衣櫃</span>
-                                <span class="f-tag">4呎 床斗</span>
-                                <span class="f-tag">60呎 榻榻米地台</span>
-                            </div>
-                        </div>
-                    </li>
+                    <li><i class="fa-solid fa-circle-check feature-check"></i><div class="feature-text"><span class="hl-title">水電擴充與隔音間房</span>新增共 <span class="highlight-num">20</span> 個入牆暗線位。新建防潮石膏板間牆連隔音棉。</div></li>
+                    <li><i class="fa-solid fa-circle-check feature-check"></i><div class="feature-text"><span class="hl-title">全屋高階油漆處理</span>塗刷 <span class="highlight-num">3</span> 層立邦金裝五合一漆。升級加厚 SPC 地板。</div></li>
+                    <li><i class="fa-solid fa-circle-check feature-check"></i><div class="feature-text"><span class="hl-title">海量 22呎傢俬 ＋ 60呎地台</span><div class="furniture-tags"><span class="f-tag">5呎 C字鞋櫃</span><span class="f-tag">6呎 特色電視牆櫃</span><span class="f-tag">7呎 衣櫃</span><span class="f-tag">4呎 床斗</span><span class="f-tag">60呎 榻榻米地台</span></div></div></li>
                 </ul>
-                <a href="https://wa.me/85212345678?text=查詢中單位清水樓套餐" class="btn-select" target="_blank">預約度尺 <i class="fa-solid fa-arrow-right"></i></a>
+                <a href="#contact" class="btn-select">預約免費度尺 <i class="fa-solid fa-arrow-right"></i></a>
             </div>
 
             <div class="tier-card">
@@ -715,66 +708,26 @@
                 <div class="tier-sqft">實用面積：460 - 600+ 呎 (多房佈局)</div>
                 <div class="tier-price"><span class="hkd">$</span>198,000<span> 起</span></div>
                 <ul class="tier-features">
-                    <li>
-                        <i class="fa-solid fa-circle-check feature-check"></i>
-                        <div class="feature-text">
-                            <span class="hl-title">智能家居準備 (水電網)</span>
-                            新增高達 <span class="highlight-num">30</span> 個電位，預留智能開關零線。全屋剷底重批。
-                        </div>
-                    </li>
-                    <li>
-                        <i class="fa-solid fa-circle-check feature-check"></i>
-                        <div class="feature-text">
-                            <span class="hl-title">極致 35呎傢俬 ＋ 100呎地台</span>
-                            <div class="furniture-tags">
-                                <span class="f-tag">8呎 岩板電視牆</span>
-                                <span class="f-tag">100呎 雙房地台</span>
-                                <span class="f-tag">12呎 通頂衣櫃</span>
-                                <span class="f-tag">6呎 玄關櫃</span>
-                                <span class="f-tag">5呎 書枱組合</span>
-                            </div>
-                        </div>
-                    </li>
+                    <li><i class="fa-solid fa-circle-check feature-check"></i><div class="feature-text"><span class="hl-title">智能家居準備 (水電網)</span>新增高達 <span class="highlight-num">30</span> 個電位，預留智能開關零線。全屋剷底重批。</div></li>
+                    <li><i class="fa-solid fa-circle-check feature-check"></i><div class="feature-text"><span class="hl-title">極致 35呎傢俬 ＋ 100呎地台</span><div class="furniture-tags"><span class="f-tag">8呎 岩板電視牆</span><span class="f-tag">100呎 雙房地台</span><span class="f-tag">12呎 通頂衣櫃</span><span class="f-tag">6呎 玄關櫃</span><span class="f-tag">5呎 書枱組合</span></div></div></li>
                 </ul>
-                <a href="https://wa.me/85212345678?text=查詢大單位清水樓套餐" class="btn-select btn-select-outline" target="_blank">索取詳細清單 <i class="fa-solid fa-arrow-right"></i></a>
+                <a href="#contact" class="btn-select btn-select-outline">索取詳細清單 <i class="fa-solid fa-arrow-right"></i></a>
             </div>
         </div>
 
         <!-- 🎯 Tab B: 大全爆套餐 -->
         <div id="content-b" class="pricing-container">
-            
+            <!-- (保持原有的 Tab B 內容) -->
             <div class="tier-card">
                 <h3 class="tier-title">細單位 ｜ 核心全爆</h3>
                 <div class="tier-sqft">實用面積：250 - 350 呎</div>
                 <div class="tier-price"><span class="hkd">$</span>178,000<span> 起</span></div>
                 <ul class="tier-features">
-                    <li>
-                        <i class="fa-solid fa-circle-check feature-check"></i>
-                        <div class="feature-text">
-                            <span class="hl-title">清拆與重型防水</span>
-                            全爆 1廚 1廁。廚廁塗刷 <span class="highlight-num">3</span> 層黑豹防水，保證 48小時試水。
-                        </div>
-                    </li>
-                    <li>
-                        <i class="fa-solid fa-circle-check feature-check"></i>
-                        <div class="feature-text">
-                            <span class="hl-title">水電換新 (安全標準)</span>
-                            新造 <span class="highlight-num">25</span> 個暗線電位。更換全新施耐德總電箱。
-                        </div>
-                    </li>
-                    <li>
-                        <i class="fa-solid fa-circle-check feature-check"></i>
-                        <div class="feature-text">
-                            <span class="hl-title">廚廁專屬 19呎傢俬</span>
-                            <div class="furniture-tags">
-                                <span class="f-tag">8呎 廚房廚櫃</span>
-                                <span class="f-tag">8呎 無縫石枱面</span>
-                                <span class="f-tag">3呎 浴室地鏡櫃</span>
-                            </div>
-                        </div>
-                    </li>
+                    <li><i class="fa-solid fa-circle-check feature-check"></i><div class="feature-text"><span class="hl-title">清拆與重型防水</span>全爆 1廚 1廁。廚廁塗刷 <span class="highlight-num">3</span> 層黑豹防水，保證 48小時試水。</div></li>
+                    <li><i class="fa-solid fa-circle-check feature-check"></i><div class="feature-text"><span class="hl-title">水電換新 (安全標準)</span>新造 <span class="highlight-num">25</span> 個暗線電位。更換全新施耐德總電箱。</div></li>
+                    <li><i class="fa-solid fa-circle-check feature-check"></i><div class="feature-text"><span class="hl-title">廚廁專屬 19呎傢俬</span><div class="furniture-tags"><span class="f-tag">8呎 廚房廚櫃</span><span class="f-tag">8呎 無縫石枱面</span><span class="f-tag">3呎 浴室地鏡櫃</span></div></div></li>
                 </ul>
-                <a href="https://wa.me/85212345678?text=查詢細單位全爆套餐" class="btn-select btn-select-outline" target="_blank">索取詳細清單 <i class="fa-solid fa-arrow-right"></i></a>
+                <a href="#contact" class="btn-select btn-select-outline">索取詳細清單 <i class="fa-solid fa-arrow-right"></i></a>
             </div>
             
             <div class="tier-card popular">
@@ -783,35 +736,11 @@
                 <div class="tier-sqft">實用面積：360 - 450 呎</div>
                 <div class="tier-price"><span class="hkd">$</span>248,000<span> 起</span></div>
                 <ul class="tier-features">
-                    <li>
-                        <i class="fa-solid fa-circle-check feature-check"></i>
-                        <div class="feature-text">
-                            <span class="hl-title">極致清拆與重整格局</span>
-                            包大規模打鑿及拆舊間隔。新造 <span class="highlight-num">45</span> 個電位，設獨立迴路。
-                        </div>
-                    </li>
-                    <li>
-                        <i class="fa-solid fa-circle-check feature-check"></i>
-                        <div class="feature-text">
-                            <span class="hl-title">平水泥水工藝</span>
-                            紅外線平水鋪磚。包天然雲石門檻及鋁質假天花。
-                        </div>
-                    </li>
-                    <li>
-                        <i class="fa-solid fa-circle-check feature-check"></i>
-                        <div class="feature-text">
-                            <span class="hl-title">客廳及廚廁 42呎豪華傢俬</span>
-                            <div class="furniture-tags">
-                                <span class="f-tag">12呎 L型廚櫃</span>
-                                <span class="f-tag">12呎 石英石枱面</span>
-                                <span class="f-tag">4呎 洗手盆鏡櫃</span>
-                                <span class="f-tag">6呎 C字櫃</span>
-                                <span class="f-tag">8呎 大衣櫃</span>
-                            </div>
-                        </div>
-                    </li>
+                    <li><i class="fa-solid fa-circle-check feature-check"></i><div class="feature-text"><span class="hl-title">極致清拆與重整格局</span>包大規模打鑿及拆舊間隔。新造 <span class="highlight-num">45</span> 個電位，設獨立迴路。</div></li>
+                    <li><i class="fa-solid fa-circle-check feature-check"></i><div class="feature-text"><span class="hl-title">平水泥水工藝</span>紅外線平水鋪磚。包天然雲石門檻及鋁質假天花。</div></li>
+                    <li><i class="fa-solid fa-circle-check feature-check"></i><div class="feature-text"><span class="hl-title">客廳及廚廁 42呎豪華傢俬</span><div class="furniture-tags"><span class="f-tag">12呎 L型廚櫃</span><span class="f-tag">12呎 石英石枱面</span><span class="f-tag">4呎 洗手盆鏡櫃</span><span class="f-tag">6呎 C字櫃</span><span class="f-tag">8呎 大衣櫃</span></div></div></li>
                 </ul>
-                <a href="https://wa.me/85212345678?text=查詢中單位全爆套餐" class="btn-select" target="_blank">預約度尺 <i class="fa-solid fa-arrow-right"></i></a>
+                <a href="#contact" class="btn-select">預約免費度尺 <i class="fa-solid fa-arrow-right"></i></a>
             </div>
 
             <div class="tier-card">
@@ -819,27 +748,10 @@
                 <div class="tier-sqft">實用面積：460 - 600+ 呎 (雙廁所)</div>
                 <div class="tier-price"><span class="hkd">$</span>328,000<span> 起</span></div>
                 <ul class="tier-features">
-                    <li>
-                        <i class="fa-solid fa-circle-check feature-check"></i>
-                        <div class="feature-text">
-                            <span class="hl-title">雙廁所及大型清拆</span>
-                            包拆 1廚 2廁。雙廁所皆施作重防水。新造高達 <span class="highlight-num">65</span> 個電位。
-                        </div>
-                    </li>
-                    <li>
-                        <i class="fa-solid fa-circle-check feature-check"></i>
-                        <div class="feature-text">
-                            <span class="hl-title">海量全屋 65呎 訂造傢俬</span>
-                            <div class="furniture-tags">
-                                <span class="f-tag">15呎 U型大廚櫃</span>
-                                <span class="f-tag">雙廁所 鏡櫃及地櫃 (共7呎)</span>
-                                <span class="f-tag">20呎 睡房大衣櫃組合</span>
-                                <span class="f-tag">8呎 客廳特色儲物牆</span>
-                            </div>
-                        </div>
-                    </li>
+                    <li><i class="fa-solid fa-circle-check feature-check"></i><div class="feature-text"><span class="hl-title">雙廁所及大型清拆</span>包拆 1廚 2廁。雙廁所皆施作重防水。新造高達 <span class="highlight-num">65</span> 個電位。</div></li>
+                    <li><i class="fa-solid fa-circle-check feature-check"></i><div class="feature-text"><span class="hl-title">海量全屋 65呎 訂造傢俬</span><div class="furniture-tags"><span class="f-tag">15呎 U型大廚櫃</span><span class="f-tag">雙廁所 鏡櫃及地櫃 (共7呎)</span><span class="f-tag">20呎 睡房大衣櫃組合</span><span class="f-tag">8呎 客廳特色儲物牆</span></div></div></li>
                 </ul>
-                <a href="https://wa.me/85212345678?text=查詢大單位全爆套餐" class="btn-select btn-select-outline" target="_blank">索取詳細清單 <i class="fa-solid fa-arrow-right"></i></a>
+                <a href="#contact" class="btn-select btn-select-outline">索取詳細清單 <i class="fa-solid fa-arrow-right"></i></a>
             </div>
 
         </div>
@@ -849,8 +761,37 @@
         </p>
     </section>
 
+    <!-- [新區塊] Before & After 實景對比 -->
+    <section id="before-after" class="section-container-alt">
+        <div class="section-title">
+            <h2>✨ 裝修前後真實對比</h2>
+            <p>眼見為實，拖動中央滑塊，親身感受全爆翻新帶來的極致空間變化</p>
+        </div>
+        <div class="ba-wrapper">
+            <div class="ba-container">
+                <!-- Before 圖片 (底層) -->
+                <img class="ba-image" src="https://images.unsplash.com/photo-1584622781564-1d987f7333c1?auto=format&fit=crop&w=1000&q=80" alt="裝修前">
+                
+                <!-- After 圖片 (上層 Overlay) -->
+                <div class="ba-overlay" id="ba-overlay">
+                    <img class="ba-image" src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1000&q=80" alt="裝修後">
+                </div>
+                
+                <!-- 滑塊 UI 控制元件 -->
+                <div class="ba-slider-btn" id="ba-btn"><i class="fa-solid fa-arrows-left-right"></i></div>
+                <input type="range" min="0" max="100" value="50" class="ba-slider" id="ba-slider" aria-label="Before/After Slider">
+                
+                <!-- 標籤 -->
+                <div class="ba-labels">
+                    <span class="ba-label">裝修後 (After)</span>
+                    <span class="ba-label">裝修前 (Before)</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- 精選案例 Portfolio -->
-    <section id="portfolio" class="section-container-alt">
+    <section id="portfolio" class="section-container">
         <div class="section-title">
             <h2>📸 精選工程案例</h2>
             <p>看看我們如何將破舊的單位，改造成溫馨實用的現代家居</p>
@@ -884,7 +825,7 @@
     </section>
 
     <!-- 社群證明 (Facebook & 小紅書) -->
-    <section class="section-container">
+    <section class="section-container-alt">
         <div class="section-title">
             <h2>📱 緊貼最新動態與客戶評價</h2>
             <p>每日更新地盤進度與設計靈感，100% 真實屋主留言</p>
@@ -976,7 +917,7 @@
     </section>
 
     <!-- 4步極速流程 -->
-    <section class="section-container-alt">
+    <section class="section-container">
         <div class="section-title">
             <h2>透明無憂・4步標準化裝修流程</h2>
             <p>由初步諮詢到開心入伙，資深管工全程為你一對一跟進，告別傳統工程黑箱作業</p>
@@ -1005,36 +946,15 @@
         </div>
     </section>
 
-    <!-- FAQ 常見問題 (已加入你的新要求) -->
-    <section id="faq" class="section-container">
+    <!-- FAQ 常見問題 -->
+   <!-- FAQ 常見問題 -->
+    <section id="faq" class="section-container-alt">
         <div class="section-title">
             <h2>💡 客戶常見問題解答 (FAQ)</h2>
             <p>解答你在裝修前最大的疑慮，確保合作建基於互信之上</p>
         </div>
         <div class="faq-container">
-            
-            <!-- 新增：解答黑工/外勞問題 -->
-            <div class="faq-item">
-                <div class="faq-question">
-                    坊間很多裝修公司會聘用「黑工」或輸入外勞，你們的師傅團隊是本地人嗎？ 
-                    <i class="fa-solid fa-chevron-down"></i>
-                </div>
-                <div class="faq-answer">
-                    <p>絕對是本地專業團隊。我們新榮耀工程堅持 <strong>100% 聘用本地擁有多年經驗的香港師傅</strong>。我們深知工程質素取決於師傅的手藝與責任心，因此絕不會為了減低成本而聘用非法勞工（黑工）或技術參差的外勞。<br><br>聘用本地師傅不僅確保了施工手藝完全符合香港政府及屋宇署標準，溝通上亦「同聲同氣」零障礙。更重要的是，這保障了業主免受任何潛在的法律及勞工保險風險，讓你可以安心將單位交託給我們。</p>
-                </div>
-            </div>
-
-            <!-- 新增：解答非實體店問題，轉化為優勢 -->
-            <div class="faq-item">
-                <div class="faq-question">
-                    你們好像沒有實體地舖，這樣會有保障嗎？為什麼不設地舖？ 
-                    <i class="fa-solid fa-chevron-down"></i>
-                </div>
-                <div class="faq-answer">
-                    <p>這正是我們能夠為你提供「極高性價比」的核心原因。香港的地舖租金極度昂貴，傳統裝修公司往往會將高達數十萬的租金成本，默默轉嫁到客人的報價單上。<br><br>我們選擇破舊立新，<strong>將省下來的昂貴租金，全數投放於「升級優質建材」以及營運「自家東莞直營傢俬廠」上</strong>。<br><br>雖然我們不設傳統地舖，但我們是持有<strong>香港屋宇署註冊小型工程牌照的正規商業登記公司，所有合約均具備完全法律效力</strong>。此外，我們甚至可以安排客戶實地參觀我們正在施工的真實地盤，加上專屬管工每日的 WhatsApp 影片匯報，工程透明度與保障絕對比依賴傳統地舖更高！</p>
-                </div>
-            </div>
-
+            <!-- 1. 原有：報價問題 -->
             <div class="faq-item">
                 <div class="faq-question">
                     報價單上的價錢會否是「海鮮價」，開工後不斷加錢？ 
@@ -1044,7 +964,19 @@
                     <p>絕對不會。我們的核心理念是「明碼實價，拒絕後加數」。只要客戶在開工後沒有主動要求增加額外工程（例如突然決定多拆一幅牆、或新增十個電位），最終結算金額將與合約上的金額完全一致。如遇特殊隱藏情況（如拆牆後發現原裝石屎嚴重剝落需額外修補），我們必定先報價、經你同意後才施工，絕不先斬後奏。</p>
                 </div>
             </div>
-            
+
+            <!-- 2. 新增：非實體店問題 -->
+            <div class="faq-item">
+                <div class="faq-question">
+                    請問你們有實體店嗎？可以門市拜訪嗎？ 
+                    <i class="fa-solid fa-chevron-down"></i>
+                </div>
+                <div class="faq-answer">
+                    <p>我們目前沒有設立實體店面。採用全線上營運與直接服務模式，能讓我們省下香港昂貴的舖租成本，從而將這些資源直接回饋給客戶，為您提供更優惠、更高性價比的報價。在確認設計及用料細節時，我們的專屬管工會帶齊實體物料板（如木板、膠板、石材等）上門與您直接核對，您也可以隨時透過 WhatsApp 或電話聯絡我們，過程同樣透明且方便快捷。</p>
+                </div>
+            </div>
+
+            <!-- 3. 原有：傢俬問題 -->
             <div class="faq-item">
                 <div class="faq-question">
                     你們的「訂造傢俬」在哪裡生產？品質和甲醛有保證嗎？ 
@@ -1055,6 +987,29 @@
                 </div>
             </div>
 
+            <!-- 4. 原有：監工問題 -->
+            <div class="faq-item">
+                <div class="faq-question">
+                    裝修期間我需要經常請假上地盤監工嗎？ 
+                    <i class="fa-solid fa-chevron-down"></i>
+                </div>
+                <div class="faq-answer">
+                    <p>不需要。我們明白香港人工作繁忙，因此我們特設「專屬管工每日匯報制度」。每個工程項目均由一位擁有 10 年以上經驗的地盤主管全程跟進，他會每天在專屬的 WhatsApp 群組發送施工照片及影片，報告當日進度及解答你的問題。你只需安坐辦公室即可掌握全盤狀況，極大減輕你的壓力。</p>
+                </div>
+            </div>
+            
+            <!-- 5. 新增：黑工 / 外勞問題 -->
+            <div class="faq-item">
+                <div class="faq-question">
+                    你們的裝修師傅會不會是黑工或來歷不明的外勞？ 
+                    <i class="fa-solid fa-chevron-down"></i>
+                </div>
+                <div class="faq-answer">
+                    <p>絕對不會。我們非常重視工程質素及客人的安全，並嚴格遵守香港勞工法例。所有為您提供服務的專屬管工及裝修師傅，均為持有合法工作資格的本地註冊師傅及香港居民，且擁有多年豐富實戰經驗。我們絕不聘用非法勞工（黑工），確保為您提供安全、合法、有保障的專業裝修服務。</p>
+                </div>
+            </div>
+
+            <!-- 6. 原有：保養問題 -->
             <div class="faq-item">
                 <div class="faq-question">
                     完工後有保養嗎？如果漏水怎麼辦？ 
@@ -1064,6 +1019,54 @@
                     <p>我們對自家工藝充滿信心，因此提供長達 24 個月的防漏及結構保固期（一般市面公司僅提供 6-12 個月）。若在保養期內出現因我們施工問題導致的漏水、電線短路或泥水空鼓等問題，我們承諾在 48 小時內派師傅上門免費跟進及維修，絕不推卸責任。</p>
                 </div>
             </div>
+        </div>
+    </section>
+
+    <!-- [新區塊] 預約免費度尺表單 -->
+    <section id="contact" class="section-container">
+        <div class="section-title">
+            <h2>📝 預約免費上門度尺</h2>
+            <p>填寫簡單資料，我們的專業專員將於 24 小時內聯絡你，安排上門度尺及初步報價</p>
+        </div>
+        <div class="form-section">
+            <form action="#" method="POST" onsubmit="event.preventDefault(); alert('感謝你的預約！我們的專員會盡快聯絡你。');">
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label class="form-label">姓名 Name</label>
+                        <input type="text" class="form-input" placeholder="請輸入你的稱呼" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">聯絡電話 Phone</label>
+                        <input type="tel" class="form-input" placeholder="例如: 9876 5432" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">屋苑名稱 Estate Name</label>
+                        <input type="text" class="form-input" placeholder="例如: 和田邨 / 啟欣苑" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">預計實用面積 (呎)</label>
+                        <input type="number" class="form-input" placeholder="例如: 380" required>
+                    </div>
+                    <div class="form-group full-width">
+                        <label class="form-label">需要什麼服務？ Service Needed</label>
+                        <select class="form-input form-select" required>
+                            <option value="" disabled selected>請選擇工程類型...</option>
+                            <option value="清水樓">新公屋/居屋 清水樓優化 (免拆)</option>
+                            <option value="全爆">舊樓/二手居屋 深度全爆翻新</option>
+                            <option value="商業">商業寫字樓 / 學校 / 會所工程</option>
+                            <option value="傢俬">淨訂造全屋傢俬</option>
+                            <option value="其他">其他 / 未確定</option>
+                        </select>
+                    </div>
+                    <div class="form-group full-width">
+                        <label class="form-label">其他備註 Remarks (選填)</label>
+                        <textarea class="form-input" placeholder="有什麼特別要求或問題？（例如：幾時入伙、想做隱形門...）"></textarea>
+                    </div>
+                </div>
+                <button type="submit" class="form-submit-btn">
+                    <i class="fa-solid fa-paper-plane"></i> 提交預約
+                </button>
+            </form>
         </div>
     </section>
 
@@ -1077,8 +1080,7 @@
         <div class="footer-grid">
             <div class="footer-col">
                 <a href="#" class="company-logo footer-brand">
-                    <!-- 已統一更改為 logo.png -->
-                    <img src="logo.png" alt="新榮耀工程" class="logo-img">
+                    <img src="your-logo.png" alt="新榮耀工程" class="logo-img">
                     <h2 class="company-name" style="font-size: 20px;">新榮耀工程</h2>
                 </a>
                 <p>植根香港超過 15 年，持有屋宇署認可小型工程牌照。專營公屋、居屋、私人屋苑全屋翻新。自設東莞傢俬廠房，並承辦各類商業寫字樓、學校及會所工程，承諾明碼實價。</p>
@@ -1165,6 +1167,19 @@
                 parent.classList.toggle('active');
             });
         });
+
+        // [新增] Before & After 滑塊互動邏輯
+        const baSlider = document.getElementById('ba-slider');
+        const baOverlay = document.getElementById('ba-overlay');
+        const baBtn = document.getElementById('ba-btn');
+
+        if (baSlider && baOverlay && baBtn) {
+            baSlider.addEventListener('input', (e) => {
+                const sliderVal = e.target.value + '%';
+                baOverlay.style.width = sliderVal;
+                baBtn.style.left = sliderVal;
+            });
+        }
     </script>
 </body>
 </html>
