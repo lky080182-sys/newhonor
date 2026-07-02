@@ -56,15 +56,18 @@
         img { max-width: 100%; height: auto; display: block; }
 
         /* --- 頂部導航欄 --- */
-        header { background: rgba(7, 10, 16, 0.95); padding: 15px 5%; display: flex; justify-content: space-between; align-items: center; position: sticky; top: 0; z-index: 1000; border-bottom: 1px solid var(--border-gold); backdrop-filter: blur(12px); box-shadow: 0 4px 30px rgba(0,0,0,0.5); }
+        header { background: rgba(7, 10, 16, 0.85); padding: 20px 5%; display: flex; justify-content: space-between; align-items: center; position: sticky; top: 0; z-index: 1000; border-bottom: 1px solid var(--border-gold); backdrop-filter: blur(12px); box-shadow: 0 4px 30px rgba(0,0,0,0.3); transition: var(--transition-fast); }
+        header.scrolled { padding: 12px 5%; background: rgba(7, 10, 16, 0.98); box-shadow: 0 10px 40px rgba(0,0,0,0.6); }
         .company-logo { display: flex; align-items: center; gap: 12px; text-decoration: none; }
         .logo-img { height: 40px; width: auto; object-fit: contain; }
         .company-name { font-size: 22px; font-weight: 900; color: var(--text-light); letter-spacing: 1.5px; margin: 0; }
         .company-name span { color: var(--accent-gold); }
         
         .nav-links { display: flex; gap: 30px; align-items: center; }
-        .nav-links a { color: var(--text-light); text-decoration: none; font-weight: 500; font-size: 15px; transition: var(--transition-fast); }
+        .nav-links a { color: var(--text-light); text-decoration: none; font-weight: 500; font-size: 15px; transition: var(--transition-fast); position: relative; }
         .nav-links a:hover { color: var(--accent-gold); }
+        .nav-links a::after { content: ''; position: absolute; width: 0; height: 2px; bottom: -6px; left: 0; background-color: var(--accent-gold); transition: var(--transition-fast); }
+        .nav-links a:hover::after { width: 100%; }
         
         .nav-right-group { display: flex; align-items: center; gap: 25px; }
         .contact-info { display: flex; flex-direction: column; text-align: right; }
@@ -72,6 +75,10 @@
         .contact-info strong { font-family: 'Poppins', sans-serif; font-size: 16px; color: var(--accent-gold); letter-spacing: 1px; }
         .nav-btn { background: var(--accent-gold); color: var(--primary-dark); padding: 12px 24px; border-radius: 8px; text-decoration: none; font-weight: 800; font-size: 15px; transition: var(--transition-fast); box-shadow: 0 4px 15px rgba(229, 193, 88, 0.2); }
         .nav-btn:hover { background: #fff; transform: translateY(-2px); box-shadow: 0 6px 20px rgba(255, 255, 255, 0.3); }
+
+        /* 手機版選單開關按鈕 */
+        .menu-toggle { display: none; background: transparent; border: none; color: var(--text-light); font-size: 24px; cursor: pointer; transition: var(--transition-fast); padding: 5px; }
+        .menu-toggle:hover { color: var(--accent-gold); }
 
         /* --- Hero 主視覺橫幅 --- */
         .hero { position: relative; padding: 140px 20px 100px; text-align: center; overflow: hidden; border-bottom: 1px solid var(--border-gold); }
@@ -87,7 +94,7 @@
         .trust-badge { display: flex; align-items: center; gap: 10px; font-weight: 600; font-size: 15px; background: rgba(255,255,255,0.03); padding: 12px 24px; border-radius: 50px; border: 1px solid var(--border-light); backdrop-filter: blur(4px); transition: var(--transition-fast); }
         .trust-badge:hover { border-color: var(--accent-gold); background: rgba(229, 193, 88, 0.05); transform: translateY(-3px); }
         .trust-badge i { color: var(--accent-gold); font-size: 20px; }
-        .trust-badge i.fa-google { color: var(--google-blue); } /* Google Badge Color */
+        .trust-badge i.fa-google { color: var(--google-blue); }
 
         .cta-group { display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; animation: fadeInUp 1s ease 0.8s both; }
         .btn-cta-primary { background: var(--accent-gold); color: var(--primary-dark); padding: 18px 45px; border-radius: 10px; font-weight: 900; font-size: 18px; text-decoration: none; transition: var(--transition-smooth); box-shadow: 0 10px 30px rgba(229, 193, 88, 0.3); display: flex; align-items: center; gap: 10px; }
@@ -98,6 +105,16 @@
         @keyframes fadeInUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
         @keyframes fadeInDown { from { opacity: 0; transform: translateY(-20px); } to { opacity: 1; transform: translateY(0); } }
 
+        /* --- 旗艦加強：動態滾動登場動畫特效 --- */
+        .reveal-element { opacity: 0; transform: translateY(40px); transition: opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1), transform 0.8s cubic-bezier(0.4, 0, 0.2, 1); }
+        .reveal-element.revealed { opacity: 1; transform: translateY(0); }
+        
+        /* 延遲登場類別 */
+        .delay-1 { transition-delay: 0.1s; }
+        .delay-2 { transition-delay: 0.2s; }
+        .delay-3 { transition-delay: 0.3s; }
+        .delay-4 { transition-delay: 0.4s; }
+
         /* --- 通用區塊設定 --- */
         .section-container { padding: 110px 5%; max-width: 1400px; margin: 0 auto; }
         .section-container-alt { background: #0a0e17; padding: 110px 5%; border-top: 1px solid var(--border-light); border-bottom: 1px solid var(--border-light); }
@@ -106,13 +123,42 @@
         .section-title h2::after { content: ''; position: absolute; bottom: -15px; left: 50%; transform: translateX(-50%); width: 80px; height: 4px; background: var(--accent-gold); border-radius: 2px; }
         .section-title p { color: var(--text-muted); font-size: 18px; max-width: 800px; margin: 30px auto 0; }
 
+        /* --- 【修復＆美化】門市 VS 無門市對比專屬樣式 --- */
+        .vs-container { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; max-width: 1200px; margin: 0 auto; padding-top: 20px; }
+        .vs-card { background: var(--card-dark); border: 1px solid var(--border-light); border-radius: 24px; padding: 50px 40px; position: relative; transition: var(--transition-smooth); display: flex; flex-direction: column; }
+        .vs-card:hover { transform: translateY(-5px); }
+        
+        /* 傳統地舖黑歷史樣式 */
+        .vs-card.con { opacity: 0.75; border-color: rgba(255, 255, 255, 0.04); background: rgba(18, 24, 36, 0.5); }
+        .vs-badge-con { position: absolute; top: -16px; left: 40px; background: #334155; color: #94a3b8; padding: 6px 18px; border-radius: 30px; font-size: 13px; font-weight: 800; letter-spacing: 0.5px; }
+        
+        /* 新榮耀直營極致樣式 */
+        .vs-card.pro { border: 2px solid var(--accent-gold); box-shadow: 0 15px 45px rgba(229, 193, 88, 0.08); background: linear-gradient(180deg, var(--card-lighter) 0%, var(--card-dark) 100%); }
+        .vs-card.pro:hover { box-shadow: 0 20px 55px rgba(229, 193, 88, 0.15); }
+        .vs-badge-pro { position: absolute; top: -16px; left: 40px; background: linear-gradient(135deg, var(--accent-gold), #ffd700); color: var(--primary-dark); padding: 6px 20px; border-radius: 30px; font-size: 13px; font-weight: 900; letter-spacing: 0.5px; box-shadow: 0 4px 15px rgba(229, 193, 88, 0.3); }
+        
+        .vs-header { font-size: 26px; font-weight: 900; margin-bottom: 35px; color: #fff; display: flex; align-items: center; gap: 12px; }
+        .vs-header.pro-header { color: var(--accent-gold); }
+        .vs-header i { font-size: 22px; }
+        
+        .vs-list { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 30px; }
+        .vs-list li { display: flex; gap: 20px; align-items: flex-start; }
+        .vs-icon-box { width: 38px; height: 38px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 15px; flex-shrink: 0; margin-top: 2px; }
+        
+        .vs-icon-box.con-icon { background: rgba(239, 68, 68, 0.1); color: #ef4444; border: 1px solid rgba(239, 68, 68, 0.2); }
+        .vs-icon-box.pro-icon { background: rgba(34, 197, 94, 0.1); color: #22c55e; border: 1px solid rgba(34, 197, 94, 0.2); }
+        
+        .vs-text h4 { margin: 0 0 6px 0; font-size: 19px; font-weight: 800; color: #fff; }
+        .vs-card.con .vs-text h4 { color: #cbd5e1; }
+        .vs-text p { margin: 0; font-size: 14.5px; color: var(--text-muted); line-height: 1.6; }
+
         /* --- Before & After 滑動對比區 --- */
         .ba-wrapper { display: flex; flex-direction: column; align-items: center; gap: 30px; }
-        .ba-container { position: relative; width: 100%; max-width: 1000px; aspect-ratio: 16/9; overflow: hidden; border-radius: 20px; box-shadow: 0 20px 50px rgba(0,0,0,0.6); border: 1px solid var(--border-light); }
-        .ba-image { position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; }
+        .ba-container { position: relative; width: 100%; max-width: 1000px; aspect-ratio: 16/9; overflow: hidden; border-radius: 20px; box-shadow: 0 20px 50px rgba(0,0,0,0.6); border: 1px solid var(--border-light); user-select: none; }
+        .ba-image { position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; pointer-events: none; }
         .ba-overlay { position: absolute; top: 0; left: 0; width: 50%; height: 100%; overflow: hidden; border-right: 4px solid var(--accent-gold); box-shadow: 5px 0 15px rgba(0,0,0,0.5); }
-        .ba-slider { position: absolute; top: 0; left: 0; width: 100%; height: 100%; opacity: 0; cursor: ew-resize; z-index: 10; }
-        .ba-slider-btn { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 50px; height: 50px; background: var(--accent-gold); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: var(--primary-dark); font-size: 20px; pointer-events: none; z-index: 5; box-shadow: 0 0 20px rgba(0,0,0,0.5); }
+        .ba-slider { position: absolute; top: 0; left: 0; width: 100%; height: 100%; opacity: 0; cursor: ew-resize; z-index: 10; margin: 0; }
+        .ba-slider-btn { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 50px; height: 50px; background: var(--accent-gold); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: var(--primary-dark); font-size: 20px; pointer-events: none; z-index: 5; box-shadow: 0 0 20px rgba(0,0,0,0.5); transition: background var(--transition-fast); }
         .ba-labels { position: absolute; bottom: 20px; width: 100%; display: flex; justify-content: space-between; padding: 0 30px; pointer-events: none; z-index: 5; }
         .ba-label { background: rgba(0,0,0,0.7); color: #fff; padding: 6px 15px; border-radius: 30px; font-size: 14px; font-weight: 700; backdrop-filter: blur(5px); border: 1px solid rgba(255,255,255,0.2); }
         
@@ -137,6 +183,16 @@
         textarea.form-input { resize: vertical; min-height: 120px; }
         .form-submit-btn { width: 100%; background: var(--accent-gold); color: var(--primary-dark); padding: 18px; border-radius: 12px; font-weight: 800; font-size: 18px; cursor: pointer; border: none; transition: var(--transition-fast); box-shadow: 0 10px 30px rgba(229, 193, 88, 0.2); position: relative; z-index: 2; display: flex; justify-content: center; align-items: center; gap: 10px; }
         .form-submit-btn:hover { background: #fff; transform: translateY(-3px); box-shadow: 0 15px 40px rgba(255, 255, 255, 0.3); }
+
+        /* 相片上傳專用 CSS */
+        .file-upload-wrapper { position: relative; width: 100%; border: 2px dashed var(--border-light); border-radius: 12px; padding: 40px 20px; text-align: center; transition: var(--transition-fast); background: rgba(0,0,0,0.2); cursor: pointer; display: flex; flex-direction: column; align-items: center; justify-content: center; }
+        .file-upload-wrapper:hover, .file-upload-wrapper.dragover { border-color: var(--accent-gold); background: rgba(229, 193, 88, 0.05); }
+        .file-upload-wrapper input[type="file"] { position: absolute; top: 0; left: 0; width: 100%; height: 100%; opacity: 0; cursor: pointer; z-index: 10; }
+        .file-upload-icon { font-size: 40px; color: var(--accent-gold); margin-bottom: 15px; transition: transform 0.3s ease; }
+        .file-upload-wrapper:hover .file-upload-icon { transform: translateY(-3px); }
+        .file-upload-text { color: #cbd5e1; font-size: 16px; margin: 0; font-weight: 600; }
+        .file-upload-subtext { color: var(--text-muted); font-size: 13px; margin-top: 5px; }
+        .file-name-display { margin-top: 15px; font-size: 14px; color: var(--accent-gold); word-break: break-all; max-width: 100%; padding: 0 20px; font-weight: 600; text-align: center; line-height: 1.5; }
 
         /* --- 品牌理念與數據 --- */
         .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
@@ -202,8 +258,8 @@
         .c-tab-image img { width: 100%; height: 100%; object-fit: cover; transition: var(--transition-smooth); }
         .c-tab-image:hover img { transform: scale(1.08); }
 
-        /* --- 傢俬專區 --- */
-        .furniture-showcase { display: grid; grid-template-columns: 1.2fr 1fr; gap: 60px; align-items: center; }
+        /* --- 傢俬專區與板材 (融合版) --- */
+        .furniture-showcase { display: grid; grid-template-columns: 1.2fr 1fr; gap: 60px; align-items: center; margin-bottom: 70px; }
         .furniture-content h3 { font-size: 30px; color: var(--accent-gold); margin-bottom: 20px; }
         .furniture-content p { color: var(--text-muted); font-size: 16px; margin-bottom: 30px; line-height: 1.8; }
         .materials-list-modern { display: flex; flex-direction: column; gap: 20px; }
@@ -219,8 +275,28 @@
         .f-img-box { background-size: cover; background-position: center; transition: var(--transition-smooth); width: 100%; height: 100%; }
         .f-img-box:hover { transform: scale(1.05); }
 
+        .board-brands-header { text-align: center; margin-bottom: 40px; }
+        .board-brands-header h3 { font-size: 28px; color: #fff; margin-bottom: 10px; }
+        .board-brands-header h3 i { color: var(--accent-gold); margin-right: 10px; }
+        .board-brands-header p { color: var(--text-muted); font-size: 15px; }
+        
+        .board-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 20px; }
+        .board-card { background: var(--card-dark); border: 1px solid var(--border-light); border-radius: 16px; padding: 30px 20px; text-align: center; transition: 0.3s; }
+        .board-card:hover { border-color: var(--accent-gold); transform: translateY(-5px); background: var(--card-lighter); }
+        .board-logo-box { height: 60px; display: flex; align-items: center; justify-content: center; margin-bottom: 15px; border-bottom: 1px solid rgba(255,255,255,0.05); padding-bottom: 15px; }
+        .b-logo { font-family: 'Poppins', sans-serif; font-size: 26px; font-weight: 900; letter-spacing: 1px; }
+        .l-egger { color: #D61C22; font-style: italic; }
+        .l-egger span { color: #fff; font-size: 20px; font-weight: 300; }
+        .l-formica { color: #0077C8; text-transform: uppercase; letter-spacing: 2px; }
+        .l-tubao { color: #2E8B57; display: flex; align-items: center; gap: 8px; justify-content: center; }
+        .l-wanhua { color: #1E90FF; font-family: 'Noto Sans TC', sans-serif; font-weight: 900; }
+        .l-zhihua { color: #8B4513; text-transform: uppercase; }
+
+        .board-card h5 { margin: 0 0 8px 0; font-size: 18px; color: #fff; }
+        .board-card p { margin: 0; font-size: 13px; color: var(--text-muted); line-height: 1.6; }
+
         /* --- 精選案例 Portfolio --- */
-        .portfolio-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(350px, 1fr)); gap: 25px; }
+        .portfolio-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 25px; }
         .portfolio-item { position: relative; border-radius: 16px; overflow: hidden; height: 280px; cursor: pointer; }
         .portfolio-item img { width: 100%; height: 100%; object-fit: cover; transition: var(--transition-smooth); }
         .portfolio-overlay { position: absolute; inset: 0; background: linear-gradient(to top, rgba(0,0,0,0.9), transparent); opacity: 0; transition: var(--transition-smooth); display: flex; flex-direction: column; justify-content: flex-end; padding: 25px; }
@@ -300,12 +376,35 @@
         .fb .post-tags { color: var(--fb-blue); }
         .xhs .post-tags { color: var(--xhs-red); }
 
+        /* --- 流程圖 Process (從舊HTML引入) --- */
         .process-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 30px; text-align: center; margin-top: 60px; counter-reset: step-counter; }
         .process-step { background: var(--card-dark); padding: 50px 30px 40px; border-radius: 20px; border: 1px solid var(--border-light); transition: var(--transition-smooth); position: relative; }
         .process-step:hover { border-color: var(--accent-gold); transform: translateY(-10px); background: var(--card-lighter); }
         .step-num { width: 70px; height: 70px; background: linear-gradient(135deg, var(--accent-gold), #d4af37); color: var(--primary-dark); font-size: 30px; font-weight: 900; border-radius: 50%; display: flex; align-items: center; justify-content: center; position: absolute; top: -35px; left: 50%; transform: translateX(-50%); border: 8px solid var(--primary-dark); box-shadow: 0 5px 15px rgba(229, 193, 88, 0.4); }
         .process-step h3 { color: #fff; margin: 0 0 15px 0; font-size: 22px; font-weight: 800; }
         .process-step p { color: var(--text-muted); font-size: 15px; margin: 0; line-height: 1.7; }
+
+        /* --- 合作夥伴大集合 --- */
+        .partners-section { padding: 70px 5%; background: #04070a; border-top: 1px solid var(--border-light); text-align: center; }
+        .partners-section h3 { font-size: 24px; color: #fff; margin-bottom: 40px; font-weight: 800; letter-spacing: 2px; }
+        .partners-section h3 span { color: var(--accent-gold); }
+        .partners-wrapper { display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 40px 60px; max-width: 1400px; margin: 0 auto; opacity: 0.7; }
+        .partner-brand { display: flex; align-items: center; gap: 10px; font-family: 'Poppins', sans-serif; font-size: 22px; font-weight: 800; color: #64748b; filter: grayscale(100%); transition: 0.4s ease; cursor: default; }
+        .partner-brand:hover { color: #fff; filter: grayscale(0%); transform: scale(1.1); }
+        .partner-brand i { font-size: 28px; }
+        .partner-brand.schneider:hover { color: #3DCD58; }
+        .partner-brand.nippon:hover { color: #E4002B; }
+        .partner-brand.blum:hover { color: #F37021; }
+        .partner-brand.sika:hover { color: #FFCC00; }
+        .partner-brand.philips:hover { color: #0B5EAA; }
+        .partner-brand.samsung:hover { color: #1428A0; }
+        .partner-brand.makita:hover { color: #008D93; }
+        .partner-brand.yale:hover { color: #FFD100; }
+        .partner-brand.dulux:hover { color: #004B87; }
+        .partner-brand.hettich:hover { color: #E3000F; }
+        .partner-brand.grohe:hover { color: #005BBB; }
+        .partner-brand.daikin:hover { color: #0097E0; }
+        .partner-brand.m3:hover { color: #FF0000; }
 
         .faq-container { max-width: 900px; margin: 0 auto; display: flex; flex-direction: column; gap: 15px; }
         .faq-item { background: var(--card-dark); border: 1px solid var(--border-light); border-radius: 12px; overflow: hidden; }
@@ -337,16 +436,34 @@
         .footer-bottom a { color: #64748b; text-decoration: none; margin-left: 15px; transition: 0.3s; }
         .footer-bottom a:hover { color: #fff; }
 
-        /* --- 響應式 Mobile RWD --- */
+        /* --- 響應式 Mobile RWD 優化 --- */
         @media (max-width: 1024px) {
             .footer-grid { grid-template-columns: 1fr 1fr; }
             .furniture-showcase { grid-template-columns: 1fr; }
         }
         @media (max-width: 768px) {
-            header { flex-direction: column; gap: 15px; padding: 15px 20px; }
-            .nav-links { display: none; }
+            header { padding: 15px 20px; height: 75px; }
+            header.scrolled { padding: 15px 20px; }
+            
+            /* 加強版：手機版滑出式導航選單選單 UI */
+            .menu-toggle { display: block; order: 3; }
+            .nav-links { 
+                position: fixed; top: 75px; left: -100%; width: 100%; height: calc(100vh - 75px); 
+                background: rgba(7, 10, 16, 0.98); backdrop-filter: blur(20px); 
+                flex-direction: column; gap: 30px; padding: 40px 20px; 
+                transition: var(--transition-smooth); z-index: 999; 
+                border-top: 1px solid var(--border-gold); overflow-y: auto;
+                align-items: center; justify-content: flex-start;
+            }
+            .nav-links.active { left: 0; }
+            .nav-links a { font-size: 18px; width: 100%; text-align: center; padding: 10px 0; }
+            
+            .nav-right-group { order: 2; margin-left: auto; margin-right: 15px; }
+            .contact-info { display: none; } /* 手機端隱藏多餘文字 */
+            .nav-btn { padding: 10px 16px; font-size: 14px; }
+
             .hero { padding: 80px 20px 60px; }
-            .hero h1 { font-size: 38px; }
+            .hero h1 { font-size: 34px; }
             .about-grid, .social-grid { grid-template-columns: 1fr; gap: 40px; }
             .stats-container { grid-template-columns: 1fr 1fr; gap: 30px; }
             .mode-selector { flex-direction: column; gap: 10px; background: transparent; border: none; }
@@ -368,19 +485,23 @@
             /* 新增模塊 RWD */
             .form-grid { grid-template-columns: 1fr; }
             .form-section { padding: 40px 25px; }
+
+            /* 【修復優化】門市 RWD */
+            .vs-container { grid-template-columns: 1fr; gap: 35px; }
+            .vs-card { padding: 40px 25px; }
+            .vs-badge-con, .vs-badge-pro { left: 25px; }
         }
     </style>
 </head>
 <body>
 
     <!-- 頂部導航 -->
-    <header>
+    <header id="main-header">
         <a href="#" class="company-logo">
-            <!-- 加入自家 Logo：請將 your-logo.png 替換為你的圖片路徑 -->
-            <img src="your-logo.png" alt="新榮耀工程" class="logo-img">
-            <h1 class="company-name">新榮耀工程</h1>
+            <img src="logo.png" alt="新榮耀工程" class="logo-img">
+            <h1 class="company-name">新榮耀<span>工程</span></h1>
         </a>
-        <nav class="nav-links">
+        <nav class="nav-links" id="nav-menu">
             <a href="#about">關於我們</a>
             <a href="#services">專業服務</a>
             <a href="#furniture">自設廠房</a>
@@ -395,6 +516,10 @@
             </div>
             <a href="https://wa.me/85212345678" class="nav-btn" target="_blank"><i class="fa-brands fa-whatsapp"></i> WhatsApp 查詢</a>
         </div>
+        <!-- 漢堡按鈕開關 -->
+        <button class="menu-toggle" id="mobile-toggle" aria-label="Toggle Menu">
+            <i class="fa-solid fa-bars"></i>
+        </button>
     </header>
 
     <!-- 主視覺橫幅 -->
@@ -409,9 +534,9 @@
         <div class="trust-badges">
             <div class="trust-badge"><i class="fa-solid fa-file-signature"></i> 屋宇署小型工程牌照</div>
             <div class="trust-badge"><i class="fa-solid fa-shield-halved"></i> 24個月防漏結構保固</div>
-            <div class="trust-badge"><i class="fa-brands fa-google"></i> Google 5星滿分好評</div> <!-- 新增 Google 徽章 -->
+            <div class="trust-badge"><i class="fa-brands fa-google"></i> Google 5星滿分好評</div>
             <div class="trust-badge"><i class="fa-solid fa-user-tie"></i> 專屬管工每日匯報</div>
-            <div class="trust-badge"><i class="fa-solid fa-leaf"></i> E0 級低甲醛環保認證</div>
+            <div class="trust-badge"><i class="fa-solid fa-leaf"></i> E0 級低甲醛環保認釋</div>
         </div>
 
         <div class="cta-group">
@@ -421,7 +546,7 @@
     </section>
 
     <!-- 關於我們 & 數據 -->
-    <section id="about" class="section-container">
+    <section id="about" class="section-container reveal-element">
         <div class="about-grid">
             <div class="about-image">
                 <img src="https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&w=800&q=80" alt="專業裝修團隊">
@@ -456,39 +581,107 @@
         </div>
     </section>
 
+    <!-- 【優化完美版】門市 VS 無門市 -->
+    <section id="store-vs" class="section-container-alt reveal-element">
+        <div class="section-title">
+            <h2>破舊立新・為何我們選擇<span>「無門市營運」</span>？</h2>
+            <p>省下香港地舖極度高昂的租金成本，將每一分錢直接投資在你的<strong>建材用料與施工質素</strong>上，為你帶來真正的性價比。</p>
+        </div>
+        
+        <div class="vs-container">
+            <!-- 傳統做法 -->
+            <div class="vs-card con">
+                <div class="vs-badge-con">舊式做法</div>
+                <div class="vs-header"><i class="fa-solid fa-store-slash"></i> 傳統地舖裝修公司</div>
+                <ul class="vs-list">
+                    <li>
+                        <div class="vs-icon-box con-icon"><i class="fa-solid fa-xmark"></i></div>
+                        <div class="vs-text">
+                            <h4>高昂營運成本轉嫁</h4>
+                            <p>每月承受幾萬至十幾萬舖租壓力，羊毛出在羊身上，報價往往存在大量「水分」。</p>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="vs-icon-box con-icon"><i class="fa-solid fa-xmark"></i></div>
+                        <div class="vs-text">
+                            <h4>溝通易出現斷層</h4>
+                            <p>「門市 Sales ➜ 設計師 ➜ 判頭 ➜ 師傅」，多重人事交接容易導致做出來貨不對辦。</p>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="vs-icon-box con-icon"><i class="fa-solid fa-xmark"></i></div>
+                        <div class="vs-text">
+                            <h4>浪費時間請假揀料</h4>
+                            <p>業主需要特地請假，親自落門市與設計師核對圖紙及選購物料，極不方便。</p>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- 新榮耀做法 -->
+            <div class="vs-card pro">
+                <div class="vs-badge-pro"><i class="fa-solid fa-fire"></i> 明碼實價</div>
+                <div class="vs-header pro-header"><i class="fa-solid fa-crown"></i> 新榮耀全線上直營</div>
+                <ul class="vs-list">
+                    <li>
+                        <div class="vs-icon-box pro-icon"><i class="fa-solid fa-check"></i></div>
+                        <div class="vs-text">
+                            <h4>極致性價比．升級用料</h4>
+                            <p>節省龐大租金，直接將資源回饋給客戶，同樣價錢你能換來 Blum 五金及 E0 級環保板材。</p>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="vs-icon-box pro-icon"><i class="fa-solid fa-check"></i></div>
+                        <div class="vs-text">
+                            <h4>專屬管工一對一跟進</h4>
+                            <p>由資深管工直接與你對接並落地盤監工，WhatsApp 每日發放施工相片，保證無斷層。</p>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="vs-icon-box pro-icon"><i class="fa-solid fa-check"></i></div>
+                        <div class="vs-text">
+                            <h4>管工帶「流動建材庫」上門</h4>
+                            <p>帶齊過百款板材、石材樣本直接上門，在你家中實地比對燈光及顏色，更準確省時。</p>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
     <!-- 嚴選國際級建材 -->
-    <section class="section-container-alt">
+    <section class="section-container-alt reveal-element">
         <div class="section-title">
             <h2>👑 嚴選國際級名牌建材</h2>
             <p>好手工必須配合好用料。底料我們絕不妥協，全部採用業界公認最高標準，保障你的家居安全與耐用度。</p>
         </div>
         <div class="brands-grid">
-            <div class="brand-card">
+            <div class="brand-card reveal-element delay-1">
                 <div class="brand-icon"><i class="fa-solid fa-plug"></i></div>
                 <h4>施耐德 Schneider</h4>
                 <p>全屋標配更換法國施耐德 (Schneider Electric) 總電箱及斷路器，確保用電安全零意外。</p>
             </div>
-            <div class="brand-card">
+            <div class="brand-card reveal-element delay-2">
                 <div class="brand-icon"><i class="fa-solid fa-paint-roller"></i></div>
                 <h4>立邦 Nippon Paint</h4>
                 <p>採用立邦防霉/金裝五合一環保乳膠漆，具備抗污、防潮及淨味功能，即髹即住。</p>
             </div>
-            <div class="brand-card">
+            <div class="brand-card reveal-element delay-3">
                 <div class="brand-icon"><i class="fa-solid fa-droplet"></i></div>
                 <h4>黑豹 / 西卡 Sika</h4>
                 <p>廚廁實施重型防水，採用進口黑豹或瑞士 Sika 高分子防水塗料，保證 48小時試水不漏。</p>
             </div>
-            <div class="brand-card">
+            <div class="brand-card reveal-element delay-1">
                 <div class="brand-icon"><i class="fa-solid fa-gears"></i></div>
                 <h4>奧地利 Blum 五金</h4>
                 <p>訂造傢俬標配歐洲原裝進口 Blum 緩衝門鉸，開合靜音順滑，經測試可推拉超過十萬次。</p>
             </div>
-            <div class="brand-card">
+            <div class="brand-card reveal-element delay-2">
                 <div class="brand-icon"><i class="fa-solid fa-tree"></i></div>
                 <h4>E0 級多層實木板</h4>
                 <p>摒棄易發霉蔗渣板，全線採用超低甲醛 E0 級防潮大芯板/多層實木夾板，適合香港潮濕天氣。</p>
             </div>
-            <div class="brand-card">
+            <div class="brand-card reveal-element delay-3">
                 <div class="brand-icon"><i class="fa-brands fa-aws"></i></div>
                 <h4>英國標準銅線水管</h4>
                 <p>暗喉水電全面採用符合 BS 英國標準之優質純銅電線及澳洲/英國包膠銅喉，拒絕生鏽漏水。</p>
@@ -497,14 +690,14 @@
     </section>
 
     <!-- 專業服務範疇 -->
-    <section id="services" class="section-container">
+    <section id="services" class="section-container reveal-element">
         <div class="section-title">
             <h2>多元化專業工程範疇</h2>
             <p>由住宅入伙到大型商業項目，專業工隊為貼把關，提供一站式解決方案</p>
         </div>
         <div class="service-grid">
             <!-- 01: 清水樓 -->
-            <div class="service-card">
+            <div class="service-card reveal-element delay-1">
                 <div class="service-card-header">
                     <div class="service-icon"><i class="fa-solid fa-house-chimney"></i></div>
                     <div class="service-num">01</div>
@@ -516,7 +709,7 @@
                 </div>
             </div>
             <!-- 02: 深度全爆 -->
-            <div class="service-card">
+            <div class="service-card reveal-element delay-2">
                 <div class="service-card-header">
                     <div class="service-icon"><i class="fa-solid fa-hammer"></i></div>
                     <div class="service-num">02</div>
@@ -528,7 +721,7 @@
                 </div>
             </div>
             <!-- 03: 訂造傢俬 -->
-            <div class="service-card">
+            <div class="service-card reveal-element delay-3">
                 <div class="service-card-header">
                     <div class="service-icon"><i class="fa-solid fa-couch"></i></div>
                     <div class="service-num">03</div>
@@ -541,7 +734,7 @@
             </div>
             
             <!-- 04: 商業及機構工程 -->
-            <div class="service-card full-width-card">
+            <div class="service-card full-width-card reveal-element">
                 <div class="service-card-header">
                     <div class="service-icon"><i class="fa-solid fa-building-user"></i></div>
                     <div class="service-num">04</div>
@@ -562,7 +755,6 @@
                         </button>
                     </div>
                     
-                    <!-- 分頁內容: 寫字樓 -->
                     <div id="tab-office" class="c-tab-content active">
                         <div class="c-tab-text">
                             <h4>寫字樓及商舖裝修</h4>
@@ -579,7 +771,6 @@
                         </div>
                     </div>
 
-                    <!-- 分頁內容: 學校 -->
                     <div id="tab-school" class="c-tab-content">
                         <div class="c-tab-text">
                             <h4>學校及教育機構工程</h4>
@@ -596,7 +787,6 @@
                         </div>
                     </div>
 
-                    <!-- 分頁內容: 會所 -->
                     <div id="tab-clubhouse" class="c-tab-content">
                         <div class="c-tab-text">
                             <h4>高級屋苑會所裝修</h4>
@@ -617,33 +807,28 @@
         </div>
     </section>
 
-    <!-- 傢俬專區 -->
-    <section id="furniture" class="section-container-alt">
+    <!-- 傢俬專區與板材大比拼 -->
+    <section id="furniture" class="section-container reveal-element delay-3">
+        <div class="section-title">
+            <h2>自訂極致工藝</h2>
+        </div>
         <div class="furniture-showcase">
             <div class="furniture-content">
                 <h3>👑 自設東莞廠房・極致傢俬工藝</h3>
-                <p>明白香港蝸居對收納的強烈需求，我們為客戶量身打造符合人體工學及美學的頂級收納系統。從防霉板材到靜音五金，每個細節都經得起歲月考驗。</p>
-                
+                <p>明白香港蝸居對收納的需求，我們為客戶量身打造頂級收納系統。從防霉板材到靜音五金，每個細節都經得起考驗。</p>
                 <div class="materials-list-modern">
                     <div class="material-row">
                         <div class="material-icon-box"><i class="fa-solid fa-layer-group"></i></div>
                         <div class="material-text">
-                            <h4>抗變形 E0 多層實木夾板</h4>
-                            <p>櫃體採用 18mm 加厚 E0 級多層實木防潮夾板，承重力極高。甲醛釋放量幾乎為零，孕婦及嬰兒家庭亦可安心入住。背板亦堅持使用加厚板，拒絕受潮發霉。</p>
+                            <h4>抗變形 18mm 加厚板材</h4>
+                            <p>櫃體及背板堅持使用加厚實木夾板，承重力極高，拒絕受潮發霉。</p>
                         </div>
                     </div>
                     <div class="material-row">
                         <div class="material-icon-box"><i class="fa-solid fa-swatchbook"></i></div>
                         <div class="material-text">
-                            <h4>頂級飾面技術 (PET / 西德板)</h4>
-                            <p>提供最新潮流的 PET 膚感啞面納米門板（抗指紋、易清潔），或耐磨防刮的西德板 (Formica) 防火膠板。配合激光封邊技術，做到無黑線、不翹邊的完美視覺效果。</p>
-                        </div>
-                    </div>
-                    <div class="material-row">
-                        <div class="material-icon-box"><i class="fa-solid fa-wand-magic-sparkles"></i></div>
-                        <div class="material-text">
-                            <h4>空間魔法：全屋地台與懸浮設計</h4>
-                            <p>專精高難度工藝，例如：結合隱藏式 LED 燈帶的懸浮電視櫃、無把手按壓式隱形門、以及配備重型液壓桿的超大容量油壓床及榻榻米儲物地台。</p>
+                            <h4>無縫激光封邊技術</h4>
+                            <p>配合無黑線、不翹邊的激光封邊技術，提供最新 PET 膚感啞面或西德板防火飾面。</p>
                         </div>
                     </div>
                 </div>
@@ -661,10 +846,43 @@
                 </div>
             </div>
         </div>
+
+        <!-- 板材品牌陣容 -->
+        <div class="board-brands-header">
+            <h3><i class="fa-solid fa-leaf"></i> 嚴選國際級頂級傢俬板材</h3>
+            <p>我們與世界級建材品牌深度合作，絕不使用劣質蔗渣板，確保全屋零甲醛、防潮抗刮</p>
+        </div>
+        <div class="board-grid">
+            <div class="board-card">
+                <div class="board-logo-box"><div class="b-logo l-egger">EGGER <span>®</span></div></div>
+                <h5>奧地利 愛格板 (Egger)</h5>
+                <p>全球頂尖人造板品牌，達日本最嚴格 F4星 環保標準，原裝進口，紋理極致逼真。</p>
+            </div>
+            <div class="board-card">
+                <div class="board-logo-box"><div class="b-logo l-formica">FORMICA</div></div>
+                <h5>美國 富美家 (西德板)</h5>
+                <p>百年經典品牌，防火膠板業界權威。具備超強抗刮、耐磨及防高溫特性，常用於廚櫃。</p>
+            </div>
+            <div class="board-card">
+                <div class="board-logo-box"><div class="b-logo l-wanhua">萬華禾香板</div></div>
+                <h5>萬華 零甲醛禾香板</h5>
+                <p>採用農作物秸稈配合醫療級 MDI 生態膠製成，真正做到「零甲醛」添加，孕嬰首選。</p>
+            </div>
+            <div class="board-card">
+                <div class="board-logo-box"><div class="b-logo l-tubao"><i class="fa-solid fa-tree"></i> 兔寶寶</div></div>
+                <h5>兔寶寶 實木多層板</h5>
+                <p>國內一線上市品牌，E0級超低甲醛多層實木夾板，防潮抗變形，極度適合香港潮濕氣候。</p>
+            </div>
+            <div class="board-card">
+                <div class="board-logo-box"><div class="b-logo l-zhihua">ZHIHUA PET</div></div>
+                <h5>志華 PET 膚感板</h5>
+                <p>極致啞面抗指紋技術，觸感如嬰兒肌膚般滑溜，抗黃變，現代輕奢奶油風必備。</p>
+            </div>
+        </div>
     </section>
 
     <!-- 報價套餐區 -->
-    <section id="pricing" class="section-container">
+    <section id="pricing" class="section-container reveal-element">
         <div class="section-title">
             <h2>📑 2026 連工包料裝修套餐明細</h2>
             <p>項目數量完全透明化。以下報價已包含<strong style="color:var(--accent-gold);">精準的傢俬呎數及指定工序</strong>，絕不以「面議」或「按實算」等字眼作隱藏收費的藉口。</p>
@@ -677,8 +895,7 @@
 
         <!-- 🎯 Tab A: 清水樓套餐 -->
         <div id="content-a" class="pricing-container active">
-            <!-- (保持原有的 Tab A 內容) -->
-            <div class="tier-card">
+            <div class="tier-card reveal-element delay-1">
                 <h3 class="tier-title">細單位 ｜ 基礎優化</h3>
                 <div class="tier-sqft">實用面積：250 - 350 呎 (約 1-2 人)</div>
                 <div class="tier-price"><span class="hkd">$</span>88,000<span> 起</span></div>
@@ -690,20 +907,20 @@
                 <a href="#contact" class="btn-select btn-select-outline">索取詳細清單 <i class="fa-solid fa-arrow-right"></i></a>
             </div>
             
-            <div class="tier-card popular">
+            <div class="tier-card popular reveal-element delay-2">
                 <div class="tier-badge"><i class="fa-solid fa-fire"></i> 收納最強推薦・性價比之選</div>
                 <h3 class="tier-title">中單位 ｜ 全面升級</h3>
                 <div class="tier-sqft">實用面積：360 - 450 呎 (約 3-4 人)</div>
                 <div class="tier-price"><span class="hkd">$</span>148,000<span> 起</span></div>
                 <ul class="tier-features">
                     <li><i class="fa-solid fa-circle-check feature-check"></i><div class="feature-text"><span class="hl-title">水電擴充與隔音間房</span>新增共 <span class="highlight-num">20</span> 個入牆暗線位。新建防潮石膏板間牆連隔音棉。</div></li>
-                    <li><i class="fa-solid fa-circle-check feature-check"></i><div class="feature-text"><span class="hl-title">全屋高階油漆處理</span>塗刷 <span class="highlight-num">3</span> 層立邦金裝五合一漆。升級加厚 SPC 地板。</div></li>
+                    <li><i class="fa-solid fa-circle-check feature-check"></i><div class="feature-text"><span class="hl-title">全屋高階油漆處理</span>塗刷 <span class="highlight-num">3</span> 層立邦金裝五合一漆. 升級加厚 SPC 地板。</div></li>
                     <li><i class="fa-solid fa-circle-check feature-check"></i><div class="feature-text"><span class="hl-title">海量 22呎傢俬 ＋ 60呎地台</span><div class="furniture-tags"><span class="f-tag">5呎 C字鞋櫃</span><span class="f-tag">6呎 特色電視牆櫃</span><span class="f-tag">7呎 衣櫃</span><span class="f-tag">4呎 床斗</span><span class="f-tag">60呎 榻榻米地台</span></div></div></li>
                 </ul>
                 <a href="#contact" class="btn-select">預約免費度尺 <i class="fa-solid fa-arrow-right"></i></a>
             </div>
 
-            <div class="tier-card">
+            <div class="tier-card reveal-element delay-3">
                 <h3 class="tier-title">大單位 ｜ 尊尚豪裝</h3>
                 <div class="tier-sqft">實用面積：460 - 600+ 呎 (多房佈局)</div>
                 <div class="tier-price"><span class="hkd">$</span>198,000<span> 起</span></div>
@@ -717,7 +934,6 @@
 
         <!-- 🎯 Tab B: 大全爆套餐 -->
         <div id="content-b" class="pricing-container">
-            <!-- (保持原有的 Tab B 內容) -->
             <div class="tier-card">
                 <h3 class="tier-title">細單位 ｜ 核心全爆</h3>
                 <div class="tier-sqft">實用面積：250 - 350 呎</div>
@@ -753,7 +969,6 @@
                 </ul>
                 <a href="#contact" class="btn-select btn-select-outline">索取詳細清單 <i class="fa-solid fa-arrow-right"></i></a>
             </div>
-
         </div>
         
         <p style="text-align: center; margin-top: 40px; color: var(--text-muted); font-size: 13px; max-width: 1000px; margin-left: auto; margin-right: auto; line-height: 1.8;">
@@ -761,27 +976,20 @@
         </p>
     </section>
 
-    <!-- [新區塊] Before & After 實景對比 -->
-    <section id="before-after" class="section-container-alt">
+    <!-- Before & After 實景對比 -->
+    <section id="before-after" class="section-container-alt reveal-element">
         <div class="section-title">
             <h2>✨ 裝修前後真實對比</h2>
             <p>眼見為實，拖動中央滑塊，親身感受全爆翻新帶來的極致空間變化</p>
         </div>
         <div class="ba-wrapper">
             <div class="ba-container">
-                <!-- Before 圖片 (底層) -->
                 <img class="ba-image" src="https://images.unsplash.com/photo-1584622781564-1d987f7333c1?auto=format&fit=crop&w=1000&q=80" alt="裝修前">
-                
-                <!-- After 圖片 (上層 Overlay) -->
                 <div class="ba-overlay" id="ba-overlay">
                     <img class="ba-image" src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1000&q=80" alt="裝修後">
                 </div>
-                
-                <!-- 滑塊 UI 控制元件 -->
                 <div class="ba-slider-btn" id="ba-btn"><i class="fa-solid fa-arrows-left-right"></i></div>
                 <input type="range" min="0" max="100" value="50" class="ba-slider" id="ba-slider" aria-label="Before/After Slider">
-                
-                <!-- 標籤 -->
                 <div class="ba-labels">
                     <span class="ba-label">裝修後 (After)</span>
                     <span class="ba-label">裝修前 (Before)</span>
@@ -791,13 +999,13 @@
     </section>
 
     <!-- 精選案例 Portfolio -->
-    <section id="portfolio" class="section-container">
+    <section id="portfolio" class="section-container reveal-element">
         <div class="section-title">
             <h2>📸 精選工程案例</h2>
             <p>看看我們如何將破舊的單位，改造成溫馨實用的現代家居</p>
         </div>
         <div class="portfolio-grid">
-            <div class="portfolio-item">
+            <div class="portfolio-item reveal-element delay-1">
                 <img src="https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?auto=format&fit=crop&w=600&q=80" alt="法式奶油風">
                 <div class="portfolio-overlay">
                     <span class="p-tag">全爆翻新</span>
@@ -805,7 +1013,7 @@
                     <p class="p-desc">法式奶油風｜全屋 PET 啞面傢俬｜開放式廚房</p>
                 </div>
             </div>
-            <div class="portfolio-item">
+            <div class="portfolio-item reveal-element delay-2">
                 <img src="https://images.unsplash.com/photo-1593696140826-c58b021acf8b?auto=format&fit=crop&w=600&q=80" alt="現代輕奢風">
                 <div class="portfolio-overlay">
                     <span class="p-tag">清水樓優化</span>
@@ -813,7 +1021,7 @@
                     <p class="p-desc">現代輕奢風｜岩板電視牆｜隱藏式燈帶設計</p>
                 </div>
             </div>
-            <div class="portfolio-item">
+            <div class="portfolio-item reveal-element delay-3">
                 <img src="https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&w=600&q=80" alt="日式木系">
                 <div class="portfolio-overlay">
                     <span class="p-tag">舊居屋翻新</span>
@@ -825,15 +1033,14 @@
     </section>
 
     <!-- 社群證明 (Facebook & 小紅書) -->
-    <section class="section-container-alt">
+    <section class="section-container-alt reveal-element">
         <div class="section-title">
             <h2>📱 緊貼最新動態與客戶評價</h2>
             <p>每日更新地盤進度與設計靈感，100% 真實屋主留言</p>
         </div>
         
         <div class="social-grid">
-            <!-- Facebook -->
-            <div class="social-column fb">
+            <div class="social-column fb reveal-element delay-1">
                 <div class="social-header">
                     <div class="s-head-left">
                         <i class="fa-brands fa-facebook"></i>
@@ -865,14 +1072,13 @@
                         </div>
                     </div>
                     <div class="post-content">
-                        「多謝新榮耀幫我阿媽間30年舊公屋大翻新！水電師傅好專業，搞掂哂老化漏水問題。廁所做足防水，試水試咗兩日。雖然全爆價錢唔係全行最平，但『明碼實價』冇後加數呢樣嘢真係令我好安心。」
+                        「多謝新榮耀幫我阿媽間30年舊公屋大翻新！水電師傅好專業，搞掂assoc老化漏水問題。廁所做足防水，試水試咗兩日。雖然全爆價錢唔係全行最平，但『明碼實價』冇後加數呢樣嘢真係令我好安心。」
                     </div>
                     <div class="post-tags">#舊樓翻新 #防水工程 #絕無爛尾 #公屋裝修</div>
                 </div>
             </div>
 
-            <!-- 小紅書 -->
-            <div class="social-column xhs">
+            <div class="social-column xhs reveal-element delay-2">
                 <div class="social-header">
                     <div class="s-head-left">
                         <i class="fa-solid fa-hashtag"></i>
@@ -917,28 +1123,28 @@
     </section>
 
     <!-- 4步極速流程 -->
-    <section class="section-container">
+    <section class="section-container reveal-element">
         <div class="section-title">
             <h2>透明無憂・4步標準化裝修流程</h2>
             <p>由初步諮詢到開心入伙，資深管工全程為你一對一跟進，告別傳統工程黑箱作業</p>
         </div>
         <div class="process-grid">
-            <div class="process-step">
+            <div class="process-step reveal-element delay-1">
                 <div class="step-num">1</div>
                 <h3>免費度尺與報價</h3>
                 <p>專業管工帶備紅外線儀器上門實地勘察，聆聽生活習慣需求，最快 48 小時內提供精準列明細項的報價單及初步概念。</p>
             </div>
-            <div class="process-step">
+            <div class="process-step reveal-element delay-2">
                 <div class="step-num">2</div>
                 <h3>落實圖紙與簽約</h3>
                 <p>確認水電佈線圖、泥水細節及 3D 傢俬渲染圖。簽訂具法律效力之合約，清晰列明各階段分期付款方式及承諾完工日期。</p>
             </div>
-            <div class="process-step">
+            <div class="process-step reveal-element delay-3">
                 <div class="step-num">3</div>
                 <h3>開工與每日匯報</h3>
                 <p>地盤總管親自督師。透過專屬 WhatsApp 群組，每日發送當天施工相片及影片匯報進度，業主無需請假親身日日上樓監工。</p>
             </div>
-            <div class="process-step">
+            <div class="process-step reveal-element delay-4">
                 <div class="step-num">4</div>
                 <h3>深層清潔與交匙</h3>
                 <p>完工後進行全屋專業深層清潔及基礎除甲醛程序。管工陪同業主逐項驗收，確認滿意交匙後，正式啟動 24 個月保養期。</p>
@@ -947,14 +1153,12 @@
     </section>
 
     <!-- FAQ 常見問題 -->
-   <!-- FAQ 常見問題 -->
-    <section id="faq" class="section-container-alt">
+    <section id="faq" class="section-container-alt reveal-element">
         <div class="section-title">
             <h2>💡 客戶常見問題解答 (FAQ)</h2>
             <p>解答你在裝修前最大的疑慮，確保合作建基於互信之上</p>
         </div>
         <div class="faq-container">
-            <!-- 1. 原有：報價問題 -->
             <div class="faq-item">
                 <div class="faq-question">
                     報價單上的價錢會否是「海鮮價」，開工後不斷加錢？ 
@@ -965,7 +1169,6 @@
                 </div>
             </div>
 
-            <!-- 2. 新增：非實體店問題 -->
             <div class="faq-item">
                 <div class="faq-question">
                     請問你們有實體店嗎？可以門市拜訪嗎？ 
@@ -976,7 +1179,6 @@
                 </div>
             </div>
 
-            <!-- 3. 原有：傢俬問題 -->
             <div class="faq-item">
                 <div class="faq-question">
                     你們的「訂造傢俬」在哪裡生產？品質和甲醛有保證嗎？ 
@@ -987,7 +1189,6 @@
                 </div>
             </div>
 
-            <!-- 4. 原有：監工問題 -->
             <div class="faq-item">
                 <div class="faq-question">
                     裝修期間我需要經常請假上地盤監工嗎？ 
@@ -998,7 +1199,6 @@
                 </div>
             </div>
             
-            <!-- 5. 新增：黑工 / 外勞問題 -->
             <div class="faq-item">
                 <div class="faq-question">
                     你們的裝修師傅會不會是黑工或來歷不明的外勞？ 
@@ -1009,7 +1209,6 @@
                 </div>
             </div>
 
-            <!-- 6. 原有：保養問題 -->
             <div class="faq-item">
                 <div class="faq-question">
                     完工後有保養嗎？如果漏水怎麼辦？ 
@@ -1022,8 +1221,8 @@
         </div>
     </section>
 
-    <!-- [新區塊] 預約免費度尺表單 -->
-    <section id="contact" class="section-container">
+    <!-- 預約免費度尺表單連相片上傳 -->
+    <section id="contact" class="section-container reveal-element">
         <div class="section-title">
             <h2>📝 預約免費上門度尺</h2>
             <p>填寫簡單資料，我們的專業專員將於 24 小時內聯絡你，安排上門度尺及初步報價</p>
@@ -1062,6 +1261,18 @@
                         <label class="form-label">其他備註 Remarks (選填)</label>
                         <textarea class="form-input" placeholder="有什麼特別要求或問題？（例如：幾時入伙、想做隱形門...）"></textarea>
                     </div>
+                    
+                    <!-- 上傳相片區塊 -->
+                    <div class="form-group full-width">
+                        <label class="form-label">上傳現場相片 / 圖紙 Upload Photos (最多5張)</label>
+                        <div class="file-upload-wrapper" id="drop-zone">
+                            <i class="fa-solid fa-cloud-arrow-up file-upload-icon"></i>
+                            <p class="file-upload-text">點擊或拖拽相片到此處上傳</p>
+                            <p class="file-upload-subtext">支援 JPG, PNG 格式，每張小於 5MB</p>
+                            <input type="file" id="photo-upload" name="photos" accept="image/png, image/jpeg, image/jpg" multiple onchange="updateFileNames(this)">
+                            <div id="file-name-display" class="file-name-display"></div>
+                        </div>
+                    </div>
                 </div>
                 <button type="submit" class="form-submit-btn">
                     <i class="fa-solid fa-paper-plane"></i> 提交預約
@@ -1080,7 +1291,7 @@
         <div class="footer-grid">
             <div class="footer-col">
                 <a href="#" class="company-logo footer-brand">
-                    <img src="your-logo.png" alt="新榮耀工程" class="logo-img">
+                    <img src="logo.png" alt="新榮耀工程" class="logo-img">
                     <h2 class="company-name" style="font-size: 20px;">新榮耀工程</h2>
                 </a>
                 <p>植根香港超過 15 年，持有屋宇署認可小型工程牌照。專營公屋、居屋、私人屋苑全屋翻新。自設東莞傢俬廠房，並承辦各類商業寫字樓、學校及會所工程，承諾明碼實價。</p>
@@ -1119,66 +1330,105 @@
             <div>
                 &copy; 2026 新榮耀工程有限公司 Sun Wing Yiu Engineering Limited. All rights reserved. | 牌照號碼: MWC(W) 123/2026
             </div>
-            <div>
-                <a href="#">私隱政策</a>
-                <a href="#">使用條款</a>
-                <a href="#">網站地圖</a>
-            </div>
         </div>
     </footer>
 
-    <!-- 互動腳本 Script -->
+    <!-- 全動態 JS 功能邏輯控置（補完原本缺少的邏輯） -->
     <script>
-        // 控制「全清水樓」與「大全爆」報價套餐切換
-        function switchPricingTab(mode) {
+        // 1. 手機版漢堡導航切換
+        const mobileToggle = document.getElementById('mobile-toggle');
+        const navMenu = document.getElementById('nav-menu');
+        if (mobileToggle && navMenu) {
+            mobileToggle.addEventListener('click', () => {
+                navMenu.classList.toggle('active');
+                const icon = mobileToggle.querySelector('i');
+                if (navMenu.classList.contains('active')) {
+                    icon.className = 'fa-solid fa-xmark';
+                } else {
+                    icon.className = 'fa-solid fa-bars';
+                }
+            });
+        }
+
+        // 2. 導航欄滾動磨砂玻璃特效 & 元素登場動態觸發
+        window.addEventListener('scroll', () => {
+            const header = document.getElementById('main-header');
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+
+            const reveals = document.querySelectorAll('.reveal-element');
+            reveals.forEach(el => {
+                const windowHeight = window.innerHeight;
+                const elementTop = el.getBoundingClientRect().top;
+                const elementVisible = 100;
+                if (elementTop < windowHeight - elementVisible) {
+                    el.classList.add('revealed');
+                }
+            });
+        });
+        window.dispatchEvent(new Event('scroll')); // 初始觸發檢查
+
+        // 3. 商業工種分頁 Tab 切換
+        function switchServiceTab(tabId, btn) {
+            const card = btn.closest('.full-width-card');
+            card.querySelectorAll('.c-tab-btn').forEach(b => b.classList.remove('active'));
+            card.querySelectorAll('.c-tab-content').forEach(c => c.classList.remove('active'));
+            
+            btn.classList.add('active');
+            document.getElementById('tab-' + tabId).classList.add('active');
+        }
+
+        // 4. 裝修報價套餐 Tab 切換
+        function switchPricingTab(type) {
             document.getElementById('btn-tab-a').classList.remove('active');
             document.getElementById('btn-tab-b').classList.remove('active');
-            document.getElementById('btn-tab-' + mode.toLowerCase()).classList.add('active');
-
             document.getElementById('content-a').classList.remove('active');
             document.getElementById('content-b').classList.remove('active');
-            document.getElementById('content-' + mode.toLowerCase()).classList.add('active');
+
+            if (type === 'A') {
+                document.getElementById('btn-tab-a').classList.add('active');
+                document.getElementById('content-a').classList.add('active');
+            } else {
+                document.getElementById('btn-tab-b').classList.add('active');
+                document.getElementById('content-b').classList.add('active');
+            }
         }
 
-        // 控制「商業及機構工程」分頁切換
-        function switchServiceTab(tabName, btnElement) {
-            const container = btnElement.closest('.full-width-card');
-            
-            // 移除所有按鈕及內容的 active 狀態
-            container.querySelectorAll('.c-tab-btn').forEach(btn => btn.classList.remove('active'));
-            container.querySelectorAll('.c-tab-content').forEach(content => content.classList.remove('active'));
-            
-            // 加上 active 狀態至目前點擊的項目
-            btnElement.classList.add('active');
-            container.querySelector('#tab-' + tabName).classList.add('active');
+        // 5. Before & After 滑動條實時同步效果
+        const slider = document.getElementById('ba-slider');
+        const overlay = document.getElementById('ba-overlay');
+        const btn = document.getElementById('ba-btn');
+        if (slider && overlay && btn) {
+            slider.addEventListener('input', (e) => {
+                const value = e.target.value;
+                overlay.style.width = value + '%';
+                btn.style.left = value + '%';
+            });
         }
 
-        // FAQ 手風琴效果控制
-        document.querySelectorAll('.faq-question').forEach(item => {
-            item.addEventListener('click', () => {
-                const parent = item.parentElement;
-                // 關閉其他已打開的 FAQ
-                document.querySelectorAll('.faq-item').forEach(child => {
-                    if (child !== parent) {
-                        child.classList.remove('active');
-                    }
-                });
-                // 切換當前 FAQ 的狀態
-                parent.classList.toggle('active');
+        // 6. FAQ 手風琴展開收合
+        document.querySelectorAll('.faq-question').forEach(q => {
+            q.addEventListener('click', () => {
+                const item = q.parentElement;
+                item.classList.toggle('active');
             });
         });
 
-        // [新增] Before & After 滑塊互動邏輯
-        const baSlider = document.getElementById('ba-slider');
-        const baOverlay = document.getElementById('ba-overlay');
-        const baBtn = document.getElementById('ba-btn');
-
-        if (baSlider && baOverlay && baBtn) {
-            baSlider.addEventListener('input', (e) => {
-                const sliderVal = e.target.value + '%';
-                baOverlay.style.width = sliderVal;
-                baBtn.style.left = sliderVal;
-            });
+        // 7. 度尺表單相片上傳名稱實時顯示
+        function updateFileNames(input) {
+            const display = document.getElementById('file-name-display');
+            if (input.files.length > 0) {
+                let fileNames = [];
+                for (let i = 0; i < Math.min(input.files.length, 5); i++) {
+                    fileNames.push(`<i class="fa-solid fa-image"></i> ${input.files[i].name}`);
+                }
+                display.innerHTML = fileNames.join('<br>');
+            } else {
+                display.innerHTML = '';
+            }
         }
     </script>
 </body>
